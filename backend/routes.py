@@ -289,6 +289,11 @@ async def _save_to_supabase(data: List[ApifyResult], user_id: str):
     """Save data to Supabase"""
     try:
         if config.supabase:
+            # Ensure user record exists first
+            if not await _ensure_user_exists(user_id):
+                print("[ERROR] Failed to ensure user record exists")
+                return
+            
             # Ensure user_id is a valid UUID
             valid_user_id = _ensure_valid_uuid(user_id)
             
@@ -297,13 +302,16 @@ async def _save_to_supabase(data: List[ApifyResult], user_id: str):
                 "similarweb_result": json.dumps(data_to_insert)
             }).eq("id", valid_user_id).execute()
             logger.info("[SUCCESS] Data saved to Supabase successfully")
-            print("[SUCCESS] Data saved to Supabase successfully")
+            print(f"[SUCCESS] Data saved to Supabase for user: {valid_user_id}")
         else:
             logger.warning("[WARNING] Supabase client not available, skipping database save")
             print("[WARNING] Supabase client not available, skipping database save")
     except Exception as e:
         logger.error(f"[ERROR] Error saving to Supabase: {e}")
         print(f"[ERROR] Error saving to Supabase: {e}")
+        # Log more details about the error
+        import traceback
+        traceback.print_exc()
 
 
 async def _get_existing_data(user_id: str):
@@ -324,6 +332,36 @@ async def _get_existing_data(user_id: str):
         except Exception as e:
             print(f"[ERROR] Error retrieving existing data: {e}")
     return existing_data
+
+
+async def _ensure_user_exists(user_id: str):
+    """Ensure user record exists in Supabase"""
+    if not config.supabase:
+        return False
+    
+    try:
+        valid_user_id = _ensure_valid_uuid(user_id)
+        
+        # Check if user exists
+        result = config.supabase.table("users").select("id").eq("id", valid_user_id).execute()
+        
+        if not result.data or len(result.data) == 0:
+            # User doesn't exist, create them
+            print(f"[CREATE] Creating user record for: {valid_user_id}")
+            insert_result = config.supabase.table("users").insert({
+                "id": valid_user_id,
+                "created_at": "now()",
+                "similarweb_result": None
+            }).execute()
+            print(f"[SUCCESS] Created user record: {valid_user_id}")
+            return True
+        else:
+            print(f"[EXISTS] User record already exists: {valid_user_id}")
+            return True
+            
+    except Exception as e:
+        print(f"[ERROR] Error ensuring user exists: {e}")
+        return False
 
 
 def _ensure_valid_uuid(user_id: str) -> str:

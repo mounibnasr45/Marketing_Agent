@@ -20,19 +20,30 @@ class OpenRouterClient:
         # Prepare context from analysis data
         context = self._prepare_analysis_context(analysis_data)
         
-        system_prompt = f"""You are an expert web analytics and technology stack analyst. You have access to comprehensive data about websites including traffic analytics, technology stacks, and competitive landscape. 
+        system_prompt = f"""You are an expert web analytics and technology stack analyst. You provide clear, actionable insights based on comprehensive website analysis data.
 
-Based on the following analysis data:
+ANALYSIS DATA:
 {context}
 
-Provide insightful, actionable answers to user questions about:
-- Website traffic patterns and sources
-- Technology stack analysis and recommendations
-- Competitive positioning and opportunities
-- Growth strategies and optimization suggestions
-- Market insights and trends
+INSTRUCTIONS:
+- Provide specific, data-driven insights from the analysis above
+- Focus only on the analyzed domains (ignore any generic platforms like LinkedIn/GitHub)
+- Include concrete numbers, percentages, and rankings when available
+- Offer actionable recommendations based on the data
+- Keep responses conversational but professional
+- Structure responses with clear sections and bullet points
+- When comparing competitors, use specific metrics from the data
 
-Keep responses conversational but professional, and always back up insights with specific data points from the analysis."""
+AREAS OF EXPERTISE:
+- Traffic source optimization and growth strategies
+- Technology stack analysis and modernization recommendations
+- Competitive positioning and market opportunities
+- User engagement and conversion optimization
+- SEO and content strategy based on keyword data
+- Geographic expansion opportunities
+- Performance benchmarking against competitors
+
+Always support your insights with specific data points from the analysis."""
 
         async with httpx.AsyncClient() as client:
             try:
@@ -78,24 +89,55 @@ Keep responses conversational but professional, and always back up insights with
         context_parts = []
         
         if "data" in analysis_data:
+            # Filter out LinkedIn and generic domains from context
+            filtered_data = []
             for website in analysis_data["data"]:
-                context_parts.append(f"""
-Website: {website.get('name', 'Unknown')}
-- Global Rank: #{website.get('globalRank', 'N/A')}
-- Monthly Visits: {website.get('totalVisits', 'N/A')}
-- Bounce Rate: {website.get('bounceRate', 'N/A')}
-- Avg Visit Duration: {website.get('avgVisitDuration', 'N/A')}
-- Company: {website.get('companyName', 'N/A')} (Founded: {website.get('companyYearFounded', 'N/A')})
+                website_name = website.get('name', '').lower()
+                if website_name not in ['linkedin', 'linkedin.com', 'github', 'github.com']:
+                    filtered_data.append(website)
+            
+            if not filtered_data:
+                return "No specific website data available for analysis."
+            
+            # Create summarized context for each website
+            for website in filtered_data:
+                domain = website.get('name', 'Unknown')
+                
+                # Format visits nicely
+                visits = website.get('totalVisits', 0)
+                visits_formatted = self._format_large_number(visits)
+                
+                # Create comprehensive summary
+                summary = f"""
+📊 **{domain} Analysis Summary:**
 
-Traffic Sources:
+**Traffic Overview:**
+- Global Rank: #{website.get('globalRank', 'N/A')}
+- Monthly Visits: {visits_formatted}
+- Bounce Rate: {self._format_percentage(website.get('bounceRate', 0))}
+- Average Visit Duration: {website.get('avgVisitDuration', 'N/A')}
+
+**Company Information:**
+- Company: {website.get('companyName', 'N/A')}
+- Founded: {website.get('companyYearFounded', 'N/A')}
+- Employees: {self._format_employee_range(website.get('companyEmployeesMin'), website.get('companyEmployeesMax'))}
+
+**Traffic Sources Analysis:**
 {self._format_traffic_sources(website.get('trafficSources', {}))}
 
-Top Technologies:
+**Technology Stack:**
 {self._format_technologies(website.get('builtwith_result', {}))}
 
-Top Competitors:
+**Competitive Landscape:**
 {self._format_competitors(website.get('topSimilarityCompetitors', []))}
-""")
+
+**Geographic Performance:**
+{self._format_top_countries(website.get('topCountries', []))}
+
+**SEO Keywords:**
+{self._format_top_keywords(website.get('topKeywords', []))}
+"""
+                context_parts.append(summary)
         
         return "\n".join(context_parts)
 
@@ -142,6 +184,58 @@ Top Competitors:
             visits_formatted = f"{visits/1000000:.0f}M" if visits > 1000000 else f"{visits/1000:.0f}K" if visits > 1000 else str(visits)
             affinity = comp.get('affinity', 0) * 100
             formatted.append(f"- {comp.get('domain', 'Unknown')}: {visits_formatted} visits, {affinity:.0f}% affinity")
+        
+        return "\n".join(formatted)
+
+    def _format_large_number(self, number: int) -> str:
+        """Format large numbers in a readable way"""
+        if number >= 1000000000:
+            return f"{number/1000000000:.1f}B"
+        elif number >= 1000000:
+            return f"{number/1000000:.1f}M"
+        elif number >= 1000:
+            return f"{number/1000:.1f}K"
+        else:
+            return str(number)
+    
+    def _format_percentage(self, value: float) -> str:
+        """Format percentage values"""
+        if value == 0:
+            return "N/A"
+        percentage = value * 100 if value <= 1 else value
+        return f"{percentage:.1f}%"
+    
+    def _format_employee_range(self, min_employees: int, max_employees: int) -> str:
+        """Format employee range"""
+        if not min_employees or not max_employees:
+            return "N/A"
+        return f"{self._format_large_number(min_employees)} - {self._format_large_number(max_employees)}"
+    
+    def _format_top_countries(self, countries: list) -> str:
+        """Format top countries data"""
+        if not countries:
+            return "No geographic data available"
+        
+        formatted = []
+        for country in countries[:3]:  # Top 3 countries
+            code = country.get('countryAlpha2Code', 'Unknown')
+            share = self._format_percentage(country.get('visitsShare', 0))
+            change = country.get('visitsShareChange', 0)
+            trend = "↑" if change > 0 else "↓" if change < 0 else "→"
+            formatted.append(f"- {code}: {share} {trend}")
+        
+        return "\n".join(formatted)
+    
+    def _format_top_keywords(self, keywords: list) -> str:
+        """Format top keywords data"""
+        if not keywords:
+            return "No keyword data available"
+        
+        formatted = []
+        for keyword in keywords[:3]:  # Top 3 keywords
+            name = keyword.get('name', 'Unknown')
+            volume = self._format_large_number(keyword.get('volume', 0))
+            formatted.append(f"- {name}: {volume} searches/month")
         
         return "\n".join(formatted)
 
