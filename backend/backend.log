@@ -1,0 +1,52 @@
+2025-07-02 17:14:08,290 - __main__ - INFO - Backend starting up...
+2025-07-02 17:14:08,291 - __main__ - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-02 17:14:08,291 - __main__ - INFO - .env file exists: True
+2025-07-02 17:14:08,292 - __main__ - INFO - SUPABASE_URL configured: Yes
+2025-07-02 17:14:08,293 - __main__ - INFO - SUPABASE_KEY configured: Yes
+2025-07-02 17:14:28,976 - __main__ - INFO -    Client: 127.0.0.1
+2025-07-02 17:14:28,979 - __main__ - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '62', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-02 17:14:29,021 - __main__ - INFO -    Websites: ['www.youtube.com']
+2025-07-02 17:14:29,021 - __main__ - INFO -    User ID: user-1751472868545
+2025-07-02 17:14:31,723 - httpx - INFO - HTTP Request: POST https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs "HTTP/1.1 201 Created"
+2025-07-02 17:14:37,842 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/IT8QPuboHhC7EfHZY "HTTP/1.1 200 OK"
+2025-07-02 17:14:43,237 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/IT8QPuboHhC7EfHZY "HTTP/1.1 200 OK"
+2025-07-02 17:14:51,019 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/IT8QPuboHhC7EfHZY "HTTP/1.1 200 OK"
+2025-07-02 17:14:57,585 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/IT8QPuboHhC7EfHZY "HTTP/1.1 200 OK"
+2025-07-02 17:14:57,937 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/datasets/SAGIoDwgBR3itahBz/items "HTTP/1.1 200 OK"
+2025-07-02 17:15:00,839 - httpx - INFO - HTTP Request: PATCH https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?id=eq.user-1751472868545 "HTTP/1.1 400 Bad Request"
+2025-07-02 17:15:00,908 - __main__ - INFO -    Status: 200
+2025-07-02 17:15:00,908 - __main__ - INFO -    Processing time: 31.992s
+2025-07-02 17:15:17,318 - __main__ - INFO -    Client: 127.0.0.1
+2025-07-02 17:15:17,320 - __main__ - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '188', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-02 17:15:17,343 - __main__ - INFO -    Websites: ['www.youtube.com', 'netflix.com', 'imdb.com', 'hulu.com', 'facebook.com', 'vimeo.com', 'veoh.com', 'blip.tv', 'videosift.com', 'google.com', 'revver.com']
+2025-07-02 17:15:17,344 - __main__ - INFO -    User ID: user-1751472905845
+2025-07-02 17:15:18,724 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=similarweb_result&id=eq.user-1751472905845 "HTTP/1.1 400 Bad Request"
+2025-07-02 17:15:22,531 - httpx - INFO - HTTP Request: GET https://api.builtwith.com/v20/api.json?KEY=fd8b0b65-fb2d-46ef-b666-4d69096c9bf8&LOOKUP=www.youtube.com "HTTP/1.1 200 OK"
+2025-07-02 17:15:24,803 - httpx - INFO - HTTP Request: GET https://api.builtwith.com/v20/api.json?KEY=fd8b0b65-fb2d-46ef-b666-4d69096c9bf8&LOOKUP=netflix.com "HTTP/1.1 200 OK"
+2025-07-02 17:15:30,065 - httpx - INFO - HTTP Request: PATCH https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?id=eq.user-1751472905845 "HTTP/1.1 400 Bad Request"
+2025-07-02 17:15:30,073 - __main__ - INFO -    Status: 200
+2025-07-02 17:15:30,073 - __main__ - INFO -    Processing time: 12.847s
+2025-07-02 17:16:03,335 - __main__ - INFO -    Client: 127.0.0.1
+2025-07-02 17:16:03,335 - __main__ - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '4924', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-02 17:16:08,380 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-02 17:16:11,310 - __main__ - INFO -    Status: 200
+2025-07-02 17:16:11,310 - __main__ - INFO -    Processing time: 7.982s
+2025-07-02 17:18:49,494 - __main__ - INFO -    Client: 127.0.0.1
+2025-07-02 17:18:49,494 - __main__ - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '4935', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-02 17:18:52,873 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-02 17:18:54,011 - __main__ - INFO -    Status: 200
+2025-07-02 17:18:54,012 - __main__ - INFO -    Processing time: 4.515s
+2025-07-02 17:31:31,161 - __main__ - INFO -    Client: 127.0.0.1
+2025-07-02 17:31:31,162 - __main__ - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '4946', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-02 17:31:35,120 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-02 17:31:51,785 - __main__ - INFO -    Status: 200
+2025-07-02 17:31:51,786 - __main__ - INFO -    Processing time: 20.636s
+2025-07-02 17:39:58,889 - __main__ - INFO -    Client: 127.0.0.1
+2025-07-02 17:39:58,889 - __main__ - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'cache-control': 'max-age=0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Windows"', 'upgrade-insecure-requests': '1', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'sec-fetch-site': 'none', 'sec-fetch-mode': 'navigate', 'sec-fetch-user': '?1', 'sec-fetch-dest': 'document', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5', 'cookie': 'ajs_anonymous_id=18579a7c-f4ce-4647-8aa9-b429ad6b9845; jenkins-timestamper-offset=-3600000; __next_hmr_refresh_hash__=233918a3d138393701bd93a7e8cbedd5633457081244afec'}
+2025-07-02 17:39:58,899 - __main__ - INFO -    Status: 200
+2025-07-02 17:39:58,900 - __main__ - INFO -    Processing time: 0.010s
+2025-07-02 17:40:29,942 - __main__ - INFO -    Client: 127.0.0.1
+2025-07-02 17:40:29,943 - __main__ - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '4948', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-02 17:40:40,938 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-02 17:40:43,438 - __main__ - INFO -    Status: 200
+2025-07-02 17:40:43,439 - __main__ - INFO -    Processing time: 13.496s
