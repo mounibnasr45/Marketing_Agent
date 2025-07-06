@@ -1,25 +1,18 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Search, Loader2, AlertCircle, Globe, BarChart3, Code, RefreshCw, TrendingUp, Users, Eye } from "lucide-react"
+import { Search, Loader2, AlertCircle, Globe, BarChart3, Code, RefreshCw, TrendingUp, Users, Eye, History } from "lucide-react"
 import SimilarWebResults from "./components/similarweb-results"
 import BuiltWithResults from "./components/builtwith-results"
 import ChatSystem from "./components/chat-system"
-
-type AnalysisState = "idle" | "loading" | "similarweb" | "analyzing-competitors" | "builtwith" | "chat" | "error"
-
-interface AnalysisData {
-  domain: string
-  competitors: string[]
-  similarWebData: any
-  builtWithData: any
-}
+import { SessionHistory } from "./components/session-history"
+import { useAppState } from "@/lib/state-context"
 
 // API Response types
 interface ApiResponse {
@@ -30,26 +23,35 @@ interface ApiResponse {
 }
 
 export default function AnalysisPlatform() {
-  const [domain, setDomain] = useState("")
-  const [analysisState, setAnalysisState] = useState<AnalysisState>("idle")
-  const [analysisType, setAnalysisType] = useState<"similarweb" | "builtwith" | "both">("both")
-  const [progress, setProgress] = useState(0)
-  const [competitorProgress, setCompetitorProgress] = useState(0)
-  const [currentCompetitor, setCurrentCompetitor] = useState("")
-  const [error, setError] = useState("")
-  const [competitors, setCompetitors] = useState<string[]>([])
-  const [analysisData, setAnalysisData] = useState<AnalysisData | null>(null)
-  const [apiResponse, setApiResponse] = useState<any>(null)
+  const { state, dispatch } = useAppState()
+  const [showHistory, setShowHistory] = useState(false)
+  
+  // Use state management for all state
+  const domain = state.currentSession.domain
+  const analysisState = state.currentSession.analysisState
+  const analysisType = state.currentSession.analysisType
+  const progress = state.currentSession.progress
+  const competitorProgress = state.currentSession.competitorProgress
+  const currentCompetitor = state.currentSession.currentCompetitor
+  const error = state.currentSession.error
+  const competitors = state.currentSession.competitors
+  const analysisData = state.currentSession.analysisData
+  const apiResponse = state.currentSession.apiResponse
 
   // Backend API URL
   const API_BASE_URL = "http://localhost:8000"
 
+  // Generate a consistent user ID based on session or browser
+  const getUserId = () => {
+    return state.settings.userId
+  }
+
   const handleAnalyze = async () => {
     if (!domain.trim()) return
 
-    setAnalysisState("loading")
-    setProgress(0)
-    setError("")
+    dispatch({ type: 'SET_ANALYSIS_STATE', payload: 'loading' })
+    dispatch({ type: 'SET_PROGRESS', payload: 0 })
+    dispatch({ type: 'SET_ERROR', payload: '' })
 
     // Simulate progress for UI
     const progressSteps = [
@@ -64,125 +66,201 @@ export default function AnalysisPlatform() {
       // Start progress animation
       for (const { step } of progressSteps) {
         await new Promise((resolve) => setTimeout(resolve, 500))
-        setProgress(step)
+        dispatch({ type: 'SET_PROGRESS', payload: step })
       }
 
       // Call backend API for SimilarWeb analysis
+      const requestData = {
+        websites: [domain],
+        userId: getUserId() // Use consistent user ID
+      }
+
+      console.log("🚀 Frontend: Sending SimilarWeb analysis request")
+      console.log("   📤 Request URL:", `${API_BASE_URL}/api/analyze`)
+      console.log("   📦 Request Data:", requestData)
+      console.log("   ⏰ Request Time:", new Date().toISOString())
+
+      const startTime = performance.now()
       const response = await fetch(`${API_BASE_URL}/api/analyze`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          websites: [domain],
-          userId: `user-${Date.now()}` // Generate a simple user ID
-        })
+        body: JSON.stringify(requestData)
       })
 
+      const endTime = performance.now()
+      const requestDuration = endTime - startTime
+
+      console.log("📥 Frontend: Received SimilarWeb analysis response")
+      console.log("   ✅ Response Status:", response.status)
+      console.log("   ⏱️ Response Time:", `${requestDuration.toFixed(2)}ms`)
+      console.log("   📊 Response Headers:", Object.fromEntries(response.headers.entries()))
+
       if (!response.ok) {
+        console.error("❌ Frontend: API request failed")
+        console.error("   Status:", response.status)
+        console.error("   Status Text:", response.statusText)
         throw new Error(`API Error: ${response.status}`)
       }
 
       const data: ApiResponse = await response.json()
       
+      console.log("📊 Frontend: Parsed response data")
+      console.log("   ✅ Success:", data.success)
+      console.log("   📈 Data Count:", data.count)
+      console.log("   📝 Note:", data.note)
+      
       if (!data.success) {
+        console.error("❌ Frontend: Analysis failed according to response")
         throw new Error('Analysis failed')
       }
 
       // Store the API response
-      setApiResponse(data)
+      dispatch({ type: 'SET_API_RESPONSE', payload: data })
       
       // Extract competitors from the response
       const competitorDomains = data.data[0]?.topSimilarityCompetitors?.map((comp: any) => comp.domain) || 
         ["indeed.com", "glassdoor.com", "monster.com", "ziprecruiter.com"]
       
-      setCompetitors(competitorDomains)
+      dispatch({ type: 'SET_COMPETITORS', payload: competitorDomains })
 
       // Store analysis data
-      setAnalysisData({
+      const newAnalysisData = {
         domain,
         competitors: competitorDomains,
         similarWebData: data.data[0] || {},
         builtWithData: {},
-      })
+        apiResponse: data, // Include full API response
+      }
+      dispatch({ type: 'SET_ANALYSIS_DATA', payload: newAnalysisData })
+
+      console.log("✅ Frontend: SimilarWeb analysis completed successfully")
+      console.log("   🏆 Competitors found:", competitorDomains.length)
+      console.log("   📊 Analysis data stored")
 
       // Start with SimilarWeb results
-      setAnalysisState("similarweb")
+      dispatch({ type: 'SET_ANALYSIS_STATE', payload: 'similarweb' })
     } catch (err) {
-      console.error('Analysis error:', err)
-      setError("Failed to analyze the website. Please make sure the backend is running and try again.")
-      setAnalysisState("error")
+      console.error('❌ Frontend: Analysis error:', err)
+      console.error('   🔍 Error details:', {
+        message: err instanceof Error ? err.message : 'Unknown error',
+        stack: err instanceof Error ? err.stack : undefined,
+        timestamp: new Date().toISOString()
+      })
+      dispatch({ type: 'SET_ERROR', payload: "Failed to analyze the website. Please make sure the backend is running and try again." })
+      dispatch({ type: 'SET_ANALYSIS_STATE', payload: 'error' })
     }
   }
 
   const handleCompetitorAnalysis = async () => {
-    setAnalysisState("analyzing-competitors")
-    setCompetitorProgress(0)
+    dispatch({ type: 'SET_ANALYSIS_STATE', payload: 'analyzing-competitors' })
+    dispatch({ type: 'SET_COMPETITOR_PROGRESS', payload: 0 })
 
     try {
-      // Get the user ID from the previous analysis
-      const userId = `user-${Date.now()}`
+      // Get the consistent user ID
+      const userId = getUserId()
 
       // Simulate analyzing each competitor's technology stack
       const allDomains = [domain, ...competitors]
 
+      console.log("🔧 Frontend: Starting tech stack analysis")
+      console.log("   🌐 Domains to analyze:", allDomains)
+      console.log("   👤 User ID:", userId)
+
       for (let i = 0; i < allDomains.length; i++) {
-        setCurrentCompetitor(allDomains[i])
-        setCompetitorProgress(((i + 1) / allDomains.length) * 100)
+        dispatch({ type: 'SET_CURRENT_COMPETITOR', payload: allDomains[i] })
+        dispatch({ type: 'SET_COMPETITOR_PROGRESS', payload: ((i + 1) / allDomains.length) * 100 })
+        console.log(`   📊 Analyzing ${i + 1}/${allDomains.length}: ${allDomains[i]}`)
         await new Promise((resolve) => setTimeout(resolve, 1000))
       }
 
       // Call backend API for BuiltWith analysis
+      const requestData = {
+        websites: [domain, ...competitors],
+        userId: userId
+      }
+
+      console.log("🚀 Frontend: Sending BuiltWith analysis request")
+      console.log("   📤 Request URL:", `${API_BASE_URL}/api/analyze-tech-stack`)
+      console.log("   📦 Request Data:", requestData)
+      console.log("   ⏰ Request Time:", new Date().toISOString())
+
+      const startTime = performance.now()
       const response = await fetch(`${API_BASE_URL}/api/analyze-tech-stack`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          websites: [domain, ...competitors],
-          userId: userId
-        })
+        body: JSON.stringify(requestData)
       })
 
+      const endTime = performance.now()
+      const requestDuration = endTime - startTime
+
+      console.log("📥 Frontend: Received BuiltWith analysis response")
+      console.log("   ✅ Response Status:", response.status)
+      console.log("   ⏱️ Response Time:", `${requestDuration.toFixed(2)}ms`)
+      console.log("   📊 Response Headers:", Object.fromEntries(response.headers.entries()))
+
       if (!response.ok) {
+        console.error("❌ Frontend: BuiltWith API request failed")
+        console.error("   Status:", response.status)
+        console.error("   Status Text:", response.statusText)
         throw new Error(`BuiltWith API Error: ${response.status}`)
       }
 
       const data: ApiResponse = await response.json()
       
+      console.log("📊 Frontend: Parsed BuiltWith response data")
+      console.log("   ✅ Success:", data.success)
+      console.log("   📈 Data Count:", data.count)
+      console.log("   📝 Note:", data.note)
+      
       if (!data.success) {
+        console.error("❌ Frontend: BuiltWith analysis failed according to response")
         throw new Error('BuiltWith analysis failed')
       }
 
       // Update the stored API response with BuiltWith data
-      setApiResponse(data)
+      dispatch({ type: 'SET_API_RESPONSE', payload: data })
       
       // Update analysis data with BuiltWith results
       if (analysisData) {
-        setAnalysisData({
+        const updatedAnalysisData = {
           ...analysisData,
           builtWithData: data.data[0] || {},
-        })
+          apiResponse: data, // Include updated API response
+        }
+        dispatch({ type: 'SET_ANALYSIS_DATA', payload: updatedAnalysisData })
       }
 
-      setAnalysisState("builtwith")
+      console.log("✅ Frontend: Tech stack analysis completed successfully")
+      console.log("   🔧 Technologies analyzed for", allDomains.length, "domains")
+
+      dispatch({ type: 'SET_ANALYSIS_STATE', payload: 'builtwith' })
     } catch (err) {
-      console.error('BuiltWith analysis error:', err)
-      setError("Failed to analyze technology stack. Using fallback data.")
+      console.error('❌ Frontend: BuiltWith analysis error:', err)
+      console.error('   🔍 Error details:', {
+        message: err instanceof Error ? err.message : 'Unknown error',
+        stack: err instanceof Error ? err.stack : undefined,
+        timestamp: new Date().toISOString()
+      })
+      dispatch({ type: 'SET_ERROR', payload: "Failed to analyze technology stack. Using fallback data." })
       // Still proceed to BuiltWith view with existing data
-      setAnalysisState("builtwith")
+      dispatch({ type: 'SET_ANALYSIS_STATE', payload: 'builtwith' })
     }
   }
 
   const handleStartChat = () => {
-    setAnalysisState("chat")
+    dispatch({ type: 'SET_ANALYSIS_STATE', payload: 'chat' })
   }
 
   const handleRetry = () => {
-    setAnalysisState("idle")
-    setError("")
-    setProgress(0)
-    setCompetitorProgress(0)
+    dispatch({ type: 'SET_ANALYSIS_STATE', payload: 'idle' })
+    dispatch({ type: 'SET_ERROR', payload: '' })
+    dispatch({ type: 'SET_PROGRESS', payload: 0 })
+    dispatch({ type: 'SET_COMPETITOR_PROGRESS', payload: 0 })
   }
 
   const switchToBuiltWith = () => {
@@ -190,18 +268,30 @@ export default function AnalysisPlatform() {
   }
 
   const switchToSimilarWeb = () => {
-    setAnalysisState("similarweb")
+    dispatch({ type: 'SET_ANALYSIS_STATE', payload: 'similarweb' })
   }
 
   const switchToChat = () => {
-    setAnalysisState("chat")
+    dispatch({ type: 'SET_ANALYSIS_STATE', payload: 'chat' })
   }
 
   const backToSearch = () => {
-    setAnalysisState("idle")
-    setDomain("")
-    setCompetitors([])
-    setAnalysisData(null)
+    dispatch({ type: 'RESET_SESSION' })
+  }
+
+  const handleHistoryRestore = (sessionId: string) => {
+    setShowHistory(false)
+    // Session is already loaded by the dispatch action
+  }
+
+  // Show session history
+  if (showHistory) {
+    return (
+      <SessionHistory
+        onRestoreSession={handleHistoryRestore}
+        onClose={() => setShowHistory(false)}
+      />
+    )
   }
 
   if (analysisState === "chat" && analysisData) {
@@ -266,7 +356,7 @@ export default function AnalysisPlatform() {
                   <Input
                     placeholder="Enter domain name (e.g., linkedin.com)"
                     value={domain}
-                    onChange={(e) => setDomain(e.target.value)}
+                    onChange={(e) => dispatch({ type: 'SET_DOMAIN', payload: e.target.value })}
                     className="pl-12 h-14 text-lg border-2 border-gray-200 focus:border-blue-500 rounded-xl"
                     onKeyPress={(e) => e.key === "Enter" && handleAnalyze()}
                   />
@@ -283,13 +373,25 @@ export default function AnalysisPlatform() {
                   )}
                   Analyze
                 </Button>
+                
+                {/* History Button */}
+                {state.sessionHistory.length > 0 && (
+                  <Button
+                    onClick={() => setShowHistory(true)}
+                    variant="outline"
+                    className="h-14 px-6 text-lg rounded-xl border-2 border-blue-500 text-blue-600 hover:bg-blue-50"
+                  >
+                    <History className="h-5 w-5 mr-2" />
+                    Session History ({state.sessionHistory.length})
+                  </Button>
+                )}
               </div>
 
               {/* Analysis Type Selection */}
               <div className="flex justify-center gap-2">
                 <Button
                   variant={analysisType === "similarweb" ? "default" : "outline"}
-                  onClick={() => setAnalysisType("similarweb")}
+                  onClick={() => dispatch({ type: 'SET_ANALYSIS_TYPE', payload: 'similarweb' })}
                   className="rounded-full"
                 >
                   <BarChart3 className="h-4 w-4 mr-2" />
@@ -297,7 +399,7 @@ export default function AnalysisPlatform() {
                 </Button>
                 <Button
                   variant={analysisType === "builtwith" ? "default" : "outline"}
-                  onClick={() => setAnalysisType("builtwith")}
+                  onClick={() => dispatch({ type: 'SET_ANALYSIS_TYPE', payload: 'builtwith' })}
                   className="rounded-full"
                 >
                   <Code className="h-4 w-4 mr-2" />
@@ -305,7 +407,7 @@ export default function AnalysisPlatform() {
                 </Button>
                 <Button
                   variant={analysisType === "both" ? "default" : "outline"}
-                  onClick={() => setAnalysisType("both")}
+                  onClick={() => dispatch({ type: 'SET_ANALYSIS_TYPE', payload: 'both' })}
                   className="rounded-full"
                 >
                   <TrendingUp className="h-4 w-4 mr-2" />
@@ -486,7 +588,7 @@ export default function AnalysisPlatform() {
                     key={sampleDomain}
                     variant="outline"
                     className="cursor-pointer hover:bg-blue-50 hover:border-blue-300 px-4 py-2 text-sm"
-                    onClick={() => setDomain(sampleDomain)}
+                    onClick={() => dispatch({ type: 'SET_DOMAIN', payload: sampleDomain })}
                   >
                     {sampleDomain}
                   </Badge>

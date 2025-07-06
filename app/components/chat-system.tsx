@@ -22,6 +22,7 @@ import {
   MessageCircle,
   Brain,
 } from "lucide-react"
+import { useAppState } from "@/lib/state-context"
 
 interface AnalysisData {
   domain: string
@@ -55,26 +56,47 @@ const suggestedQuestions = [
 ]
 
 const ChatSystem = ({ analysisData, onBackToSearch }: ChatSystemProps) => {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: "1",
-      type: "assistant",
-      content: `Hello! I'm your AI assistant and I've analyzed all the data for **${analysisData.domain}** and its ${analysisData.competitors.length} competitors. 
+  const { state, dispatch } = useAppState()
+  
+  // Use messages from state if available, otherwise initialize with welcome message
+  const [messages, setMessages] = useState<Message[]>(() => {
+    if (state.currentSession.messages.length > 0) {
+      return state.currentSession.messages
+    }
+    return [
+      {
+        id: "1",
+        type: "assistant",
+        content: `Hello! I'm your AI assistant and I've analyzed all the data for **${analysisData.domain}** and its ${analysisData.competitors.length} competitors. 
 
 I have insights on:
-- 📊 Traffic patterns and user behavior
-- 🏆 Competitive landscape analysis  
-- 🔧 Technology stack comparisons
-- 💡 Growth opportunities and recommendations
+- Traffic patterns and user behavior
+- Competitive landscape analysis  
+- Technology stack comparisons
+- Growth opportunities and recommendations
 
 What would you like to explore first? You can ask me anything about the analysis!`,
-      timestamp: new Date(),
-      suggestions: suggestedQuestions.slice(0, 4),
-    },
-  ])
+        timestamp: new Date(),
+        suggestions: suggestedQuestions.slice(0, 4),
+      },
+    ]
+  })
+  
   const [inputValue, setInputValue] = useState("")
   const [isTyping, setIsTyping] = useState(false)
   const scrollAreaRef = useRef<HTMLDivElement>(null)
+
+  // Sync messages with state
+  useEffect(() => {
+    dispatch({ type: 'SET_MESSAGES', payload: messages })
+  }, [messages, dispatch])
+
+  // Auto-save session when messages change
+  useEffect(() => {
+    if (messages.length > 1) { // Only save if there are actual conversations
+      dispatch({ type: 'SAVE_SESSION' })
+    }
+  }, [messages, dispatch])
 
   const scrollToBottom = () => {
     if (scrollAreaRef.current) {
@@ -91,178 +113,158 @@ What would you like to explore first? You can ask me anything about the analysis
 
   const generateResponse = (userMessage: string): string => {
     const lowerMessage = userMessage.toLowerCase()
+    const domain = analysisData.domain || "your domain"
+    
+    // Get actual data from analysis
+    const similarWebData = analysisData.similarWebData || {}
+    const competitors = analysisData.competitors || []
+    const builtWithData = analysisData.builtWithData || {}
+    
+    // Extract real metrics
+    const visits = similarWebData.totalVisits || 0
+    const visitsFormatted = visits > 1000000 ? `${(visits/1000000).toFixed(1)}M` : 
+                           visits > 1000 ? `${(visits/1000).toFixed(1)}K` : 
+                           visits.toString()
+    
+    const bounceRate = similarWebData.bounceRate ? `${(similarWebData.bounceRate * 100).toFixed(1)}%` : 'N/A'
+    const avgDuration = similarWebData.avgVisitDuration || 'N/A'
+    const globalRank = similarWebData.globalRank || 'N/A'
+    
+    // Extract traffic sources
+    const trafficSources = similarWebData.trafficSources || {}
+    const directTraffic = trafficSources.directVisitsShare ? `${(trafficSources.directVisitsShare * 100).toFixed(1)}%` : 'N/A'
+    const organicTraffic = trafficSources.organicSearchVisitsShare ? `${(trafficSources.organicSearchVisitsShare * 100).toFixed(1)}%` : 'N/A'
+    const socialTraffic = trafficSources.socialNetworksVisitsShare ? `${(trafficSources.socialNetworksVisitsShare * 100).toFixed(1)}%` : 'N/A'
+    const referralTraffic = trafficSources.referralVisitsShare ? `${(trafficSources.referralVisitsShare * 100).toFixed(1)}%` : 'N/A'
 
     const mockResponses: Record<string, string> = {
-      "traffic sources": `Based on the analysis of ${analysisData.domain || "your domain"}, here are the main traffic sources:
+      "traffic sources": `Based on the analysis of **${domain}**, here are the main traffic sources:
 
-🔵 **Direct Traffic (45%)** - This is excellent! It shows strong brand recognition and user loyalty. Users are typing your URL directly or using bookmarks.
+� **Traffic Overview:**
+- **Global Rank:** #${globalRank}
+- **Monthly Visits:** ${visitsFormatted}
+- **Bounce Rate:** ${bounceRate}
+- **Average Visit Duration:** ${avgDuration}
 
-🟢 **Organic Search (35%)** - Great SEO performance! This indicates your content is ranking well for relevant keywords.
+🔵 **Direct Traffic (${directTraffic})** - ${parseFloat(directTraffic) > 30 ? 'Excellent brand recognition!' : 'Good direct traffic, room for brand building'}
 
-🟣 **Referrals (10%)** - Decent referral traffic from other websites linking to you.
+🟢 **Organic Search (${organicTraffic})** - ${parseFloat(organicTraffic) > 40 ? 'Strong SEO performance!' : 'Decent organic presence, SEO optimization opportunities exist'}
 
-🔴 **Social Media (5%)** - There's room for improvement here. Consider investing more in social media marketing.
+🟣 **Referrals (${referralTraffic})** - ${parseFloat(referralTraffic) > 10 ? 'Good referral traffic' : 'Opportunity to build more partnerships'}
+
+🔴 **Social Media (${socialTraffic})** - ${parseFloat(socialTraffic) > 10 ? 'Great social presence!' : 'Significant growth opportunity in social media marketing'}
 
 **Key Insights:**
-- Your direct traffic percentage is above industry average (typically 20-30%)
-- Strong organic presence suggests good SEO foundation
-- Social media presents a growth opportunity
+- Your traffic pattern shows ${parseFloat(directTraffic) > 30 ? 'strong brand loyalty' : 'opportunity for brand building'}
+- ${parseFloat(organicTraffic) > 40 ? 'SEO is a key strength' : 'SEO optimization could drive more growth'}
+- ${parseFloat(socialTraffic) < 10 ? 'Social media presents untapped potential' : 'Social strategy is working well'}
 
 Would you like me to dive deeper into any specific traffic source or suggest strategies to improve them?`,
 
-      competitors: `Here's how your domain stacks up against the competition:
+      competitors: `Here's how **${domain}** stacks up against the competition:
 
-🏆 **Your Position:** Strong market presence with solid fundamentals
+🏆 **Your Position:** ${globalRank !== 'N/A' ? `Ranked #${globalRank} globally` : 'Strong market presence'} with ${visitsFormatted} monthly visits
 
-**Competitor Analysis:**
-1. **indeed.com** - Market leader with 1.8B monthly visits
-   - Higher traffic volume but lower engagement
-   - Opportunity: Better user experience
-
-2. **glassdoor.com** - 500M visits, strong employer branding
-   - Focus on company reviews and salary data
-   - Opportunity: Expand beyond job listings
-
-3. **monster.com** - 300M visits, traditional approach
-   - Older platform with declining market share
-   - Opportunity: Modern user experience
-
-4. **ziprecruiter.com** - 250M visits, AI-focused
-   - Strong technology integration
-   - Opportunity: Compete on AI features
+**Competitive Landscape:**
+${competitors.slice(0, 3).map((comp, i) => `${i + 1}. **${comp}** - Key competitor in your space`).join('\n')}
 
 **Your Competitive Advantages:**
-- Higher engagement rates (8:45 avg session vs industry 6:30)
-- Lower bounce rate (35% vs industry 45%)
-- Strong direct traffic indicating brand loyalty
+- ${bounceRate !== 'N/A' && parseFloat(bounceRate) < 50 ? `Low bounce rate (${bounceRate}) shows strong user engagement` : 'User engagement metrics available'}
+- ${avgDuration !== 'N/A' ? `Average visit duration of ${avgDuration} indicates content quality` : 'Content engagement data available'}
+- ${parseFloat(directTraffic) > 25 ? 'Strong direct traffic indicates brand recognition' : 'Building brand recognition opportunity'}
 
-**Recommendations:**
-- Leverage your engagement advantage in marketing
-- Focus on social media to match competitors
-- Consider expanding into adjacent markets
+**Growth Opportunities:**
+- ${parseFloat(organicTraffic) < 40 ? 'SEO optimization could capture more organic traffic' : 'Maintain strong SEO performance'}
+- ${parseFloat(socialTraffic) < 10 ? 'Social media expansion could drive significant growth' : 'Continue social media success'}
+- ${competitors.length > 0 ? `Analyze competitor strategies in ${competitors.slice(0, 2).join(' and ')}` : 'Competitive analysis opportunities'}
 
-What specific competitor would you like me to analyze further?`,
+What specific competitive aspect would you like me to analyze further?`,
 
-      technologies: `Here's the technology landscape across your competitive set:
+      technologies: `Here's the technology landscape for **${domain}**:
 
-**Most Popular Technologies:**
-🔧 **Nginx (80% adoption)** - Industry standard web server
-🔧 **Google Analytics (100% adoption)** - Universal analytics choice
-🔧 **Cloudflare (60% adoption)** - Popular CDN and security solution
+**Current Tech Stack Analysis:**
+${builtWithData.technologies ? `
+🔧 **Detected Technologies:**
+${builtWithData.technologies.slice(0, 6).map((tech: any) => `- ${tech.name} (${tech.tag})`).join('\n')}
 
-**Technology Differentiation by Competitor:**
+**Technology Recommendations:**
+- Your current stack shows ${builtWithData.technologies.length > 10 ? 'comprehensive technology adoption' : 'focused technology choices'}
+- ${builtWithData.technologies.some((t: any) => t.tag?.includes('Analytics')) ? 'Analytics tracking is in place' : 'Consider adding analytics tools'}
+- ${builtWithData.technologies.some((t: any) => t.tag?.includes('JavaScript')) ? 'Modern JavaScript frameworks detected' : 'Consider modern JavaScript frameworks'}
+` : 'Technology analysis data is being processed...'}
 
-**LinkedIn (Your Domain):**
-- React + Node.js (Modern JavaScript stack)
-- AWS hosting (Scalable cloud infrastructure)
-- Strong performance optimization
+**Strategic Tech Insights:**
+- Focus on technologies that improve user experience
+- Consider performance optimization tools
+- Ensure mobile-first approach
+- Implement proper analytics and tracking
 
-**Indeed:**
-- Java + Spring Framework (Enterprise-grade)
-- Apache Tomcat (Traditional but reliable)
-- Focus on stability over innovation
-
-**Glassdoor:**
-- Angular + TypeScript (Modern, type-safe)
-- MongoDB (Flexible data storage)
-- Good balance of modern and stable
-
-**Monster:**
-- Vue.js + PHP (Mixed modern/legacy)
-- MySQL (Traditional database)
-- Needs modernization
-
-**ZipRecruiter:**
-- Python + Django (AI/ML friendly)
-- PostgreSQL (Advanced database features)
-- Best positioned for AI integration
-
-**Strategic Recommendations:**
-1. **Maintain React advantage** - You're using modern, popular tech
-2. **Consider AI integration** - Learn from ZipRecruiter's Python stack
-3. **Strengthen security** - All competitors use Cloudflare
-4. **Database optimization** - Consider PostgreSQL for advanced features
+**Competitive Tech Advantage:**
+- ${builtWithData.technologies?.length > 15 ? 'Extensive technology stack' : 'Streamlined technology approach'}
+- Opportunities for ${builtWithData.technologies?.some((t: any) => t.tag?.includes('CDN')) ? 'CDN optimization' : 'CDN implementation'}
 
 Which technology area interests you most?`,
 
-      "growth opportunities": `Based on the comprehensive analysis, here are your key growth opportunities:
+      "growth opportunities": `Based on the comprehensive analysis of **${domain}**, here are your key growth opportunities:
 
 🚀 **Immediate Opportunities (0-3 months):**
 
-1. **Social Media Expansion**
-   - Current: 5% of traffic from social
-   - Opportunity: Industry average is 15%
-   - Potential: +200% traffic increase from social channels
+1. **Traffic Source Optimization**
+   - Current traffic: ${visitsFormatted} monthly visits
+   - ${parseFloat(socialTraffic) < 10 ? `Social media expansion potential: Current ${socialTraffic} could grow to 15-20%` : 'Maintain social media momentum'}
+   - ${parseFloat(organicTraffic) < 50 ? `SEO optimization: Current ${organicTraffic} organic traffic has growth potential` : 'Maintain strong SEO performance'}
 
-2. **International Expansion**
-   - Strong US presence (42% of traffic)
-   - Growing Indian market (15% with +5% growth)
-   - Opportunity: Target UK, Brazil, Canada more aggressively
+2. **User Experience Enhancement**
+   - Bounce rate: ${bounceRate} ${parseFloat(bounceRate) > 50 ? '(room for improvement)' : '(performing well)'}
+   - Average session: ${avgDuration} ${avgDuration.includes(':') && parseInt(avgDuration.split(':')[0]) > 3 ? '(strong engagement)' : '(engagement opportunity)'}
 
-3. **SEO Content Gap**
-   - Competitors rank for keywords you're missing
-   - Focus on long-tail job-related keywords
-   - Potential: +30% organic traffic
+3. **Competitive Positioning**
+   - Global rank: #${globalRank} ${globalRank !== 'N/A' && parseInt(globalRank) > 50000 ? '(growth potential)' : '(strong position)'}
+   - Key competitors: ${competitors.slice(0, 2).join(', ')}
 
 🎯 **Medium-term Opportunities (3-12 months):**
 
-1. **Technology Modernization**
-   - Implement AI features like ZipRecruiter
-   - Enhance mobile experience
-   - Add progressive web app capabilities
+1. **Technology Stack Modernization**
+   - ${builtWithData.technologies ? `Current stack: ${builtWithData.technologies.length} technologies` : 'Technology audit needed'}
+   - Focus on performance and user experience improvements
 
-2. **User Experience Optimization**
-   - Your 8:45 session duration is excellent
-   - Leverage this in marketing campaigns
-   - Create case studies around user engagement
+2. **Content Strategy Enhancement**
+   - ${parseFloat(organicTraffic) < 40 ? 'SEO content opportunities' : 'Content optimization for better engagement'}
+   - ${avgDuration !== 'N/A' ? `Leverage ${avgDuration} session duration` : 'Improve content engagement'}
 
-3. **Partnership Development**
-   - Low referral traffic (10%) suggests partnership gaps
-   - Target HR software integrations
-   - University career center partnerships
-
-📈 **Long-term Strategic Moves (12+ months):**
-
-1. **Adjacent Market Expansion**
-   - Professional development/training
-   - Freelance marketplace
-   - Company culture/employer branding
-
-2. **Geographic Expansion**
-   - European markets
-   - Asia-Pacific opportunities
-   - Localized content and features
+3. **Market Expansion**
+   - ${parseFloat(directTraffic) > 25 ? 'Strong brand foundation for expansion' : 'Brand building for expansion'}
+   - Geographic and demographic opportunities
 
 **ROI Prioritization:**
-1. Social media marketing (High ROI, Low effort)
-2. International SEO (Medium ROI, Medium effort)
+1. ${parseFloat(socialTraffic) < 10 ? 'Social media marketing (High ROI, Low effort)' : 'Social media optimization'}
+2. ${parseFloat(organicTraffic) < 40 ? 'SEO optimization (Medium ROI, Medium effort)' : 'SEO maintenance'}
 3. Technology upgrades (High ROI, High effort)
 
 Which opportunity would you like to explore in detail?`,
 
-      default: `I'm your AI assistant with deep knowledge of your website analysis! I can help you understand:
+      default: `I'm your AI assistant with deep knowledge of **${domain}** analysis! Here's what I can help you understand:
 
-📊 **Traffic Analysis Insights**
-- Visitor patterns and behavior
-- Geographic distribution
-- Traffic source optimization
+📊 **Your Website Overview:**
+- **Domain:** ${domain}
+- **Global Rank:** #${globalRank}
+- **Monthly Visits:** ${visitsFormatted}
+- **Bounce Rate:** ${bounceRate}
+- **Avg Session:** ${avgDuration}
 
-🏆 **Competitive Intelligence**
-- How you stack up against competitors
-- Market positioning opportunities
-- Competitive advantages to leverage
+🔍 **Available Analysis:**
+- **Traffic Sources:** ${directTraffic} direct, ${organicTraffic} organic, ${socialTraffic} social
+- **Competitors:** ${competitors.length} identified competitors
+- **Technologies:** ${builtWithData.technologies ? `${builtWithData.technologies.length} detected` : 'Analysis in progress'}
 
-🔧 **Technology Recommendations**
-- Tech stack comparisons
-- Infrastructure improvements
-- Security and performance optimization
+💡 **What I Can Help With:**
+- Traffic source optimization strategies
+- Competitive positioning analysis
+- Technology stack recommendations
+- Growth opportunity identification
+- Performance benchmarking
 
-💡 **Strategic Growth Opportunities**
-- Market expansion possibilities
-- User experience improvements
-- Revenue optimization strategies
-
-Just ask me anything about your analysis data! I can provide specific insights, comparisons, and actionable recommendations based on all the information we've gathered.
+Just ask me anything about your analysis data! I can provide specific insights, comparisons, and actionable recommendations.
 
 What would you like to explore first?`,
     }
@@ -280,7 +282,7 @@ What would you like to explore first?`,
     ) {
       return mockResponses["growth opportunities"]
     } else if (lowerMessage.includes("hello") || lowerMessage.includes("hi")) {
-      return `Hello! I'm excited to help you understand the analysis of **${analysisData.domain}**. I have comprehensive data on traffic patterns, competitor analysis, and technology insights. What specific aspect would you like to explore?`
+      return `Hello! I'm excited to help you understand the analysis of **${domain}**. I have comprehensive data on traffic patterns, competitor analysis, and technology insights. What specific aspect would you like to explore?`
     } else {
       return mockResponses["default"]
     }
@@ -303,23 +305,46 @@ What would you like to explore first?`,
 
     try {
       // Call backend chat API
+      const requestData = {
+        message: currentInputValue,
+        analysis_data: {
+          domain: analysisData.domain,
+          competitors: analysisData.competitors,
+          data: [analysisData.similarWebData, analysisData.builtWithData].filter(Boolean)
+        }
+      }
+
+      console.log("[CHAT] Frontend: Sending chat request")
+      console.log("   [REQUEST] Request URL:", "http://localhost:8000/api/chat")
+      console.log("   [DATA] Request Data:", {
+        message: currentInputValue,
+        analysis_data_size: JSON.stringify(requestData.analysis_data).length + " characters"
+      })
+      console.log("   [TIME] Request Time:", new Date().toISOString())
+
+      const startTime = performance.now()
       const response = await fetch("http://localhost:8000/api/chat", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          message: currentInputValue,
-          analysis_data: {
-            domain: analysisData.domain,
-            competitors: analysisData.competitors,
-            data: [analysisData.similarWebData, analysisData.builtWithData].filter(Boolean)
-          }
-        })
+        body: JSON.stringify(requestData)
       })
+
+      const endTime = performance.now()
+      const requestDuration = endTime - startTime
+
+      console.log("[RESPONSE] Frontend: Received chat response")
+      console.log("   [STATUS] Response Status:", response.status)
+      console.log("   [TIME] Response Time:", `${requestDuration.toFixed(2)}ms`)
+      console.log("   [HEADERS] Response Headers:", Object.fromEntries(response.headers.entries()))
 
       if (response.ok) {
         const data = await response.json()
+        
+        console.log("[DATA] Frontend: Parsed chat response data")
+        console.log("   [LENGTH] Response length:", data.response?.length || 0, "characters")
+        console.log("   [SUGGESTIONS] Suggestions count:", data.suggestions?.length || 0)
         
         const assistantMessage: Message = {
           id: (Date.now() + 1).toString(),
@@ -330,11 +355,22 @@ What would you like to explore first?`,
         }
 
         setMessages((prev) => [...prev, assistantMessage])
+        console.log("[SUCCESS] Frontend: Chat response processed successfully")
       } else {
+        console.error("[ERROR] Frontend: Chat API request failed")
+        console.error("   Status:", response.status)
+        console.error("   Status Text:", response.statusText)
         throw new Error(`API Error: ${response.status}`)
       }
     } catch (error) {
-      console.error('Chat API error:', error)
+      console.error('[ERROR] Frontend: Chat API error:', error)
+      console.error('   [DETAILS] Error details:', {
+        message: error instanceof Error ? error.message : 'Unknown error',
+        stack: error instanceof Error ? error.stack : undefined,
+        timestamp: new Date().toISOString()
+      })
+      
+      console.log("[FALLBACK] Frontend: Falling back to mock response")
       
       // Fallback to mock response
       setTimeout(() => {
@@ -347,6 +383,7 @@ What would you like to explore first?`,
         }
 
         setMessages((prev) => [...prev, assistantMessage])
+        console.log("[SUCCESS] Frontend: Mock response processed successfully")
       }, 1000)
     } finally {
       setIsTyping(false)

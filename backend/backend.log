@@ -2899,6 +2899,7 @@
 2025-07-06 14:34:44,745 - middleware - INFO - [RESPONSE] GET /api/history/user-1751799790169-w0q4x2cq9
 2025-07-06 14:34:44,746 - middleware - INFO -    Status: 200
 2025-07-06 14:34:44,747 - middleware - INFO -    Processing time: 0.370s
+<<<<<<< Updated upstream
 2025-07-06 14:37:06,878 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 200 OK"
 2025-07-06 14:37:06,884 - config - INFO - ✅ Supabase client initialized and tested successfully
 2025-07-06 14:37:06,885 - config - INFO - Backend starting up...
@@ -3037,3 +3038,82 @@
 2025-07-06 14:56:28,867 - middleware - INFO - [RESPONSE] GET /api/history/user-1751799790169-w0q4x2cq9
 2025-07-06 14:56:28,867 - middleware - INFO -    Status: 200
 2025-07-06 14:56:28,867 - middleware - INFO -    Processing time: 1.338s
+=======
+2025-07-06 16:58:16,070 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 200 OK"
+2025-07-06 16:58:16,077 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-06 16:58:16,078 - config - INFO - Backend starting up...
+2025-07-06 16:58:16,079 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-06 16:58:16,080 - config - INFO - .env file exists: True
+2025-07-06 16:58:16,080 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-06 16:58:16,080 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-06 16:58:16,081 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-06 16:58:16,081 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-06 16:58:16,081 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-06 16:58:16,128 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-06 16:59:45,198 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 200 OK"
+2025-07-06 16:59:45,203 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-06 16:59:45,203 - config - INFO - Backend starting up...
+2025-07-06 16:59:45,203 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-06 16:59:45,204 - config - INFO - .env file exists: True
+2025-07-06 16:59:45,204 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-06 16:59:45,204 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-06 16:59:45,205 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-06 16:59:45,205 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-06 16:59:45,205 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-06 16:59:45,221 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-06 16:59:52,749 - middleware - INFO - [INCOMING] OPTIONS request to /api/analyze
+2025-07-06 16:59:52,750 - middleware - INFO -    Client: 127.0.0.1
+2025-07-06 16:59:52,751 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'accept': '*/*', 'access-control-request-method': 'POST', 'access-control-request-headers': 'content-type', 'origin': 'http://localhost:3000', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-site', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-06 16:59:52,753 - middleware - INFO - [RESPONSE] OPTIONS /api/analyze
+2025-07-06 16:59:52,753 - middleware - INFO -    Status: 200
+2025-07-06 16:59:52,753 - middleware - INFO -    Processing time: 0.004s
+2025-07-06 16:59:52,760 - middleware - INFO - [INCOMING] POST request to /api/analyze
+2025-07-06 16:59:52,760 - middleware - INFO -    Client: 127.0.0.1
+2025-07-06 16:59:52,760 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '69', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-06 16:59:52,766 - routes - INFO - [ANALYZE] Starting website analysis for 1 websites
+2025-07-06 16:59:52,767 - routes - INFO -    Websites: ['linkedin.com']
+2025-07-06 16:59:52,767 - routes - INFO -    User ID: user-1751816351603-071k5l4ll
+2025-07-06 16:59:52,767 - routes - INFO - [START] Starting SimilarWeb Analysis (Step 1)
+2025-07-06 16:59:52,767 - routes - INFO - API Token Status - APIFY: YES
+2025-07-06 16:59:52,768 - routes - INFO - [API] Fetching data from Apify API...
+2025-07-06 16:59:53,945 - httpx - INFO - HTTP Request: POST https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs "HTTP/1.1 201 Created"
+2025-07-06 16:59:59,666 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/xCGW6ReB5xmiflLYT "HTTP/1.1 200 OK"
+2025-07-06 17:00:05,274 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/xCGW6ReB5xmiflLYT "HTTP/1.1 200 OK"
+2025-07-06 17:00:10,980 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/xCGW6ReB5xmiflLYT "HTTP/1.1 200 OK"
+2025-07-06 17:00:16,615 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/xCGW6ReB5xmiflLYT "HTTP/1.1 200 OK"
+2025-07-06 17:00:16,796 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/datasets/w5amuXWVooMIEnOJK/items "HTTP/1.1 200 OK"
+2025-07-06 17:00:16,825 - database_service - INFO - Generated UUID 55838f36-260b-5524-a058-2bc57a4d9fb3 for user_id: user-1751816351603-071k5l4ll
+2025-07-06 17:00:17,616 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=id&id=eq.55838f36-260b-5524-a058-2bc57a4d9fb3 "HTTP/1.1 200 OK"
+2025-07-06 17:00:17,624 - database_service - INFO - Creating user record for: 55838f36-260b-5524-a058-2bc57a4d9fb3
+2025-07-06 17:00:18,123 - httpx - INFO - HTTP Request: POST https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users "HTTP/1.1 201 Created"
+2025-07-06 17:00:18,125 - database_service - INFO - Created user record: 55838f36-260b-5524-a058-2bc57a4d9fb3
+2025-07-06 17:00:18,126 - database_service - INFO - Generated UUID 55838f36-260b-5524-a058-2bc57a4d9fb3 for user_id: user-1751816351603-071k5l4ll
+2025-07-06 17:00:18,734 - httpx - INFO - HTTP Request: POST https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions "HTTP/1.1 201 Created"
+2025-07-06 17:00:18,737 - database_service - INFO - Analysis session saved successfully: 2a45322a-8aa9-4679-a918-8a96a312e529
+2025-07-06 17:00:18,738 - routes - INFO - [SUCCESS] Step 1 (SimilarWeb) completed successfully
+2025-07-06 17:00:18,742 - middleware - INFO - [RESPONSE] POST /api/analyze
+2025-07-06 17:00:18,742 - middleware - INFO -    Status: 200
+2025-07-06 17:00:18,743 - middleware - INFO -    Processing time: 25.982s
+2025-07-06 17:00:38,812 - middleware - INFO - [INCOMING] OPTIONS request to /api/analyze-tech-stack
+2025-07-06 17:00:38,813 - middleware - INFO -    Client: 127.0.0.1
+2025-07-06 17:00:38,813 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'accept': '*/*', 'access-control-request-method': 'POST', 'access-control-request-headers': 'content-type', 'origin': 'http://localhost:3000', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-site', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-06 17:00:38,814 - middleware - INFO - [RESPONSE] OPTIONS /api/analyze-tech-stack
+2025-07-06 17:00:38,814 - middleware - INFO -    Status: 200
+2025-07-06 17:00:38,815 - middleware - INFO -    Processing time: 0.002s
+2025-07-06 17:00:38,819 - middleware - INFO - [INCOMING] POST request to /api/analyze-tech-stack
+2025-07-06 17:00:38,819 - middleware - INFO -    Client: 127.0.0.1
+2025-07-06 17:00:38,819 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '201', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-06 17:00:38,821 - routes - INFO - [TECH] Starting tech stack analysis for 11 websites
+2025-07-06 17:00:38,822 - routes - INFO -    Websites: ['linkedin.com', 'facebook.com', 'instagram.com', 'x.com', 'twitter.com', 'reddit.com', 'tiktok.com', 't.co', 'pinterest.com', 'discord.com', 'messenger.com']
+2025-07-06 17:00:38,823 - routes - INFO -    User ID: user-1751816351603-071k5l4ll
+2025-07-06 17:00:38,824 - routes - INFO - [TECH] Starting BuiltWith Tech Stack Analysis (Step 2)
+2025-07-06 17:00:38,826 - database_service - INFO - Generated UUID 55838f36-260b-5524-a058-2bc57a4d9fb3 for user_id: user-1751816351603-071k5l4ll
+2025-07-06 17:00:39,553 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions?select=%2A&user_id=eq.55838f36-260b-5524-a058-2bc57a4d9fb3&order=created_at.desc&limit=1 "HTTP/1.1 200 OK"
+2025-07-06 17:00:39,555 - database_service - INFO - Retrieved 1 analysis sessions for user 55838f36-260b-5524-a058-2bc57a4d9fb3
+2025-07-06 17:00:40,624 - httpx - INFO - HTTP Request: GET https://api.builtwith.com/v20/api.json?KEY=fd8b0b65-fb2d-46ef-b666-4d69096c9bf8&LOOKUP=linkedin.com "HTTP/1.1 200 OK"
+2025-07-06 17:00:40,958 - httpx - INFO - HTTP Request: PATCH https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions?id=eq.2a45322a-8aa9-4679-a918-8a96a312e529 "HTTP/1.1 200 OK"
+2025-07-06 17:00:40,960 - database_service - INFO - Analysis session updated successfully: 2a45322a-8aa9-4679-a918-8a96a312e529
+2025-07-06 17:00:40,962 - middleware - INFO - [RESPONSE] POST /api/analyze-tech-stack
+2025-07-06 17:00:40,963 - middleware - INFO -    Status: 200
+2025-07-06 17:00:40,963 - middleware - INFO -    Processing time: 2.143s
+>>>>>>> Stashed changes
