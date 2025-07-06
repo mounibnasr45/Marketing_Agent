@@ -2899,3 +2899,141 @@
 2025-07-06 14:34:44,745 - middleware - INFO - [RESPONSE] GET /api/history/user-1751799790169-w0q4x2cq9
 2025-07-06 14:34:44,746 - middleware - INFO -    Status: 200
 2025-07-06 14:34:44,747 - middleware - INFO -    Processing time: 0.370s
+2025-07-06 14:37:06,878 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 200 OK"
+2025-07-06 14:37:06,884 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-06 14:37:06,885 - config - INFO - Backend starting up...
+2025-07-06 14:37:06,886 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-06 14:37:06,887 - config - INFO - .env file exists: True
+2025-07-06 14:37:06,888 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-06 14:37:06,889 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-06 14:37:06,889 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-06 14:37:06,890 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-06 14:37:06,890 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-06 14:37:06,937 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-06 14:44:31,817 - middleware - INFO - [INCOMING] GET request to /api/history/user-1751799790169-w0q4x2cq9
+2025-07-06 14:44:31,820 - middleware - INFO -    Client: 127.0.0.1
+2025-07-06 14:44:31,820 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://25.49.42.97:3000', 'sec-fetch-site': 'cross-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://25.49.42.97:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-06 14:44:31,825 - database_service - INFO - Generated UUID 5c7cb362-7b1e-5b9f-9d6f-44e31a657381 for user_id: user-1751799790169-w0q4x2cq9
+2025-07-06 14:44:32,716 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions?select=%2A&user_id=eq.5c7cb362-7b1e-5b9f-9d6f-44e31a657381&order=created_at.desc&limit=50 "HTTP/1.1 200 OK"
+2025-07-06 14:44:32,738 - database_service - INFO - Retrieved 8 analysis sessions for user 5c7cb362-7b1e-5b9f-9d6f-44e31a657381
+2025-07-06 14:44:32,750 - middleware - INFO - [RESPONSE] GET /api/history/user-1751799790169-w0q4x2cq9
+2025-07-06 14:44:32,751 - middleware - INFO -    Status: 200
+2025-07-06 14:44:32,752 - middleware - INFO -    Processing time: 0.935s
+2025-07-06 14:44:32,761 - middleware - INFO - [INCOMING] GET request to /api/history/user-1751799790169-w0q4x2cq9
+2025-07-06 14:44:32,762 - middleware - INFO -    Client: 127.0.0.1
+2025-07-06 14:44:32,763 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://25.49.42.97:3000', 'sec-fetch-site': 'cross-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://25.49.42.97:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-06 14:44:32,764 - database_service - INFO - Generated UUID 5c7cb362-7b1e-5b9f-9d6f-44e31a657381 for user_id: user-1751799790169-w0q4x2cq9
+2025-07-06 14:44:33,395 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions?select=%2A&user_id=eq.5c7cb362-7b1e-5b9f-9d6f-44e31a657381&order=created_at.desc&limit=50 "HTTP/1.1 200 OK"
+2025-07-06 14:44:33,406 - database_service - INFO - Retrieved 8 analysis sessions for user 5c7cb362-7b1e-5b9f-9d6f-44e31a657381
+2025-07-06 14:44:33,413 - middleware - INFO - [RESPONSE] GET /api/history/user-1751799790169-w0q4x2cq9
+2025-07-06 14:44:33,414 - middleware - INFO -    Status: 200
+2025-07-06 14:44:33,414 - middleware - INFO -    Processing time: 0.652s
+2025-07-06 14:47:52,551 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 200 OK"
+2025-07-06 14:47:52,558 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-06 14:47:52,560 - config - INFO - Backend starting up...
+2025-07-06 14:47:52,561 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-06 14:47:52,561 - config - INFO - .env file exists: True
+2025-07-06 14:47:52,563 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-06 14:47:52,563 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-06 14:47:52,563 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-06 14:47:52,563 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-06 14:47:52,563 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-06 14:47:52,598 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-06 14:49:18,660 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 200 OK"
+2025-07-06 14:49:18,668 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-06 14:49:18,669 - config - INFO - Backend starting up...
+2025-07-06 14:49:18,670 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-06 14:49:18,670 - config - INFO - .env file exists: True
+2025-07-06 14:49:18,671 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-06 14:49:18,671 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-06 14:49:18,671 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-06 14:49:18,672 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-06 14:49:18,672 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-06 14:49:18,705 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-06 14:51:35,344 - middleware - INFO - [INCOMING] OPTIONS request to /api/analyze
+2025-07-06 14:51:35,345 - middleware - INFO -    Client: 127.0.0.1
+2025-07-06 14:51:35,346 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'accept': '*/*', 'access-control-request-method': 'POST', 'access-control-request-headers': 'content-type', 'origin': 'http://25.49.42.97:3000', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'cross-site', 'sec-fetch-dest': 'empty', 'referer': 'http://25.49.42.97:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-06 14:51:35,348 - middleware - INFO - [RESPONSE] OPTIONS /api/analyze
+2025-07-06 14:51:35,348 - middleware - INFO -    Status: 200
+2025-07-06 14:51:35,349 - middleware - INFO -    Processing time: 0.006s
+2025-07-06 14:51:35,356 - middleware - INFO - [INCOMING] POST request to /api/analyze
+2025-07-06 14:51:35,357 - middleware - INFO -    Client: 127.0.0.1
+2025-07-06 14:51:35,358 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '69', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://25.49.42.97:3000', 'sec-fetch-site': 'cross-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://25.49.42.97:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-06 14:51:35,363 - routes - INFO - [ANALYZE] Starting website analysis for 1 websites
+2025-07-06 14:51:35,364 - routes - INFO -    Websites: ['facebook.com']
+2025-07-06 14:51:35,364 - routes - INFO -    User ID: user-1751799790169-w0q4x2cq9
+2025-07-06 14:51:35,365 - routes - INFO - [START] Starting SimilarWeb Analysis (Step 1)
+2025-07-06 14:51:35,366 - routes - INFO - API Token Status - APIFY: YES
+2025-07-06 14:51:35,366 - routes - INFO - [API] Fetching data from Apify API...
+2025-07-06 14:51:36,728 - httpx - INFO - HTTP Request: POST https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs "HTTP/1.1 201 Created"
+2025-07-06 14:51:42,958 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/AfnZKMDgwo3PCN0uF "HTTP/1.1 200 OK"
+2025-07-06 14:51:48,988 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/AfnZKMDgwo3PCN0uF "HTTP/1.1 200 OK"
+2025-07-06 14:51:54,497 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/AfnZKMDgwo3PCN0uF "HTTP/1.1 200 OK"
+2025-07-06 14:52:00,130 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/AfnZKMDgwo3PCN0uF "HTTP/1.1 200 OK"
+2025-07-06 14:52:05,281 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/AfnZKMDgwo3PCN0uF "HTTP/1.1 200 OK"
+2025-07-06 14:52:11,106 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/AfnZKMDgwo3PCN0uF "HTTP/1.1 200 OK"
+2025-07-06 14:52:11,306 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/datasets/N8VEz4eZFw7DkdLto/items "HTTP/1.1 200 OK"
+2025-07-06 14:52:11,341 - database_service - INFO - Generated UUID 5c7cb362-7b1e-5b9f-9d6f-44e31a657381 for user_id: user-1751799790169-w0q4x2cq9
+2025-07-06 14:52:12,389 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=id&id=eq.5c7cb362-7b1e-5b9f-9d6f-44e31a657381 "HTTP/1.1 200 OK"
+2025-07-06 14:52:12,395 - database_service - INFO - User record already exists: 5c7cb362-7b1e-5b9f-9d6f-44e31a657381
+2025-07-06 14:52:12,396 - database_service - INFO - Generated UUID 5c7cb362-7b1e-5b9f-9d6f-44e31a657381 for user_id: user-1751799790169-w0q4x2cq9
+2025-07-06 14:52:13,478 - httpx - INFO - HTTP Request: POST https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions "HTTP/1.1 201 Created"
+2025-07-06 14:52:13,480 - database_service - INFO - Analysis session saved successfully: 7b7f4e34-e27f-4f8c-8c45-192855cfa140
+2025-07-06 14:52:13,481 - routes - INFO - [SUCCESS] Step 1 (SimilarWeb) completed successfully
+2025-07-06 14:52:13,509 - middleware - INFO - [RESPONSE] POST /api/analyze
+2025-07-06 14:52:13,510 - middleware - INFO -    Status: 200
+2025-07-06 14:52:13,510 - middleware - INFO -    Processing time: 38.153s
+2025-07-06 14:53:07,727 - middleware - INFO - [INCOMING] OPTIONS request to /api/chat
+2025-07-06 14:53:07,728 - middleware - INFO -    Client: 127.0.0.1
+2025-07-06 14:53:07,728 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'accept': '*/*', 'access-control-request-method': 'POST', 'access-control-request-headers': 'content-type', 'origin': 'http://25.49.42.97:3000', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'cross-site', 'sec-fetch-dest': 'empty', 'referer': 'http://25.49.42.97:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-06 14:53:07,729 - middleware - INFO - [RESPONSE] OPTIONS /api/chat
+2025-07-06 14:53:07,730 - middleware - INFO -    Status: 200
+2025-07-06 14:53:07,730 - middleware - INFO -    Processing time: 0.002s
+2025-07-06 14:53:07,734 - middleware - INFO - [INCOMING] POST request to /api/chat
+2025-07-06 14:53:07,734 - middleware - INFO -    Client: 127.0.0.1
+2025-07-06 14:53:07,735 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '3289', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://25.49.42.97:3000', 'sec-fetch-site': 'cross-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://25.49.42.97:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-06 14:53:07,771 - routes - INFO - [CHAT] Received chat message: What are the growth opportunities based on this analysis?
+2025-07-06 14:53:07,774 - routes - INFO -    Analysis data size: 3382 characters
+2025-07-06 14:53:07,775 - routes - INFO - API Token Status - OPENROUTER: YES
+2025-07-06 14:53:10,468 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 402 Payment Required"
+2025-07-06 14:53:11,814 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions?select=%2A&id=eq.7b7f4e34-e27f-4f8c-8c45-192855cfa140 "HTTP/1.1 200 OK"
+2025-07-06 14:53:11,816 - database_service - INFO - Retrieved analysis session: 7b7f4e34-e27f-4f8c-8c45-192855cfa140
+2025-07-06 14:53:12,271 - httpx - INFO - HTTP Request: PATCH https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions?id=eq.7b7f4e34-e27f-4f8c-8c45-192855cfa140 "HTTP/1.1 200 OK"
+2025-07-06 14:53:12,272 - database_service - INFO - Analysis session updated successfully: 7b7f4e34-e27f-4f8c-8c45-192855cfa140
+2025-07-06 14:53:12,273 - routes - INFO - [SUCCESS] Chat response generated successfully
+2025-07-06 14:53:12,274 - middleware - INFO - [RESPONSE] POST /api/chat
+2025-07-06 14:53:12,274 - middleware - INFO -    Status: 200
+2025-07-06 14:53:12,274 - middleware - INFO -    Processing time: 4.539s
+2025-07-06 14:53:23,437 - middleware - INFO - [INCOMING] POST request to /api/chat
+2025-07-06 14:53:23,439 - middleware - INFO -    Client: 127.0.0.1
+2025-07-06 14:53:23,440 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '3268', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://25.49.42.97:3000', 'sec-fetch-site': 'cross-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://25.49.42.97:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-06 14:53:23,441 - routes - INFO - [CHAT] Received chat message: What are the latest industry trends?
+2025-07-06 14:53:23,443 - routes - INFO -    Analysis data size: 3382 characters
+2025-07-06 14:53:23,445 - routes - INFO - API Token Status - OPENROUTER: YES
+2025-07-06 14:53:24,629 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 402 Payment Required"
+2025-07-06 14:53:24,991 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions?select=%2A&id=eq.7b7f4e34-e27f-4f8c-8c45-192855cfa140 "HTTP/1.1 200 OK"
+2025-07-06 14:53:24,995 - database_service - INFO - Retrieved analysis session: 7b7f4e34-e27f-4f8c-8c45-192855cfa140
+2025-07-06 14:53:25,278 - httpx - INFO - HTTP Request: PATCH https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions?id=eq.7b7f4e34-e27f-4f8c-8c45-192855cfa140 "HTTP/1.1 200 OK"
+2025-07-06 14:53:25,280 - database_service - INFO - Analysis session updated successfully: 7b7f4e34-e27f-4f8c-8c45-192855cfa140
+2025-07-06 14:53:25,280 - routes - INFO - [SUCCESS] Chat response generated successfully
+2025-07-06 14:53:25,281 - middleware - INFO - [RESPONSE] POST /api/chat
+2025-07-06 14:53:25,283 - middleware - INFO -    Status: 200
+2025-07-06 14:53:25,283 - middleware - INFO -    Processing time: 1.845s
+2025-07-06 14:56:26,253 - middleware - INFO - [INCOMING] GET request to /api/history/user-1751799790169-w0q4x2cq9
+2025-07-06 14:56:26,254 - middleware - INFO -    Client: 127.0.0.1
+2025-07-06 14:56:26,255 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://25.49.42.97:3000', 'sec-fetch-site': 'cross-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://25.49.42.97:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-06 14:56:26,256 - database_service - INFO - Generated UUID 5c7cb362-7b1e-5b9f-9d6f-44e31a657381 for user_id: user-1751799790169-w0q4x2cq9
+2025-07-06 14:56:27,498 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions?select=%2A&user_id=eq.5c7cb362-7b1e-5b9f-9d6f-44e31a657381&order=created_at.desc&limit=50 "HTTP/1.1 200 OK"
+2025-07-06 14:56:27,506 - database_service - INFO - Retrieved 9 analysis sessions for user 5c7cb362-7b1e-5b9f-9d6f-44e31a657381
+2025-07-06 14:56:27,523 - middleware - INFO - [RESPONSE] GET /api/history/user-1751799790169-w0q4x2cq9
+2025-07-06 14:56:27,524 - middleware - INFO -    Status: 200
+2025-07-06 14:56:27,524 - middleware - INFO -    Processing time: 1.270s
+2025-07-06 14:56:27,528 - middleware - INFO - [INCOMING] GET request to /api/history/user-1751799790169-w0q4x2cq9
+2025-07-06 14:56:27,529 - middleware - INFO -    Client: 127.0.0.1
+2025-07-06 14:56:27,529 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://25.49.42.97:3000', 'sec-fetch-site': 'cross-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://25.49.42.97:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-06 14:56:27,531 - database_service - INFO - Generated UUID 5c7cb362-7b1e-5b9f-9d6f-44e31a657381 for user_id: user-1751799790169-w0q4x2cq9
+2025-07-06 14:56:28,855 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions?select=%2A&user_id=eq.5c7cb362-7b1e-5b9f-9d6f-44e31a657381&order=created_at.desc&limit=50 "HTTP/1.1 200 OK"
+2025-07-06 14:56:28,859 - database_service - INFO - Retrieved 9 analysis sessions for user 5c7cb362-7b1e-5b9f-9d6f-44e31a657381
+2025-07-06 14:56:28,867 - middleware - INFO - [RESPONSE] GET /api/history/user-1751799790169-w0q4x2cq9
+2025-07-06 14:56:28,867 - middleware - INFO -    Status: 200
+2025-07-06 14:56:28,867 - middleware - INFO -    Processing time: 1.338s
