@@ -11,6 +11,7 @@ from models import WebsiteAnalysisRequest, AnalysisResponse, ChatMessage, ChatRe
 from mock_data import get_mock_data
 from clients import ApifyClient, OpenRouterClient
 from clients.builtwith_client_fixed import BuiltWithClientFixed
+from clients.google_trends_client import GoogleTrendsClient
 from database_service import db_service
 import uuid
 
@@ -22,6 +23,7 @@ logger = logging.getLogger(__name__)
 apify_client = ApifyClient(config.apify_token) if config.apify_token else None
 builtwith_client = BuiltWithClientFixed(config.builtwith_key)
 openrouter_client = OpenRouterClient(config.openrouter_key)
+google_trends_client = GoogleTrendsClient()
 
 
 @router.get("/")
@@ -422,3 +424,94 @@ async def test_database_connection():
             "supabase_available": False,
             "config_status": config.get_health_status()
         }
+
+
+@router.get("/google-trends")
+async def get_google_trends(query: str, timeframe: str = "today 12-m", geo: str = ""):
+    """Get Google Trends data for a search query"""
+    logger.info(f"[GOOGLE TRENDS] Fetching trends for query: {query}")
+    
+    if not query.strip():
+        raise HTTPException(status_code=400, detail="Query parameter is required")
+    
+    try:
+        # Split query into keywords if multiple terms provided
+        keywords = [keyword.strip() for keyword in query.split(',') if keyword.strip()]
+        
+        # Convert empty geo to worldwide
+        if geo == "worldwide":
+            geo = ""
+        
+        logger.info(f"[GOOGLE TRENDS] Processing keywords: {keywords}, timeframe: {timeframe}, geo: {geo}")
+        
+        # Get trends data
+        trends_data = google_trends_client.get_trends_data(
+            keywords=keywords,
+            timeframe=timeframe,
+            geo=geo
+        )
+        
+        if not trends_data['success']:
+            logger.error(f"[ERROR] Google Trends client returned error: {trends_data.get('error', 'Unknown error')}")
+            raise HTTPException(
+                status_code=500, 
+                detail=f"Failed to fetch Google Trends data: {trends_data.get('error', 'Unknown error')}"
+            )
+        
+        logger.info(f"[SUCCESS] Google Trends data fetched successfully for {len(keywords)} keywords")
+        return trends_data
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"[ERROR] Google Trends API error: {str(e)}")
+        logger.error(f"[ERROR] Exception type: {type(e)}")
+        import traceback
+        logger.error(f"[ERROR] Traceback: {traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
+
+
+@router.get("/google-trends/compare")
+async def compare_google_trends(keywords: str, timeframe: str = "today 12-m"):
+    """Compare multiple keywords in Google Trends"""
+    logger.info(f"[GOOGLE TRENDS COMPARE] Comparing keywords: {keywords}")
+    
+    if not keywords.strip():
+        raise HTTPException(status_code=400, detail="Keywords parameter is required")
+    
+    try:
+        # Parse keywords
+        keyword_list = [keyword.strip() for keyword in keywords.split(',') if keyword.strip()]
+        
+        if len(keyword_list) < 2:
+            raise HTTPException(
+                status_code=400, 
+                detail="At least 2 keywords are required for comparison"
+            )
+        
+        if len(keyword_list) > 5:
+            raise HTTPException(
+                status_code=400, 
+                detail="Maximum 5 keywords allowed for comparison"
+            )
+        
+        # Get comparison data
+        comparison_data = google_trends_client.compare_keywords(
+            keywords=keyword_list,
+            timeframe=timeframe
+        )
+        
+        if not comparison_data['success']:
+            raise HTTPException(
+                status_code=500, 
+                detail=f"Failed to compare keywords: {comparison_data.get('error', 'Unknown error')}"
+            )
+        
+        logger.info(f"[SUCCESS] Keywords compared successfully: {len(keyword_list)} keywords")
+        return comparison_data
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"[ERROR] Google Trends comparison error: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
