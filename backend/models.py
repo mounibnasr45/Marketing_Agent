@@ -91,6 +91,7 @@ class AnalysisResponse(BaseModel):
 class ChatMessage(BaseModel):
     message: str
     analysis_data: dict
+    session_id: Optional[str] = None  # Add session_id for chat tracking
 
 
 class ChatResponse(BaseModel):

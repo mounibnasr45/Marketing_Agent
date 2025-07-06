@@ -50,14 +50,28 @@ class Config:
         """Initialize Supabase client"""
         if self.supabase_url and self.supabase_key:
             try:
+                # Create client with service key for backend operations
                 client = create_client(self.supabase_url, self.supabase_key)
-                print("✅ Supabase client initialized successfully")
-                return client
+                
+                # Test the connection
+                try:
+                    result = client.table("users").select("count", count="exact").execute()
+                    print("✅ Supabase client initialized and tested successfully")
+                    self.logger.info("✅ Supabase client initialized and tested successfully")
+                    return client
+                except Exception as test_error:
+                    print(f"⚠️ Supabase client created but connection test failed: {test_error}")
+                    self.logger.warning(f"⚠️ Supabase client created but connection test failed: {test_error}")
+                    # Return client anyway, as it might work for other operations
+                    return client
+                    
             except Exception as e:
                 print(f"❌ Failed to initialize Supabase client: {e}")
+                self.logger.error(f"❌ Failed to initialize Supabase client: {e}")
                 return None
         else:
             print("⚠️ Supabase credentials not found in environment variables")
+            self.logger.warning("⚠️ Supabase credentials not found in environment variables")
             return None
     
     def log_configuration_status(self):

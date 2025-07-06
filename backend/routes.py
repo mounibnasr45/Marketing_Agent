@@ -11,6 +11,7 @@ from models import WebsiteAnalysisRequest, AnalysisResponse, ChatMessage, ChatRe
 from mock_data import get_mock_data
 from clients import ApifyClient, OpenRouterClient
 from clients.builtwith_client_fixed import BuiltWithClientFixed
+from database_service import db_service
 import uuid
 
 # Setup router
@@ -65,8 +66,12 @@ async def analyze_websites(request: WebsiteAnalysisRequest):
         for item in mock_data:
             item.builtwith_result = None
         
-        # Save to Supabase
-        await _save_to_supabase(mock_data, request.userId)
+        # Save to Supabase with session tracking
+        session_id = await db_service.save_analysis_session(
+            user_id=request.userId,
+            domains=request.websites,
+            similarweb_data=mock_data
+        )
 
         logger.info("[SUCCESS] Step 1 (SimilarWeb) completed with mock data")
         print("[SUCCESS] Step 1 (SimilarWeb) completed with mock data")
@@ -74,7 +79,7 @@ async def analyze_websites(request: WebsiteAnalysisRequest):
             success=True,
             data=mock_data,
             count=len(mock_data),
-            note="Step 1 complete: SimilarWeb analysis ready. Click 'Analyze Tech Stack' to continue."
+            note=f"Step 1 complete: SimilarWeb analysis ready. Session ID: {session_id}. Click 'Analyze Tech Stack' to continue."
         )
 
     try:
@@ -88,8 +93,12 @@ async def analyze_websites(request: WebsiteAnalysisRequest):
         for result in results:
             result.builtwith_result = None
         
-        # Save to Supabase
-        await _save_to_supabase(results, request.userId)
+        # Save to Supabase with session tracking
+        session_id = await db_service.save_analysis_session(
+            user_id=request.userId,
+            domains=request.websites,
+            similarweb_data=results
+        )
 
         logger.info("[SUCCESS] Step 1 (SimilarWeb) completed successfully")
         print("[SUCCESS] Step 1 (SimilarWeb) completed successfully")
@@ -97,7 +106,7 @@ async def analyze_websites(request: WebsiteAnalysisRequest):
             success=True,
             data=results,
             count=len(results),
-            note="Step 1 complete: SimilarWeb analysis ready. Click 'Analyze Tech Stack' to continue."
+            note=f"Step 1 complete: SimilarWeb analysis ready. Session ID: {session_id}. Click 'Analyze Tech Stack' to continue."
         )
 
     except Exception as e:
@@ -113,8 +122,12 @@ async def analyze_websites(request: WebsiteAnalysisRequest):
         for item in mock_data:
             item.builtwith_result = None
         
-        # Save to Supabase
-        await _save_to_supabase(mock_data, request.userId)
+        # Save to Supabase with session tracking
+        session_id = await db_service.save_analysis_session(
+            user_id=request.userId,
+            domains=request.websites,
+            similarweb_data=mock_data
+        )
             
         logger.info("[SUCCESS] Step 1 (SimilarWeb) completed with fallback data")
         print("[SUCCESS] Step 1 (SimilarWeb) completed with fallback data")
@@ -122,7 +135,7 @@ async def analyze_websites(request: WebsiteAnalysisRequest):
             success=True,
             data=mock_data,
             count=len(mock_data),
-            note=f"Step 1 complete (with fallback): SimilarWeb analysis ready. API Error: {str(e)}"
+            note=f"Step 1 complete (with fallback): SimilarWeb analysis ready. Session ID: {session_id}. API Error: {str(e)}"
         )
 
 
@@ -144,11 +157,11 @@ async def analyze_tech_stack(request: WebsiteAnalysisRequest):
     print(f"BUILTWITH_API_KEY: {'YES' if config.builtwith_key else 'NO'}")
     
     try:
-        # Try to get existing data from Supabase first
-        existing_data = await _get_existing_data(request.userId)
+        # Try to get existing data from user's latest session
+        user_history = await db_service.get_user_history(request.userId, limit=1)
         
         # If no existing data, use mock data or get fresh data
-        if not existing_data:
+        if not user_history or not user_history[0].get('similarweb_data'):
             print("[MOCK] Using mock data as base for BuiltWith analysis...")
             mock_data = get_mock_data()
             # Remove existing BuiltWith data
@@ -159,7 +172,7 @@ async def analyze_tech_stack(request: WebsiteAnalysisRequest):
             # Convert existing data back to ApifyResult objects
             print("[CONVERT] Converting existing SimilarWeb data to objects...")
             results = []
-            for item_data in existing_data:
+            for item_data in user_history[0]['similarweb_data']:
                 try:
                     # Remove existing BuiltWith data if any
                     item_data.pop('builtwith_result', None)
@@ -207,8 +220,21 @@ async def analyze_tech_stack(request: WebsiteAnalysisRequest):
         print("\n" + "=" * 60)
         print("[SAVE] Saving enhanced data (SimilarWeb + BuiltWith) to Supabase...")
         
-        # Save enhanced data to Supabase
-        await _save_to_supabase(results, request.userId)
+        # Save enhanced data to Supabase - update existing session or create new one
+        if user_history and user_history[0].get('id'):
+            # Update existing session with BuiltWith data
+            await db_service.update_analysis_session(
+                session_id=user_history[0]['id'],
+                builtwith_data=results
+            )
+        else:
+            # Create new session with both SimilarWeb and BuiltWith data
+            await db_service.save_analysis_session(
+                user_id=request.userId,
+                domains=request.websites,
+                similarweb_data=results,
+                builtwith_data=results
+            )
 
         # Calculate summary statistics
         total_technologies = sum(
@@ -236,7 +262,12 @@ async def analyze_tech_stack(request: WebsiteAnalysisRequest):
         mock_data = get_mock_data()
         
         # Save fallback data to Supabase
-        await _save_to_supabase(mock_data, request.userId)
+        await db_service.save_analysis_session(
+            user_id=request.userId,
+            domains=request.websites,
+            similarweb_data=mock_data,
+            builtwith_data=mock_data
+        )
             
         return AnalysisResponse(
             success=True,
@@ -258,6 +289,15 @@ async def chat_with_analysis(request: ChatMessage):
     
     try:
         response = await openrouter_client.chat_completion(request.message, request.analysis_data)
+        
+        # Save chat message to database if session_id is provided
+        if hasattr(request, 'session_id') and request.session_id:
+            await db_service.save_chat_message(
+                session_id=request.session_id,
+                message=request.message,
+                response=response.response
+            )
+        
         logger.info(f"[SUCCESS] Chat response generated successfully")
         print(f"[SUCCESS] Chat response generated successfully")
         return response
@@ -284,96 +324,98 @@ async def health_check():
     }
 
 
-# Helper functions
-async def _save_to_supabase(data: List[ApifyResult], user_id: str):
-    """Save data to Supabase"""
+@router.get("/api/history/{user_id}")
+async def get_user_history(user_id: str, limit: int = 50):
+    """Get user's analysis history"""
     try:
-        if config.supabase:
-            # Ensure user record exists first
-            if not await _ensure_user_exists(user_id):
-                print("[ERROR] Failed to ensure user record exists")
-                return
-            
-            # Ensure user_id is a valid UUID
-            valid_user_id = _ensure_valid_uuid(user_id)
-            
-            data_to_insert = [item.model_dump() for item in data]
-            result = config.supabase.table("users").update({
-                "similarweb_result": json.dumps(data_to_insert)
-            }).eq("id", valid_user_id).execute()
-            logger.info("[SUCCESS] Data saved to Supabase successfully")
-            print(f"[SUCCESS] Data saved to Supabase for user: {valid_user_id}")
-        else:
-            logger.warning("[WARNING] Supabase client not available, skipping database save")
-            print("[WARNING] Supabase client not available, skipping database save")
+        history = await db_service.get_user_history(user_id, limit)
+        return {
+            "success": True,
+            "data": history,
+            "count": len(history)
+        }
     except Exception as e:
-        logger.error(f"[ERROR] Error saving to Supabase: {e}")
-        print(f"[ERROR] Error saving to Supabase: {e}")
-        # Log more details about the error
-        import traceback
-        traceback.print_exc()
+        logger.error(f"[ERROR] Error retrieving user history: {e}")
+        raise HTTPException(status_code=500, detail=f"Error retrieving history: {str(e)}")
 
 
-async def _get_existing_data(user_id: str):
-    """Get existing data from Supabase"""
-    existing_data = None
-    if config.supabase:
-        try:
-            # Ensure user_id is a valid UUID
-            valid_user_id = _ensure_valid_uuid(user_id)
-            
-            print("[RETRIEVE] Retrieving existing SimilarWeb data from Supabase...")
-            result = config.supabase.table("users").select("similarweb_result").eq("id", valid_user_id).execute()
-            if result.data and len(result.data) > 0 and result.data[0]["similarweb_result"]:
-                existing_data = json.loads(result.data[0]["similarweb_result"])
-                print(f"[SUCCESS] Found existing data for {len(existing_data)} websites")
-            else:
-                print("[WARNING] No existing SimilarWeb data found in Supabase")
-        except Exception as e:
-            print(f"[ERROR] Error retrieving existing data: {e}")
-    return existing_data
-
-
-async def _ensure_user_exists(user_id: str):
-    """Ensure user record exists in Supabase"""
-    if not config.supabase:
-        return False
-    
+@router.get("/api/session/{session_id}")
+async def get_analysis_session(session_id: str):
+    """Get a specific analysis session"""
     try:
-        valid_user_id = _ensure_valid_uuid(user_id)
+        session = await db_service.get_analysis_session(session_id)
+        if not session:
+            raise HTTPException(status_code=404, detail="Analysis session not found")
         
-        # Check if user exists
-        result = config.supabase.table("users").select("id").eq("id", valid_user_id).execute()
-        
-        if not result.data or len(result.data) == 0:
-            # User doesn't exist, create them
-            print(f"[CREATE] Creating user record for: {valid_user_id}")
-            insert_result = config.supabase.table("users").insert({
-                "id": valid_user_id,
-                "created_at": "now()",
-                "similarweb_result": None
-            }).execute()
-            print(f"[SUCCESS] Created user record: {valid_user_id}")
-            return True
-        else:
-            print(f"[EXISTS] User record already exists: {valid_user_id}")
-            return True
-            
+        return {
+            "success": True,
+            "data": session
+        }
+    except HTTPException:
+        raise
     except Exception as e:
-        print(f"[ERROR] Error ensuring user exists: {e}")
-        return False
+        logger.error(f"[ERROR] Error retrieving analysis session: {e}")
+        raise HTTPException(status_code=500, detail=f"Error retrieving session: {str(e)}")
 
 
-def _ensure_valid_uuid(user_id: str) -> str:
-    """Ensure the user_id is a valid UUID, generate one if not"""
+@router.delete("/api/session/{session_id}")
+async def delete_analysis_session(session_id: str, user_id: str):
+    """Delete an analysis session"""
     try:
-        # Try to parse as UUID
-        uuid.UUID(user_id)
-        return user_id
-    except ValueError:
-        # If not a valid UUID, generate a UUID5 from the string
-        # This ensures the same string always generates the same UUID
-        namespace = uuid.UUID('6ba7b810-9dad-11d1-80b4-00c04fd430c8')  # Standard namespace
-        generated_uuid = str(uuid.uuid5(namespace, user_id))
-        logger.info(f"[UUID] Generated UUID {generated_uuid} for user_id: {user_id}")
-        return generated_uuid
+        success = await db_service.delete_analysis_session(session_id, user_id)
+        if not success:
+            raise HTTPException(status_code=404, detail="Analysis session not found or access denied")
+        
+        return {
+            "success": True,
+            "message": "Analysis session deleted successfully"
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"[ERROR] Error deleting analysis session: {e}")
+        raise HTTPException(status_code=500, detail=f"Error deleting session: {str(e)}")
+
+
+@router.get("/api/history/{user_id}/domains")
+async def get_user_analyzed_domains(user_id: str):
+    """Get list of domains the user has analyzed"""
+    try:
+        history = await db_service.get_user_history(user_id)
+        
+        # Extract unique domains from history
+        domains = set()
+        for session in history:
+            if session.get('domains'):
+                domains.update(session['domains'])
+        
+        return {
+            "success": True,
+            "data": list(domains),
+            "count": len(domains)
+        }
+    except Exception as e:
+        logger.error(f"[ERROR] Error retrieving user domains: {e}")
+        raise HTTPException(status_code=500, detail=f"Error retrieving domains: {str(e)}")
+
+
+@router.get("/api/test-db")
+async def test_database_connection():
+    """Test database connection"""
+    try:
+        connection_ok = db_service.test_connection()
+        
+        return {
+            "success": connection_ok,
+            "message": "Database connection successful" if connection_ok else "Database connection failed",
+            "supabase_available": db_service.supabase is not None,
+            "config_status": config.get_health_status()
+        }
+    except Exception as e:
+        logger.error(f"[ERROR] Error testing database connection: {e}")
+        return {
+            "success": False,
+            "message": f"Database test failed: {str(e)}",
+            "supabase_available": False,
+            "config_status": config.get_health_status()
+        }
