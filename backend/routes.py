@@ -79,7 +79,8 @@ async def analyze_websites(request: WebsiteAnalysisRequest):
             success=True,
             data=mock_data,
             count=len(mock_data),
-            note=f"Step 1 complete: SimilarWeb analysis ready. Session ID: {session_id}. Click 'Analyze Tech Stack' to continue."
+            note=f"Step 1 complete: SimilarWeb analysis ready. Click 'Analyze Tech Stack' to continue.",
+            session_id=session_id
         )
 
     try:
@@ -106,7 +107,8 @@ async def analyze_websites(request: WebsiteAnalysisRequest):
             success=True,
             data=results,
             count=len(results),
-            note=f"Step 1 complete: SimilarWeb analysis ready. Session ID: {session_id}. Click 'Analyze Tech Stack' to continue."
+            note=f"Step 1 complete: SimilarWeb analysis ready. Click 'Analyze Tech Stack' to continue.",
+            session_id=session_id
         )
 
     except Exception as e:
@@ -135,7 +137,8 @@ async def analyze_websites(request: WebsiteAnalysisRequest):
             success=True,
             data=mock_data,
             count=len(mock_data),
-            note=f"Step 1 complete (with fallback): SimilarWeb analysis ready. Session ID: {session_id}. API Error: {str(e)}"
+            note=f"Step 1 complete (with fallback): SimilarWeb analysis ready. API Error: {str(e)}",
+            session_id=session_id
         )
 
 

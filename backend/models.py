@@ -86,6 +86,7 @@ class AnalysisResponse(BaseModel):
     data: List[ApifyResult]
     count: int
     note: Optional[str] = None
+    session_id: Optional[str] = None  # Add session_id field
 
 
 class ChatMessage(BaseModel):
