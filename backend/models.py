@@ -98,3 +98,15 @@ class ChatMessage(BaseModel):
 class ChatResponse(BaseModel):
     response: str
     suggestions: Optional[List[str]] = None
+
+
+class GoogleTrendsRequest(BaseModel):
+    keywords: List[str]
+    timeframe: str = "today 12-m"
+    geography: str = "worldwide"
+
+
+class GoogleTrendsResponse(BaseModel):
+    success: bool
+    data: Optional[dict] = None
+    error: Optional[str] = None

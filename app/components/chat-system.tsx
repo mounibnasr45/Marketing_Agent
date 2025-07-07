@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -59,9 +58,8 @@ const ChatSystem = ({ analysisData, onBackToSearch }: ChatSystemProps) => {
     {
       id: "1",
       type: "assistant",
-      content: `Hello! I'm your AI assistant and I've analyzed all the data for **${analysisData.domain}** and its ${analysisData.competitors.length} competitors. 
+      content: `Hello! I'm your AI assistant and I've analyzed all the data for **${analysisData.domain}** and its ${analysisData.competitors.length} competitors. I have insights on:
 
-I have insights on:
 - 📊 Traffic patterns and user behavior
 - 🏆 Competitive landscape analysis  
 - 🔧 Technology stack comparisons
@@ -72,6 +70,7 @@ What would you like to explore first? You can ask me anything about the analysis
       suggestions: suggestedQuestions.slice(0, 4),
     },
   ])
+  
   const [inputValue, setInputValue] = useState("")
   const [isTyping, setIsTyping] = useState(false)
   const scrollAreaRef = useRef<HTMLDivElement>(null)
@@ -91,7 +90,7 @@ What would you like to explore first? You can ask me anything about the analysis
 
   const generateResponse = (userMessage: string): string => {
     const lowerMessage = userMessage.toLowerCase()
-
+    
     const mockResponses: Record<string, string> = {
       "traffic sources": `Based on the analysis of ${analysisData.domain || "your domain"}, here are the main traffic sources:
 
@@ -188,7 +187,6 @@ Which technology area interests you most?`,
       "growth opportunities": `Based on the comprehensive analysis, here are your key growth opportunities:
 
 🚀 **Immediate Opportunities (0-3 months):**
-
 1. **Social Media Expansion**
    - Current: 5% of traffic from social
    - Opportunity: Industry average is 15%
@@ -205,7 +203,6 @@ Which technology area interests you most?`,
    - Potential: +30% organic traffic
 
 🎯 **Medium-term Opportunities (3-12 months):**
-
 1. **Technology Modernization**
    - Implement AI features like ZipRecruiter
    - Enhance mobile experience
@@ -222,7 +219,6 @@ Which technology area interests you most?`,
    - University career center partnerships
 
 📈 **Long-term Strategic Moves (12+ months):**
-
 1. **Adjacent Market Expansion**
    - Professional development/training
    - Freelance marketplace
@@ -302,6 +298,11 @@ What would you like to explore first?`,
     setIsTyping(true)
 
     try {
+      // Ensure analysis_data is always a valid dictionary with serializable values, replacing undefined/null with empty objects and omitting unserializable values.
+      const safeSimilarWebData = analysisData.similarWebData ?? {};
+      const safeBuiltWithData = analysisData.builtWithData ?? {};
+      const safeCompetitors = Array.isArray(analysisData.competitors) ? analysisData.competitors : [];
+      const safeDomain = typeof analysisData.domain === "string" ? analysisData.domain : "";
       // Call backend chat API
       const response = await fetch("http://localhost:8000/api/chat", {
         method: 'POST',
@@ -311,9 +312,10 @@ What would you like to explore first?`,
         body: JSON.stringify({
           message: currentInputValue,
           analysis_data: {
-            domain: analysisData.domain,
-            competitors: analysisData.competitors,
-            data: [analysisData.similarWebData, analysisData.builtWithData].filter(Boolean)
+            domain: safeDomain,
+            competitors: safeCompetitors,
+            similarWebData: safeSimilarWebData,
+            builtWithData: safeBuiltWithData
           }
         })
       })

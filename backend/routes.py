@@ -7,7 +7,7 @@ import logging
 from typing import List
 from fastapi import APIRouter, HTTPException
 from config import config
-from models import WebsiteAnalysisRequest, AnalysisResponse, ChatMessage, ChatResponse, ApifyResult
+from models import WebsiteAnalysisRequest, AnalysisResponse, ChatMessage, ChatResponse, ApifyResult, GoogleTrendsRequest, GoogleTrendsResponse
 from mock_data import get_mock_data
 from clients import ApifyClient, OpenRouterClient
 from clients.builtwith_client_fixed import BuiltWithClientFixed
@@ -34,6 +34,7 @@ async def root():
         "endpoints": {
             "similarweb": "POST /api/analyze",
             "builtwith": "POST /api/analyze-tech-stack",
+            "google-trends": "POST /api/google-trends",
             "chat": "POST /api/chat"
         }
     }
@@ -317,6 +318,94 @@ async def chat_with_analysis(request: ChatMessage):
                 "How does the technology stack compare?",
                 "What are the growth opportunities?"
             ]
+        )
+
+
+@router.post("/api/google-trends", response_model=GoogleTrendsResponse)
+async def analyze_google_trends(request: GoogleTrendsRequest):
+    """Step 3: Analyze Google Trends data for given keywords"""
+    logger.info(f"[GOOGLE TRENDS] Starting Google Trends analysis for {len(request.keywords)} keywords")
+    logger.info(f"   Keywords: {request.keywords}")
+    logger.info(f"   Timeframe: {request.timeframe}")
+    logger.info(f"   Geography: {request.geography}")
+    
+    if not request.keywords:
+        logger.error("[ERROR] No keywords provided in request")
+        raise HTTPException(status_code=400, detail="Please provide keywords to analyze")
+
+    print(f"[GOOGLE TRENDS] Starting Google Trends Analysis (Step 3)")
+    print("=" * 60)
+    print(f"Keywords: {request.keywords}")
+    print(f"Timeframe: {request.timeframe}")
+    print(f"Geography: {request.geography}")
+    
+    try:
+        # Convert frontend timeframe format to Google Trends format
+        timeframe_map = {
+            "1hour": "now 1-H",
+            "4hours": "now 4-H", 
+            "1day": "now 1-d",
+            "7days": "now 7-d",
+            "1month": "today 1-m",
+            "3months": "today 3-m",
+            "12months": "today 12-m",
+            "5years": "today 5-y"
+        }
+        
+        # Convert geography format
+        geo_map = {
+            "worldwide": "",
+            "united-states": "US",
+            "canada": "CA",
+            "united-kingdom": "GB",
+            "australia": "AU",
+            "germany": "DE",
+            "france": "FR",
+            "japan": "JP",
+            "india": "IN",
+            "brazil": "BR"
+        }
+        
+        trends_timeframe = timeframe_map.get(request.timeframe, "today 12-m")
+        trends_geo = geo_map.get(request.geography, "")
+        
+        logger.info(f"[GOOGLE TRENDS] Converted timeframe: {trends_timeframe}, geo: {trends_geo}")
+        
+        # Get trends data using the Google Trends client
+        trends_data = google_trends_client.get_trends_data(
+            keywords=request.keywords,
+            timeframe=trends_timeframe,
+            geo=trends_geo
+        )
+        
+        if not trends_data['success']:
+            logger.error(f"[ERROR] Google Trends client returned error: {trends_data.get('error', 'Unknown error')}")
+            raise HTTPException(
+                status_code=500, 
+                detail=f"Failed to fetch Google Trends data: {trends_data.get('error', 'Unknown error')}"
+            )
+        
+        logger.info(f"[SUCCESS] Google Trends analysis completed successfully")
+        print(f"[SUCCESS] Google Trends analysis completed successfully")
+        print(f"   Keywords processed: {len(trends_data.get('keywords', []))}")
+        print(f"   Data points: {len(trends_data.get('interest_over_time', {}).get('data', []))}")
+        print("=" * 60)
+        
+        return GoogleTrendsResponse(
+            success=True,
+            data=trends_data
+        )
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"[ERROR] Google Trends analysis error: {str(e)}")
+        print(f"[ERROR] Google Trends analysis error: {str(e)}")
+        
+        # Return fallback response
+        return GoogleTrendsResponse(
+            success=False,
+            error=f"Google Trends analysis failed: {str(e)}"
         )
 
 

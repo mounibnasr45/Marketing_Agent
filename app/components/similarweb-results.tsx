@@ -1,5 +1,7 @@
 "use client"
 
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -24,6 +26,8 @@ interface SimilarWebResultsProps {
   onSwitchToBuiltWith: () => void
   onSwitchToChat: () => void
   onBackToSearch: () => void
+  onAnalysisComplete?: (data: any) => void
+  showNextButton?: boolean
   apiData?: any
 }
 
@@ -71,6 +75,8 @@ export default function SimilarWebResults({
   onSwitchToBuiltWith,
   onSwitchToChat,
   onBackToSearch,
+  onAnalysisComplete,
+  showNextButton = false,
   apiData,
 }: SimilarWebResultsProps) {
   // Use API data if available, otherwise fall back to mock data
