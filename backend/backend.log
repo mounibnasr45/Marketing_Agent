@@ -5526,3 +5526,304 @@ AttributeError: 'GoogleTrendsClient' object has no attribute 'fetch_all_trends_d
 2025-07-08 19:59:06,037 - middleware - INFO - [RESPONSE] GET /google-trends
 2025-07-08 19:59:06,038 - middleware - INFO -    Status: 200
 2025-07-08 19:59:06,038 - middleware - INFO -    Processing time: 14.016s
+2025-07-08 20:00:19,427 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-08 20:00:19,449 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-08 20:00:19,449 - config - INFO - Backend starting up...
+2025-07-08 20:00:19,451 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-08 20:00:19,451 - config - INFO - .env file exists: True
+2025-07-08 20:00:19,451 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-08 20:00:19,451 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-08 20:00:19,451 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-08 20:00:19,452 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-08 20:00:19,452 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-08 20:00:19,803 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-08 20:00:19,803 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-08 20:00:20,300 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-08 20:00:20,990 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-08 20:00:29,633 - middleware - INFO - [INCOMING] GET request to /google-trends
+2025-07-08 20:00:29,642 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 20:00:29,651 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-08 20:00:29,662 - routes - INFO - [GOOGLE TRENDS] Fetching enhanced trends for query: safi said
+2025-07-08 20:00:29,671 - routes - INFO - [GOOGLE TRENDS] Processing keywords: ['safi said'], timeframe: today 12-m, geo: 
+2025-07-08 20:00:29,679 - clients.google_trends_client - INFO - 🚀 Fetching all Google Trends data for: ['safi said']
+2025-07-08 20:00:33,013 - clients.google_trends_client - INFO - ✅ Interest over time data fetched successfully
+2025-07-08 20:00:35,989 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Interest by Region': HTTPSConnectionPool(host='trends.google.com', port=443): Max retries exceeded with url: /trends/api/widgetdata/comparedgeo?req=%7B%22geo%22%3A+%7B%7D%2C+%22comparisonItem%22%3A+%5B%7B%22time%22%3A+%222024-07-08+2025-07-08%22%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22safi+said%22%7D%5D%7D%7D%5D%2C+%22resolution%22%3A+%22REGION%22%2C+%22locale%22%3A+%22en-US%22%2C+%22requestOptions%22%3A+%7B%22property%22%3A+%22%22%2C+%22backend%22%3A+%22IZG%22%2C+%22category%22%3A+0%7D%2C+%22userConfig%22%3A+%7B%22userType%22%3A+%22USER_TYPE_SCRAPER%22%7D%2C+%22includeLowSearchVolumeGeos%22%3A+false%7D&token=APP6_UEAAAAAaG68USa0xoIU9Hz8QjxTnkWkjH59JJee&tz=360 (Caused by ResponseError('too many 500 error responses'))
+2025-07-08 20:00:38,697 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Queries': list index out of range
+2025-07-08 20:00:41,485 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Topics': list index out of range
+2025-07-08 20:00:44,081 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Trending Searches': The request failed: Google returned a response with code 404
+2025-07-08 20:00:44,086 - clients.google_trends_client - INFO - ✅ All Google Trends data fetching complete
+2025-07-08 20:00:44,088 - routes - INFO - [SUCCESS] Enhanced Google Trends data fetched successfully for 1 keywords
+2025-07-08 20:00:44,092 - middleware - INFO - [RESPONSE] GET /google-trends
+2025-07-08 20:00:44,094 - middleware - INFO -    Status: 200
+2025-07-08 20:00:44,095 - middleware - INFO -    Processing time: 14.460s
+2025-07-08 20:01:20,402 - middleware - INFO - [INCOMING] GET request to /google-trends/visual-report
+2025-07-08 20:01:20,408 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 20:01:20,409 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-08 20:01:20,419 - routes - INFO - [VISUAL TRENDS REPORT] Generating report for: safi said
+2025-07-08 20:01:20,421 - clients.google_trends_client - INFO - 🚀 Fetching all Google Trends data for: ['safi said']
+2025-07-08 20:01:22,819 - clients.google_trends_client - INFO - ✅ Interest over time data fetched successfully
+2025-07-08 20:01:26,378 - clients.google_trends_client - INFO - ✅ Interest by region data fetched successfully
+2025-07-08 20:01:29,421 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Queries': list index out of range
+2025-07-08 20:01:32,822 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Topics': list index out of range
+2025-07-08 20:01:35,832 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Trending Searches': The request failed: Google returned a response with code 404
+2025-07-08 20:01:35,835 - clients.google_trends_client - INFO - ✅ All Google Trends data fetching complete
+2025-07-08 20:01:35,836 - routes - INFO - [SUCCESS] Visual trends report generated successfully
+2025-07-08 20:01:35,839 - middleware - INFO - [RESPONSE] GET /google-trends/visual-report
+2025-07-08 20:01:35,839 - middleware - INFO -    Status: 200
+2025-07-08 20:01:35,840 - middleware - INFO -    Processing time: 15.437s
+2025-07-08 22:01:48,982 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-08 22:01:48,994 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-08 22:01:48,995 - config - INFO - Backend starting up...
+2025-07-08 22:01:48,995 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-08 22:01:48,996 - config - INFO - .env file exists: True
+2025-07-08 22:01:48,996 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-08 22:01:48,997 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-08 22:01:48,997 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-08 22:01:48,998 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-08 22:01:48,998 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-08 22:01:49,785 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-08 22:01:49,785 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-08 22:01:50,516 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-08 22:01:51,347 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-08 22:06:45,750 - middleware - INFO - [INCOMING] OPTIONS request to /api/analyze
+2025-07-08 22:06:45,750 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 22:06:45,751 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'accept': '*/*', 'access-control-request-method': 'POST', 'access-control-request-headers': 'content-type', 'origin': 'http://localhost:3000', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-site', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-08 22:06:45,752 - middleware - INFO - [RESPONSE] OPTIONS /api/analyze
+2025-07-08 22:06:45,753 - middleware - INFO -    Status: 200
+2025-07-08 22:06:45,753 - middleware - INFO -    Processing time: 0.003s
+2025-07-08 22:06:45,757 - middleware - INFO - [INCOMING] POST request to /api/analyze
+2025-07-08 22:06:45,758 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 22:06:45,758 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '47', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-08 22:06:45,760 - routes - INFO - [ANALYZE] Starting website analysis for 1 websites
+2025-07-08 22:06:45,760 - routes - INFO -    Websites: ['google.com']
+2025-07-08 22:06:45,761 - routes - INFO -    User ID: user-123
+2025-07-08 22:06:45,761 - routes - INFO - [START] Starting SimilarWeb Analysis (Step 1)
+2025-07-08 22:06:45,762 - routes - INFO - API Token Status - APIFY: YES
+2025-07-08 22:06:45,763 - routes - INFO - [API] Fetching data from Apify API...
+2025-07-08 22:06:47,078 - httpx - INFO - HTTP Request: POST https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs "HTTP/1.1 201 Created"
+2025-07-08 22:06:52,742 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/6kJLlMfA7M1kz7Ddg "HTTP/1.1 200 OK"
+2025-07-08 22:06:58,376 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/6kJLlMfA7M1kz7Ddg "HTTP/1.1 200 OK"
+2025-07-08 22:07:03,770 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/6kJLlMfA7M1kz7Ddg "HTTP/1.1 200 OK"
+2025-07-08 22:07:09,434 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/6kJLlMfA7M1kz7Ddg "HTTP/1.1 200 OK"
+2025-07-08 22:07:14,631 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/6kJLlMfA7M1kz7Ddg "HTTP/1.1 200 OK"
+2025-07-08 22:07:19,996 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/6kJLlMfA7M1kz7Ddg "HTTP/1.1 200 OK"
+2025-07-08 22:07:20,184 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/datasets/ZMUUdcMxXcJdbxHbP/items "HTTP/1.1 200 OK"
+2025-07-08 22:07:20,193 - database_service - INFO - Generated UUID 3a1b8473-3492-5076-98f9-b2dfa6d37933 for user_id: user-123
+2025-07-08 22:07:21,232 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=id&id=eq.3a1b8473-3492-5076-98f9-b2dfa6d37933 "HTTP/1.1 200 OK"
+2025-07-08 22:07:21,240 - database_service - INFO - User record already exists: 3a1b8473-3492-5076-98f9-b2dfa6d37933
+2025-07-08 22:07:21,241 - database_service - INFO - Generated UUID 3a1b8473-3492-5076-98f9-b2dfa6d37933 for user_id: user-123
+2025-07-08 22:07:21,933 - httpx - INFO - HTTP Request: POST https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions "HTTP/1.1 201 Created"
+2025-07-08 22:07:21,934 - database_service - INFO - Analysis session saved successfully: de96e999-13bf-45e7-9c8b-4a4887e2d611
+2025-07-08 22:07:21,934 - routes - INFO - [SUCCESS] Step 1 (SimilarWeb) completed successfully
+2025-07-08 22:07:21,935 - middleware - INFO - [RESPONSE] POST /api/analyze
+2025-07-08 22:07:21,936 - middleware - INFO -    Status: 200
+2025-07-08 22:07:21,936 - middleware - INFO -    Processing time: 36.179s
+2025-07-08 22:10:46,129 - middleware - INFO - [INCOMING] OPTIONS request to /api/analyze-tech-stack
+2025-07-08 22:10:46,130 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 22:10:46,131 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'accept': '*/*', 'access-control-request-method': 'POST', 'access-control-request-headers': 'content-type', 'origin': 'http://localhost:3000', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-site', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-08 22:10:46,132 - middleware - INFO - [RESPONSE] OPTIONS /api/analyze-tech-stack
+2025-07-08 22:10:46,234 - middleware - INFO -    Status: 200
+2025-07-08 22:10:46,235 - middleware - INFO -    Processing time: 0.003s
+2025-07-08 22:10:46,240 - middleware - INFO - [INCOMING] POST request to /api/analyze-tech-stack
+2025-07-08 22:10:46,241 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 22:10:46,241 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '46', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-08 22:10:46,244 - routes - INFO - [TECH] Starting tech stack analysis for 1 websites
+2025-07-08 22:10:46,244 - routes - INFO -    Websites: ['salla.com']
+2025-07-08 22:10:46,245 - routes - INFO -    User ID: user-123
+2025-07-08 22:10:46,247 - routes - INFO - [TECH] Starting BuiltWith Tech Stack Analysis (Step 2)
+2025-07-08 22:10:46,251 - database_service - INFO - Generated UUID 3a1b8473-3492-5076-98f9-b2dfa6d37933 for user_id: user-123
+2025-07-08 22:10:47,174 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions?select=%2A&user_id=eq.3a1b8473-3492-5076-98f9-b2dfa6d37933&order=created_at.desc&limit=1 "HTTP/1.1 200 OK"
+2025-07-08 22:10:47,186 - database_service - INFO - Retrieved 1 analysis sessions for user 3a1b8473-3492-5076-98f9-b2dfa6d37933
+2025-07-08 22:10:49,517 - httpx - INFO - HTTP Request: GET https://api.builtwith.com/v20/api.json?KEY=fd8b0b65-fb2d-46ef-b666-4d69096c9bf8&LOOKUP=salla.com "HTTP/1.1 200 OK"
+2025-07-08 22:10:50,236 - httpx - INFO - HTTP Request: PATCH https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions?id=eq.de96e999-13bf-45e7-9c8b-4a4887e2d611 "HTTP/1.1 200 OK"
+2025-07-08 22:10:50,241 - database_service - INFO - Analysis session updated successfully: de96e999-13bf-45e7-9c8b-4a4887e2d611
+2025-07-08 22:10:50,248 - middleware - INFO - [RESPONSE] POST /api/analyze-tech-stack
+2025-07-08 22:10:50,249 - middleware - INFO -    Status: 200
+2025-07-08 22:10:50,249 - middleware - INFO -    Processing time: 4.008s
+2025-07-08 22:12:56,327 - middleware - INFO - [INCOMING] POST request to /api/analyze-tech-stack
+2025-07-08 22:12:56,328 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 22:12:56,329 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '47', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-08 22:12:56,331 - routes - INFO - [TECH] Starting tech stack analysis for 1 websites
+2025-07-08 22:12:56,331 - routes - INFO -    Websites: ['kwadeco.tn']
+2025-07-08 22:12:56,332 - routes - INFO -    User ID: user-123
+2025-07-08 22:12:56,332 - routes - INFO - [TECH] Starting BuiltWith Tech Stack Analysis (Step 2)
+2025-07-08 22:12:56,334 - database_service - INFO - Generated UUID 3a1b8473-3492-5076-98f9-b2dfa6d37933 for user_id: user-123
+2025-07-08 22:12:57,352 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions?select=%2A&user_id=eq.3a1b8473-3492-5076-98f9-b2dfa6d37933&order=created_at.desc&limit=1 "HTTP/1.1 200 OK"
+2025-07-08 22:12:57,355 - database_service - INFO - Retrieved 1 analysis sessions for user 3a1b8473-3492-5076-98f9-b2dfa6d37933
+2025-07-08 22:12:58,803 - httpx - INFO - HTTP Request: GET https://api.builtwith.com/v20/api.json?KEY=fd8b0b65-fb2d-46ef-b666-4d69096c9bf8&LOOKUP=kwadeco.tn "HTTP/1.1 200 OK"
+2025-07-08 22:12:59,517 - httpx - INFO - HTTP Request: PATCH https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions?id=eq.de96e999-13bf-45e7-9c8b-4a4887e2d611 "HTTP/1.1 200 OK"
+2025-07-08 22:12:59,522 - database_service - INFO - Analysis session updated successfully: de96e999-13bf-45e7-9c8b-4a4887e2d611
+2025-07-08 22:12:59,526 - middleware - INFO - [RESPONSE] POST /api/analyze-tech-stack
+2025-07-08 22:12:59,526 - middleware - INFO -    Status: 200
+2025-07-08 22:12:59,527 - middleware - INFO -    Processing time: 3.199s
+2025-07-08 22:14:07,868 - middleware - INFO - [INCOMING] POST request to /api/analyze-tech-stack
+2025-07-08 22:14:07,869 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 22:14:07,869 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '47', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-08 22:14:07,871 - routes - INFO - [TECH] Starting tech stack analysis for 1 websites
+2025-07-08 22:14:07,872 - routes - INFO -    Websites: ['kwadeco.tn']
+2025-07-08 22:14:07,872 - routes - INFO -    User ID: user-123
+2025-07-08 22:14:07,873 - routes - INFO - [TECH] Starting BuiltWith Tech Stack Analysis (Step 2)
+2025-07-08 22:14:07,873 - database_service - INFO - Generated UUID 3a1b8473-3492-5076-98f9-b2dfa6d37933 for user_id: user-123
+2025-07-08 22:14:10,183 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions?select=%2A&user_id=eq.3a1b8473-3492-5076-98f9-b2dfa6d37933&order=created_at.desc&limit=1 "HTTP/1.1 200 OK"
+2025-07-08 22:14:10,186 - database_service - INFO - Retrieved 1 analysis sessions for user 3a1b8473-3492-5076-98f9-b2dfa6d37933
+2025-07-08 22:14:11,442 - httpx - INFO - HTTP Request: GET https://api.builtwith.com/v20/api.json?KEY=fd8b0b65-fb2d-46ef-b666-4d69096c9bf8&LOOKUP=kwadeco.tn "HTTP/1.1 200 OK"
+2025-07-08 22:14:12,138 - httpx - INFO - HTTP Request: PATCH https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions?id=eq.de96e999-13bf-45e7-9c8b-4a4887e2d611 "HTTP/1.1 200 OK"
+2025-07-08 22:14:12,141 - database_service - INFO - Analysis session updated successfully: de96e999-13bf-45e7-9c8b-4a4887e2d611
+2025-07-08 22:14:12,142 - middleware - INFO - [RESPONSE] POST /api/analyze-tech-stack
+2025-07-08 22:14:12,143 - middleware - INFO -    Status: 200
+2025-07-08 22:14:12,143 - middleware - INFO -    Processing time: 4.274s
+2025-07-08 22:14:28,675 - middleware - INFO - [INCOMING] POST request to /api/analyze
+2025-07-08 22:14:28,676 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 22:14:28,676 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '47', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-08 22:14:28,678 - routes - INFO - [ANALYZE] Starting website analysis for 1 websites
+2025-07-08 22:14:28,678 - routes - INFO -    Websites: ['kwadeco.tn']
+2025-07-08 22:14:28,678 - routes - INFO -    User ID: user-123
+2025-07-08 22:14:28,679 - routes - INFO - [START] Starting SimilarWeb Analysis (Step 1)
+2025-07-08 22:14:28,679 - routes - INFO - API Token Status - APIFY: YES
+2025-07-08 22:14:28,681 - routes - INFO - [API] Fetching data from Apify API...
+2025-07-08 22:14:29,893 - httpx - INFO - HTTP Request: POST https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs "HTTP/1.1 201 Created"
+2025-07-08 22:14:35,559 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/m0cSySs0fOFKjZtg1 "HTTP/1.1 200 OK"
+2025-07-08 22:14:41,221 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/m0cSySs0fOFKjZtg1 "HTTP/1.1 200 OK"
+2025-07-08 22:14:46,402 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/m0cSySs0fOFKjZtg1 "HTTP/1.1 200 OK"
+2025-07-08 22:14:52,051 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/m0cSySs0fOFKjZtg1 "HTTP/1.1 200 OK"
+2025-07-08 22:14:57,323 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/m0cSySs0fOFKjZtg1 "HTTP/1.1 200 OK"
+2025-07-08 22:15:02,991 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/m0cSySs0fOFKjZtg1 "HTTP/1.1 200 OK"
+2025-07-08 22:15:08,176 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/m0cSySs0fOFKjZtg1 "HTTP/1.1 200 OK"
+2025-07-08 22:15:08,612 - middleware - INFO - [INCOMING] GET request to /google-trends
+2025-07-08 22:15:08,614 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 22:15:08,615 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-08 22:15:08,617 - routes - INFO - [GOOGLE TRENDS] Fetching enhanced trends for query: kwadeco.tn
+2025-07-08 22:15:08,618 - routes - INFO - [GOOGLE TRENDS] Processing keywords: ['kwadeco.tn'], timeframe: today 12-m, geo: 
+2025-07-08 22:15:08,619 - clients.google_trends_client - INFO - 🚀 Fetching all Google Trends data for: ['kwadeco.tn']
+2025-07-08 22:15:10,590 - clients.google_trends_client - INFO - ✅ Interest over time data fetched successfully
+2025-07-08 22:15:13,435 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Interest by Region': HTTPSConnectionPool(host='trends.google.com', port=443): Max retries exceeded with url: /trends/api/widgetdata/comparedgeo?req=%7B%22geo%22%3A+%7B%7D%2C+%22comparisonItem%22%3A+%5B%7B%22time%22%3A+%222024-07-08+2025-07-08%22%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22kwadeco.tn%22%7D%5D%7D%7D%5D%2C+%22resolution%22%3A+%22REGION%22%2C+%22locale%22%3A+%22en-US%22%2C+%22requestOptions%22%3A+%7B%22property%22%3A+%22%22%2C+%22backend%22%3A+%22IZG%22%2C+%22category%22%3A+0%7D%2C+%22userConfig%22%3A+%7B%22userType%22%3A+%22USER_TYPE_SCRAPER%22%7D%2C+%22includeLowSearchVolumeGeos%22%3A+false%7D&token=APP6_UEAAAAAaG7b4IquZ0rYQ2mJ8ch-0gllB4pWrUMP&tz=360 (Caused by ResponseError('too many 500 error responses'))
+2025-07-08 22:15:16,310 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Queries': list index out of range
+2025-07-08 22:15:19,132 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Topics': list index out of range
+2025-07-08 22:15:21,737 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Trending Searches': The request failed: Google returned a response with code 404
+2025-07-08 22:15:21,741 - clients.google_trends_client - INFO - ✅ All Google Trends data fetching complete
+2025-07-08 22:15:21,742 - routes - INFO - [SUCCESS] Enhanced Google Trends data fetched successfully for 1 keywords
+2025-07-08 22:15:21,744 - middleware - INFO - [RESPONSE] GET /google-trends
+2025-07-08 22:15:21,745 - middleware - INFO -    Status: 200
+2025-07-08 22:15:21,745 - middleware - INFO -    Processing time: 13.132s
+2025-07-08 22:15:22,406 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/m0cSySs0fOFKjZtg1 "HTTP/1.1 200 OK"
+2025-07-08 22:15:28,066 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/m0cSySs0fOFKjZtg1 "HTTP/1.1 200 OK"
+2025-07-08 22:15:33,727 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/m0cSySs0fOFKjZtg1 "HTTP/1.1 200 OK"
+2025-07-08 22:15:36,081 - middleware - INFO - [INCOMING] GET request to /google-trends
+2025-07-08 22:15:36,083 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 22:15:36,083 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-08 22:15:36,085 - routes - INFO - [GOOGLE TRENDS] Fetching enhanced trends for query: usa
+2025-07-08 22:15:36,085 - routes - INFO - [GOOGLE TRENDS] Processing keywords: ['usa'], timeframe: today 12-m, geo: 
+2025-07-08 22:15:36,086 - clients.google_trends_client - INFO - 🚀 Fetching all Google Trends data for: ['usa']
+2025-07-08 22:15:38,300 - clients.google_trends_client - INFO - ✅ Interest over time data fetched successfully
+2025-07-08 22:15:41,337 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Interest by Region': HTTPSConnectionPool(host='trends.google.com', port=443): Max retries exceeded with url: /trends/api/widgetdata/comparedgeo?req=%7B%22geo%22%3A+%7B%7D%2C+%22comparisonItem%22%3A+%5B%7B%22time%22%3A+%222024-07-08+2025-07-08%22%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22usa%22%7D%5D%7D%7D%5D%2C+%22resolution%22%3A+%22REGION%22%2C+%22locale%22%3A+%22en-US%22%2C+%22requestOptions%22%3A+%7B%22property%22%3A+%22%22%2C+%22backend%22%3A+%22IZG%22%2C+%22category%22%3A+0%7D%2C+%22userConfig%22%3A+%7B%22userType%22%3A+%22USER_TYPE_SCRAPER%22%7D%2C+%22includeLowSearchVolumeGeos%22%3A+false%7D&token=APP6_UEAAAAAaG7b-2EQlCMks-LtXzHgz1i0q5_efrK4&tz=360 (Caused by ResponseError('too many 500 error responses'))
+2025-07-08 22:15:44,384 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Queries': list index out of range
+2025-07-08 22:15:47,385 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Topics': list index out of range
+2025-07-08 22:15:50,332 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Trending Searches': The request failed: Google returned a response with code 404
+2025-07-08 22:15:50,334 - clients.google_trends_client - INFO - ✅ All Google Trends data fetching complete
+2025-07-08 22:15:50,334 - routes - INFO - [SUCCESS] Enhanced Google Trends data fetched successfully for 1 keywords
+2025-07-08 22:15:50,339 - middleware - INFO - [RESPONSE] GET /google-trends
+2025-07-08 22:15:50,339 - middleware - INFO -    Status: 200
+2025-07-08 22:15:50,340 - middleware - INFO -    Processing time: 14.258s
+2025-07-08 22:15:50,926 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/m0cSySs0fOFKjZtg1 "HTTP/1.1 200 OK"
+2025-07-08 22:15:56,105 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/m0cSySs0fOFKjZtg1 "HTTP/1.1 200 OK"
+2025-07-08 22:16:01,279 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/m0cSySs0fOFKjZtg1 "HTTP/1.1 200 OK"
+2025-07-08 22:16:06,914 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/m0cSySs0fOFKjZtg1 "HTTP/1.1 200 OK"
+2025-07-08 22:16:07,103 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/datasets/CDmagWcyLJbYEA79r/items "HTTP/1.1 200 OK"
+2025-07-08 22:16:07,134 - database_service - INFO - Generated UUID 3a1b8473-3492-5076-98f9-b2dfa6d37933 for user_id: user-123
+2025-07-08 22:16:08,138 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=id&id=eq.3a1b8473-3492-5076-98f9-b2dfa6d37933 "HTTP/1.1 200 OK"
+2025-07-08 22:16:08,146 - database_service - INFO - User record already exists: 3a1b8473-3492-5076-98f9-b2dfa6d37933
+2025-07-08 22:16:08,148 - database_service - INFO - Generated UUID 3a1b8473-3492-5076-98f9-b2dfa6d37933 for user_id: user-123
+2025-07-08 22:16:08,801 - httpx - INFO - HTTP Request: POST https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions "HTTP/1.1 201 Created"
+2025-07-08 22:16:08,803 - database_service - INFO - Analysis session saved successfully: b173077e-d973-4f58-8536-fdb4fc67946e
+2025-07-08 22:16:08,803 - routes - INFO - [SUCCESS] Step 1 (SimilarWeb) completed successfully
+2025-07-08 22:16:08,811 - middleware - INFO - [RESPONSE] POST /api/analyze
+2025-07-08 22:16:08,812 - middleware - INFO -    Status: 200
+2025-07-08 22:16:08,812 - middleware - INFO -    Processing time: 100.136s
+2025-07-08 22:18:15,473 - middleware - INFO - [INCOMING] OPTIONS request to /api/analyze
+2025-07-08 22:18:15,474 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 22:18:15,474 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'accept': '*/*', 'access-control-request-method': 'POST', 'access-control-request-headers': 'content-type', 'origin': 'http://localhost:3000', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-site', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-08 22:18:15,475 - middleware - INFO - [RESPONSE] OPTIONS /api/analyze
+2025-07-08 22:18:15,476 - middleware - INFO -    Status: 200
+2025-07-08 22:18:15,477 - middleware - INFO -    Processing time: 0.003s
+2025-07-08 22:18:15,481 - middleware - INFO - [INCOMING] POST request to /api/analyze
+2025-07-08 22:18:15,481 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 22:18:15,484 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '47', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-08 22:18:15,486 - routes - INFO - [ANALYZE] Starting website analysis for 1 websites
+2025-07-08 22:18:15,488 - routes - INFO -    Websites: ['kwadeco.tn']
+2025-07-08 22:18:15,488 - routes - INFO -    User ID: user-123
+2025-07-08 22:18:15,489 - routes - INFO - [START] Starting SimilarWeb Analysis (Step 1)
+2025-07-08 22:18:15,493 - routes - INFO - API Token Status - APIFY: YES
+2025-07-08 22:18:15,494 - routes - INFO - [API] Fetching data from Apify API...
+2025-07-08 22:18:16,683 - httpx - INFO - HTTP Request: POST https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs "HTTP/1.1 201 Created"
+2025-07-08 22:18:22,343 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/bmR9SMELH64SbodSj "HTTP/1.1 200 OK"
+2025-07-08 22:18:27,550 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/bmR9SMELH64SbodSj "HTTP/1.1 200 OK"
+2025-07-08 22:18:33,194 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/bmR9SMELH64SbodSj "HTTP/1.1 200 OK"
+2025-07-08 22:18:38,377 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/bmR9SMELH64SbodSj "HTTP/1.1 200 OK"
+2025-07-08 22:18:44,060 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/bmR9SMELH64SbodSj "HTTP/1.1 200 OK"
+2025-07-08 22:18:49,267 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/bmR9SMELH64SbodSj "HTTP/1.1 200 OK"
+2025-07-08 22:18:49,482 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/datasets/l6fMCCL6BnCUQyvnF/items "HTTP/1.1 200 OK"
+2025-07-08 22:18:49,489 - database_service - INFO - Generated UUID 3a1b8473-3492-5076-98f9-b2dfa6d37933 for user_id: user-123
+2025-07-08 22:18:50,238 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=id&id=eq.3a1b8473-3492-5076-98f9-b2dfa6d37933 "HTTP/1.1 200 OK"
+2025-07-08 22:18:50,242 - database_service - INFO - User record already exists: 3a1b8473-3492-5076-98f9-b2dfa6d37933
+2025-07-08 22:18:50,242 - database_service - INFO - Generated UUID 3a1b8473-3492-5076-98f9-b2dfa6d37933 for user_id: user-123
+2025-07-08 22:18:50,941 - httpx - INFO - HTTP Request: POST https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions "HTTP/1.1 201 Created"
+2025-07-08 22:18:50,942 - database_service - INFO - Analysis session saved successfully: 87f5eb55-d5f6-4379-9f7a-9dd7ee8d2f93
+2025-07-08 22:18:50,943 - routes - INFO - [SUCCESS] Step 1 (SimilarWeb) completed successfully
+2025-07-08 22:18:50,944 - middleware - INFO - [RESPONSE] POST /api/analyze
+2025-07-08 22:18:50,944 - middleware - INFO -    Status: 200
+2025-07-08 22:18:50,945 - middleware - INFO -    Processing time: 35.463s
+2025-07-08 22:18:55,758 - middleware - INFO - [INCOMING] POST request to /api/analyze-tech-stack
+2025-07-08 22:18:55,765 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 22:18:55,766 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '47', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-08 22:18:55,770 - routes - INFO - [TECH] Starting tech stack analysis for 1 websites
+2025-07-08 22:18:55,770 - routes - INFO -    Websites: ['kwadeco.tn']
+2025-07-08 22:18:55,771 - routes - INFO -    User ID: user-123
+2025-07-08 22:18:55,772 - routes - INFO - [TECH] Starting BuiltWith Tech Stack Analysis (Step 2)
+2025-07-08 22:18:55,774 - database_service - INFO - Generated UUID 3a1b8473-3492-5076-98f9-b2dfa6d37933 for user_id: user-123
+2025-07-08 22:18:56,063 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions?select=%2A&user_id=eq.3a1b8473-3492-5076-98f9-b2dfa6d37933&order=created_at.desc&limit=1 "HTTP/1.1 200 OK"
+2025-07-08 22:18:56,067 - database_service - INFO - Retrieved 1 analysis sessions for user 3a1b8473-3492-5076-98f9-b2dfa6d37933
+2025-07-08 22:18:57,403 - httpx - INFO - HTTP Request: GET https://api.builtwith.com/v20/api.json?KEY=fd8b0b65-fb2d-46ef-b666-4d69096c9bf8&LOOKUP=kwadeco.tn "HTTP/1.1 200 OK"
+2025-07-08 22:18:58,109 - httpx - INFO - HTTP Request: PATCH https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions?id=eq.87f5eb55-d5f6-4379-9f7a-9dd7ee8d2f93 "HTTP/1.1 200 OK"
+2025-07-08 22:18:58,110 - database_service - INFO - Analysis session updated successfully: 87f5eb55-d5f6-4379-9f7a-9dd7ee8d2f93
+2025-07-08 22:18:58,113 - middleware - INFO - [RESPONSE] POST /api/analyze-tech-stack
+2025-07-08 22:18:58,114 - middleware - INFO -    Status: 200
+2025-07-08 22:18:58,114 - middleware - INFO -    Processing time: 2.355s
+2025-07-08 22:20:23,289 - middleware - INFO - [INCOMING] OPTIONS request to /api/google-trends
+2025-07-08 22:20:23,289 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 22:20:23,290 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'accept': '*/*', 'access-control-request-method': 'POST', 'access-control-request-headers': 'content-type', 'origin': 'http://localhost:3000', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-site', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-08 22:20:23,291 - middleware - INFO - [RESPONSE] OPTIONS /api/google-trends
+2025-07-08 22:20:23,291 - middleware - INFO -    Status: 200
+2025-07-08 22:20:23,291 - middleware - INFO -    Processing time: 0.002s
+2025-07-08 22:20:23,295 - middleware - INFO - [INCOMING] POST request to /api/google-trends
+2025-07-08 22:20:23,296 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 22:20:23,299 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '110', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-08 22:20:23,300 - routes - INFO - [GOOGLE TRENDS] Starting Google Trends analysis for 4 keywords
+2025-07-08 22:20:23,301 - routes - INFO -    Keywords: ['kwadeco.tn', 'Bateaux de pêche', 'Tableau sur toile', 'Bestsellers']
+2025-07-08 22:20:23,301 - routes - INFO -    Timeframe: 12m
+2025-07-08 22:20:23,301 - routes - INFO -    Geography: worldwide
+2025-07-08 22:20:23,302 - routes - INFO - [GOOGLE TRENDS] Converted timeframe: today 12-m, geo: 
+2025-07-08 22:20:23,304 - clients.google_trends_client - INFO - Fetching Google Trends data for keywords: ['kwadeco.tn', 'Bateaux de pêche', 'Tableau sur toile', 'Bestsellers']
+2025-07-08 22:20:23,305 - clients.google_trends_client - INFO - Cleaned keywords: ['kwadeco.tn', 'Bateaux de pêche', 'Tableau sur toile', 'Bestsellers']
+2025-07-08 22:20:25,946 - clients.google_trends_client - WARNING - Failed to get related queries: list index out of range
+2025-07-08 22:20:27,177 - clients.google_trends_client - INFO - Successfully fetched Google Trends data for 4 keywords
+2025-07-08 22:20:27,178 - routes - INFO - [SUCCESS] Google Trends analysis completed successfully
+2025-07-08 22:20:27,186 - middleware - INFO - [RESPONSE] POST /api/google-trends
+2025-07-08 22:20:27,186 - middleware - INFO -    Status: 200
+2025-07-08 22:20:27,187 - middleware - INFO -    Processing time: 3.891s
+2025-07-08 22:20:38,061 - middleware - INFO - [INCOMING] OPTIONS request to /api/chat
+2025-07-08 22:20:38,061 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 22:20:38,062 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'accept': '*/*', 'access-control-request-method': 'POST', 'access-control-request-headers': 'content-type', 'origin': 'http://localhost:3000', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-site', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-08 22:20:38,063 - middleware - INFO - [RESPONSE] OPTIONS /api/chat
+2025-07-08 22:20:38,063 - middleware - INFO -    Status: 200
+2025-07-08 22:20:38,063 - middleware - INFO -    Processing time: 0.001s
+2025-07-08 22:20:38,066 - middleware - INFO - [INCOMING] POST request to /api/chat
+2025-07-08 22:20:38,066 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 22:20:38,066 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '2334', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-08 22:20:38,068 - routes - INFO - [CHAT] Received chat message: what's your context
+2025-07-08 22:20:38,068 - routes - INFO -    Analysis data size: 2477 characters
+2025-07-08 22:20:38,069 - routes - INFO - API Token Status - OPENROUTER: YES
+2025-07-08 22:20:40,843 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-08 22:20:44,956 - routes - INFO - [SUCCESS] Chat response generated successfully
+2025-07-08 22:20:44,957 - middleware - INFO - [RESPONSE] POST /api/chat
+2025-07-08 22:20:44,957 - middleware - INFO -    Status: 200
+2025-07-08 22:20:44,957 - middleware - INFO -    Processing time: 6.890s
