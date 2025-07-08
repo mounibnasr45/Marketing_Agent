@@ -336,8 +336,10 @@ class GoogleTrendsClient:
             return float(value)
         elif isinstance(value, np.ndarray):
             return value.tolist()
-        elif isinstance(value, (np.bool_, np.boolean)):
+        elif isinstance(value, np.bool_):
             return bool(value)
+        elif pd.isna(value):
+            return None
         else:
             return value
     
