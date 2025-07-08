@@ -5,6 +5,7 @@ API route handlers for the BuiltWith Analyzer
 import json
 import logging
 from typing import List
+from datetime import datetime
 from fastapi import APIRouter, HTTPException
 from config import config
 from models import WebsiteAnalysisRequest, AnalysisResponse, ChatMessage, ChatResponse, ApifyResult, GoogleTrendsRequest, GoogleTrendsResponse
@@ -517,8 +518,8 @@ async def test_database_connection():
 
 @router.get("/google-trends")
 async def get_google_trends(query: str, timeframe: str = "today 12-m", geo: str = ""):
-    """Get Google Trends data for a search query"""
-    logger.info(f"[GOOGLE TRENDS] Fetching trends for query: {query}")
+    """Get comprehensive Google Trends data with enhanced visualizations"""
+    logger.info(f"[GOOGLE TRENDS] Fetching enhanced trends for query: {query}")
     
     if not query.strip():
         raise HTTPException(status_code=400, detail="Query parameter is required")
@@ -533,8 +534,8 @@ async def get_google_trends(query: str, timeframe: str = "today 12-m", geo: str 
         
         logger.info(f"[GOOGLE TRENDS] Processing keywords: {keywords}, timeframe: {timeframe}, geo: {geo}")
         
-        # Get trends data
-        trends_data = google_trends_client.get_trends_data(
+        # Get comprehensive trends data using the new method
+        trends_data = google_trends_client.fetch_all_trends_data(
             keywords=keywords,
             timeframe=timeframe,
             geo=geo
@@ -547,7 +548,7 @@ async def get_google_trends(query: str, timeframe: str = "today 12-m", geo: str 
                 detail=f"Failed to fetch Google Trends data: {trends_data.get('error', 'Unknown error')}"
             )
         
-        logger.info(f"[SUCCESS] Google Trends data fetched successfully for {len(keywords)} keywords")
+        logger.info(f"[SUCCESS] Enhanced Google Trends data fetched successfully for {len(keywords)} keywords")
         return trends_data
         
     except HTTPException:
@@ -560,9 +561,67 @@ async def get_google_trends(query: str, timeframe: str = "today 12-m", geo: str 
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
 
 
+@router.get("/google-trends/visual-report")
+async def get_visual_trends_report(query: str, timeframe: str = "today 12-m", geo: str = "US"):
+    """Get a visual Google Trends report similar to the Python script"""
+    logger.info(f"[VISUAL TRENDS REPORT] Generating report for: {query}")
+    
+    if not query.strip():
+        raise HTTPException(status_code=400, detail="Query parameter is required")
+    
+    try:
+        keywords = [keyword.strip() for keyword in query.split(',') if keyword.strip()]
+        
+        # Use the comprehensive data fetching method
+        trends_data = google_trends_client.fetch_all_trends_data(
+            keywords=keywords,
+            timeframe=timeframe,
+            geo=geo
+        )
+        
+        if not trends_data['success']:
+            raise HTTPException(
+                status_code=500, 
+                detail=f"Failed to generate visual report: {trends_data.get('error', 'Unknown error')}"
+            )
+        
+        # Add report-specific enhancements
+        report_data = {
+            **trends_data,
+            'report_type': 'visual_analysis',
+            'report_timestamp': datetime.now().isoformat(),
+            'chart_configurations': {
+                'line_chart': {
+                    'title': f'Search Interest: {", ".join(keywords)} ({timeframe})',
+                    'type': 'line',
+                    'data': trends_data.get('chart_data', {}).get('line_chart', [])
+                },
+                'bar_chart': {
+                    'title': f'Top 15 Regions for "{keywords[0]}"' if keywords else 'Regional Interest',
+                    'type': 'bar',
+                    'data': trends_data.get('chart_data', {}).get('bar_chart', [])
+                },
+                'seasonal_chart': {
+                    'title': 'Seasonal Patterns',
+                    'type': 'area',
+                    'data': trends_data.get('seasonal_patterns', {}).get('monthly_patterns', [])
+                }
+            }
+        }
+        
+        logger.info(f"[SUCCESS] Visual trends report generated successfully")
+        return report_data
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"[ERROR] Visual report generation error: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
+
+
 @router.get("/google-trends/compare")
 async def compare_google_trends(keywords: str, timeframe: str = "today 12-m"):
-    """Compare multiple keywords in Google Trends"""
+    """Compare multiple keywords with enhanced analytics"""
     logger.info(f"[GOOGLE TRENDS COMPARE] Comparing keywords: {keywords}")
     
     if not keywords.strip():
@@ -584,8 +643,8 @@ async def compare_google_trends(keywords: str, timeframe: str = "today 12-m"):
                 detail="Maximum 5 keywords allowed for comparison"
             )
         
-        # Get comparison data
-        comparison_data = google_trends_client.compare_keywords(
+        # Get enhanced comparison data
+        comparison_data = google_trends_client.fetch_all_trends_data(
             keywords=keyword_list,
             timeframe=timeframe
         )
@@ -595,6 +654,14 @@ async def compare_google_trends(keywords: str, timeframe: str = "today 12-m"):
                 status_code=500, 
                 detail=f"Failed to compare keywords: {comparison_data.get('error', 'Unknown error')}"
             )
+        
+        # Add comparison-specific enhancements
+        comparison_data['comparison_type'] = 'keyword_comparison'
+        comparison_data['comparison_summary'] = {
+            'total_keywords': len(keyword_list),
+            'timeframe': timeframe,
+            'analysis_date': datetime.now().isoformat()
+        }
         
         logger.info(f"[SUCCESS] Keywords compared successfully: {len(keyword_list)} keywords")
         return comparison_data

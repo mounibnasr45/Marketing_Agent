@@ -4515,3 +4515,341 @@
 2025-07-07 00:55:55,424 - middleware - INFO - [RESPONSE] POST /api/chat
 2025-07-07 00:55:55,425 - middleware - INFO -    Status: 200
 2025-07-07 00:55:55,425 - middleware - INFO -    Processing time: 5.316s
+2025-07-07 18:39:29,283 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-07 18:39:29,296 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-07 18:39:29,300 - config - INFO - Backend starting up...
+2025-07-07 18:39:29,301 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-07 18:39:29,301 - config - INFO - .env file exists: True
+2025-07-07 18:39:29,302 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-07 18:39:29,302 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-07 18:39:29,302 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-07 18:39:29,303 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-07 18:39:29,303 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-07 18:39:30,162 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-07 18:39:30,163 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-07 18:39:31,089 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-07 18:39:31,772 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-07 18:53:12,117 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-07 18:53:12,129 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-07 18:53:12,130 - config - INFO - Backend starting up...
+2025-07-07 18:53:12,130 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-07 18:53:12,131 - config - INFO - .env file exists: True
+2025-07-07 18:53:12,131 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-07 18:53:12,131 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-07 18:53:12,132 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-07 18:53:12,132 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-07 18:53:12,132 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-07 18:53:12,800 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-07 18:53:12,800 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-07 18:53:13,477 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-07 18:53:14,247 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-07 18:59:39,419 - __main__ - INFO - Backend starting up...
+2025-07-07 18:59:39,419 - __main__ - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-07 18:59:39,419 - __main__ - INFO - .env file exists: True
+2025-07-07 18:59:39,420 - __main__ - INFO - SUPABASE_URL configured: Yes
+2025-07-07 18:59:39,420 - __main__ - INFO - SUPABASE_KEY configured: Yes
+2025-07-07 18:59:58,593 - __main__ - INFO - Backend starting up...
+2025-07-07 18:59:58,593 - __main__ - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-07 18:59:58,594 - __main__ - INFO - .env file exists: True
+2025-07-07 18:59:58,594 - __main__ - INFO - SUPABASE_URL configured: Yes
+2025-07-07 18:59:58,594 - __main__ - INFO - SUPABASE_KEY configured: Yes
+2025-07-07 19:12:51,804 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-07 19:12:51,819 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-07 19:12:51,821 - config - INFO - Backend starting up...
+2025-07-07 19:12:51,821 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-07 19:12:51,822 - config - INFO - .env file exists: True
+2025-07-07 19:12:51,823 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-07 19:12:51,823 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-07 19:12:51,823 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-07 19:12:51,824 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-07 19:12:51,824 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-07 19:12:52,534 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-07 19:12:52,534 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-07 19:12:53,282 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-07 19:12:53,984 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-07 19:17:38,399 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-07 19:17:38,407 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-07 19:17:38,408 - config - INFO - Backend starting up...
+2025-07-07 19:17:38,408 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-07 19:17:38,409 - config - INFO - .env file exists: True
+2025-07-07 19:17:38,409 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-07 19:17:38,409 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-07 19:17:38,410 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-07 19:17:38,410 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-07 19:17:38,410 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-07 19:17:39,257 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-07 19:17:39,258 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-07 19:17:39,951 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-07 19:17:40,545 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-07 19:17:59,750 - middleware - INFO - [INCOMING] GET request to /api/google-trends
+2025-07-07 19:17:59,751 - middleware - INFO -    Client: 127.0.0.1
+2025-07-07 19:17:59,751 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-07 19:17:59,752 - middleware - INFO - [RESPONSE] GET /api/google-trends
+2025-07-07 19:17:59,752 - middleware - INFO -    Status: 405
+2025-07-07 19:17:59,752 - middleware - INFO -    Processing time: 0.002s
+2025-07-07 19:18:26,634 - middleware - INFO - [INCOMING] GET request to /api/google-trends
+2025-07-07 19:18:26,635 - middleware - INFO -    Client: 127.0.0.1
+2025-07-07 19:18:26,635 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-07 19:18:26,637 - middleware - INFO - [RESPONSE] GET /api/google-trends
+2025-07-07 19:18:26,637 - middleware - INFO -    Status: 405
+2025-07-07 19:18:26,638 - middleware - INFO -    Processing time: 0.003s
+2025-07-07 19:31:07,833 - middleware - INFO - [INCOMING] GET request to /google-trends
+2025-07-07 19:31:07,833 - middleware - INFO -    Client: 127.0.0.1
+2025-07-07 19:31:07,834 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-07 19:31:07,837 - routes - INFO - [GOOGLE TRENDS] Fetching trends for query: react,js,java
+2025-07-07 19:31:07,837 - routes - INFO - [GOOGLE TRENDS] Processing keywords: ['react', 'js', 'java'], timeframe: today 12-m, geo: 
+2025-07-07 19:31:07,838 - clients.google_trends_client - INFO - Fetching Google Trends data for keywords: ['react', 'js', 'java']
+2025-07-07 19:31:07,838 - clients.google_trends_client - INFO - Cleaned keywords: ['react', 'js', 'java']
+2025-07-07 19:31:10,987 - clients.google_trends_client - WARNING - Failed to get related queries: list index out of range
+2025-07-07 19:31:12,806 - clients.google_trends_client - INFO - Successfully fetched Google Trends data for 3 keywords
+2025-07-07 19:31:12,807 - routes - INFO - [SUCCESS] Google Trends data fetched successfully for 3 keywords
+2025-07-07 19:31:12,817 - middleware - INFO - [RESPONSE] GET /google-trends
+2025-07-07 19:31:12,818 - middleware - INFO -    Status: 200
+2025-07-07 19:31:12,820 - middleware - INFO -    Processing time: 4.984s
+2025-07-07 20:16:04,761 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-07 20:16:04,776 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-07 20:16:04,777 - config - INFO - Backend starting up...
+2025-07-07 20:16:04,778 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-07 20:16:04,778 - config - INFO - .env file exists: True
+2025-07-07 20:16:04,779 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-07 20:16:04,779 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-07 20:16:04,780 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-07 20:16:04,780 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-07 20:16:04,781 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-07 20:16:05,562 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-07 20:16:05,563 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-07 20:16:06,480 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-07 20:16:07,488 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-08 11:36:54,166 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-08 11:36:54,185 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-08 11:36:54,186 - config - INFO - Backend starting up...
+2025-07-08 11:36:54,186 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-08 11:36:54,186 - config - INFO - .env file exists: True
+2025-07-08 11:36:54,187 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-08 11:36:54,195 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-08 11:36:54,196 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-08 11:36:54,196 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-08 11:36:54,197 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-08 11:36:55,442 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-08 11:36:55,442 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-08 11:36:56,557 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-08 11:37:01,791 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-08 12:02:25,032 - middleware - INFO - [INCOMING] GET request to /google-trends
+2025-07-08 12:02:25,036 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 12:02:25,037 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-08 12:02:25,044 - routes - INFO - [GOOGLE TRENDS] Fetching trends for query: messi
+2025-07-08 12:02:25,045 - routes - INFO - [GOOGLE TRENDS] Processing keywords: ['messi'], timeframe: today 12-m, geo: 
+2025-07-08 12:02:25,045 - clients.google_trends_client - INFO - Fetching Google Trends data for keywords: ['messi']
+2025-07-08 12:02:25,046 - clients.google_trends_client - INFO - Cleaned keywords: ['messi']
+2025-07-08 12:02:28,633 - clients.google_trends_client - WARNING - Failed to get related queries: list index out of range
+2025-07-08 12:02:29,638 - clients.google_trends_client - WARNING - Failed to get related topics: list index out of range
+2025-07-08 12:02:31,761 - clients.google_trends_client - INFO - Successfully fetched Google Trends data for 1 keywords
+2025-07-08 12:02:31,762 - routes - INFO - [SUCCESS] Google Trends data fetched successfully for 1 keywords
+2025-07-08 12:02:31,770 - middleware - INFO - [RESPONSE] GET /google-trends
+2025-07-08 12:02:31,771 - middleware - INFO -    Status: 200
+2025-07-08 12:02:31,771 - middleware - INFO -    Processing time: 6.739s
+2025-07-08 13:10:59,696 - middleware - INFO - [INCOMING] GET request to /google-trends
+2025-07-08 13:10:59,704 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 13:10:59,707 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-08 13:10:59,720 - routes - INFO - [GOOGLE TRENDS] Fetching trends for query: barcelone
+2025-07-08 13:10:59,720 - routes - INFO - [GOOGLE TRENDS] Processing keywords: ['barcelone'], timeframe: today 12-m, geo: 
+2025-07-08 13:10:59,722 - clients.google_trends_client - INFO - Fetching Google Trends data for keywords: ['barcelone']
+2025-07-08 13:10:59,723 - clients.google_trends_client - INFO - Cleaned keywords: ['barcelone']
+2025-07-08 13:11:02,834 - clients.google_trends_client - WARNING - Failed to get related queries: list index out of range
+2025-07-08 13:11:03,755 - clients.google_trends_client - WARNING - Failed to get related topics: list index out of range
+2025-07-08 13:11:05,327 - clients.google_trends_client - INFO - Successfully fetched Google Trends data for 1 keywords
+2025-07-08 13:11:05,327 - routes - INFO - [SUCCESS] Google Trends data fetched successfully for 1 keywords
+2025-07-08 13:11:05,336 - middleware - INFO - [RESPONSE] GET /google-trends
+2025-07-08 13:11:05,337 - middleware - INFO -    Status: 200
+2025-07-08 13:11:05,337 - middleware - INFO -    Processing time: 5.644s
+2025-07-08 13:12:22,501 - middleware - INFO - [INCOMING] GET request to /google-trends
+2025-07-08 13:12:22,501 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 13:12:22,502 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-08 13:12:22,503 - routes - INFO - [GOOGLE TRENDS] Fetching trends for query: barcelona
+2025-07-08 13:12:22,503 - routes - INFO - [GOOGLE TRENDS] Processing keywords: ['barcelona'], timeframe: today 12-m, geo: 
+2025-07-08 13:12:22,504 - clients.google_trends_client - INFO - Fetching Google Trends data for keywords: ['barcelona']
+2025-07-08 13:12:22,505 - clients.google_trends_client - INFO - Cleaned keywords: ['barcelona']
+2025-07-08 13:12:25,406 - clients.google_trends_client - WARNING - Failed to get related queries: list index out of range
+2025-07-08 13:12:26,434 - clients.google_trends_client - WARNING - Failed to get related topics: list index out of range
+2025-07-08 13:12:28,297 - clients.google_trends_client - INFO - Successfully fetched Google Trends data for 1 keywords
+2025-07-08 13:12:28,298 - routes - INFO - [SUCCESS] Google Trends data fetched successfully for 1 keywords
+2025-07-08 13:12:28,305 - middleware - INFO - [RESPONSE] GET /google-trends
+2025-07-08 13:12:28,308 - middleware - INFO -    Status: 200
+2025-07-08 13:12:28,309 - middleware - INFO -    Processing time: 5.804s
+2025-07-08 13:13:39,412 - middleware - INFO - [INCOMING] GET request to /google-trends
+2025-07-08 13:13:39,413 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 13:13:39,414 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-08 13:13:39,417 - routes - INFO - [GOOGLE TRENDS] Fetching trends for query: messi
+2025-07-08 13:13:39,423 - routes - INFO - [GOOGLE TRENDS] Processing keywords: ['messi'], timeframe: today 12-m, geo: 
+2025-07-08 13:13:39,424 - clients.google_trends_client - INFO - Fetching Google Trends data for keywords: ['messi']
+2025-07-08 13:13:39,424 - clients.google_trends_client - INFO - Cleaned keywords: ['messi']
+2025-07-08 13:13:42,336 - clients.google_trends_client - WARNING - Failed to get related queries: list index out of range
+2025-07-08 13:13:43,236 - clients.google_trends_client - WARNING - Failed to get related topics: list index out of range
+2025-07-08 13:13:44,756 - clients.google_trends_client - WARNING - Failed to get regional interest: HTTPSConnectionPool(host='trends.google.com', port=443): Max retries exceeded with url: /trends/api/widgetdata/comparedgeo?req=%7B%22geo%22%3A+%7B%7D%2C+%22comparisonItem%22%3A+%5B%7B%22time%22%3A+%222024-07-08+2025-07-08%22%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22messi%22%7D%5D%7D%7D%5D%2C+%22resolution%22%3A+%22COUNTRY%22%2C+%22locale%22%3A+%22en-US%22%2C+%22requestOptions%22%3A+%7B%22property%22%3A+%22%22%2C+%22backend%22%3A+%22IZG%22%2C+%22category%22%3A+0%7D%2C+%22userConfig%22%3A+%7B%22userType%22%3A+%22USER_TYPE_SCRAPER%22%7D%2C+%22includeLowSearchVolumeGeos%22%3A+false%7D&token=APP6_UEAAAAAaG5c9thncGOfbqa1LzdyqvYRK0w2WO3A&tz=360 (Caused by ResponseError('too many 429 error responses'))
+2025-07-08 13:13:44,761 - clients.google_trends_client - INFO - Successfully fetched Google Trends data for 1 keywords
+2025-07-08 13:13:44,763 - routes - INFO - [SUCCESS] Google Trends data fetched successfully for 1 keywords
+2025-07-08 13:13:44,770 - middleware - INFO - [RESPONSE] GET /google-trends
+2025-07-08 13:13:44,777 - middleware - INFO -    Status: 200
+2025-07-08 13:13:44,778 - middleware - INFO -    Processing time: 5.357s
+2025-07-08 13:58:06,754 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-08 13:58:06,765 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-08 13:58:06,767 - config - INFO - Backend starting up...
+2025-07-08 13:58:06,767 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-08 13:58:06,768 - config - INFO - .env file exists: True
+2025-07-08 13:58:06,768 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-08 13:58:06,768 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-08 13:58:06,769 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-08 13:58:06,769 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-08 13:58:06,769 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-08 13:58:07,554 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-08 13:58:07,554 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-08 13:58:08,337 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-08 13:58:08,912 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-08 14:09:59,529 - middleware - INFO - [INCOMING] GET request to /google-trends
+2025-07-08 14:09:59,532 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 14:09:59,533 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-08 14:09:59,539 - routes - INFO - [GOOGLE TRENDS] Fetching trends for query: react
+2025-07-08 14:09:59,540 - routes - INFO - [GOOGLE TRENDS] Processing keywords: ['react'], timeframe: today 12-m, geo: 
+2025-07-08 14:09:59,542 - clients.google_trends_client - INFO - Fetching Google Trends data for keywords: ['react']
+2025-07-08 14:09:59,542 - clients.google_trends_client - INFO - Cleaned keywords: ['react']
+2025-07-08 14:10:02,569 - clients.google_trends_client - WARNING - Failed to get related queries: list index out of range
+2025-07-08 14:10:03,537 - clients.google_trends_client - WARNING - Failed to get related topics: list index out of range
+2025-07-08 14:10:04,595 - clients.google_trends_client - INFO - Successfully fetched Google Trends data for 1 keywords
+2025-07-08 14:10:04,596 - routes - INFO - [SUCCESS] Google Trends data fetched successfully for 1 keywords
+2025-07-08 14:10:04,605 - middleware - INFO - [RESPONSE] GET /google-trends
+2025-07-08 14:10:04,606 - middleware - INFO -    Status: 200
+2025-07-08 14:10:04,606 - middleware - INFO -    Processing time: 5.077s
+2025-07-08 15:26:24,775 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-08 15:26:24,787 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-08 15:26:24,789 - config - INFO - Backend starting up...
+2025-07-08 15:26:24,789 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-08 15:26:24,789 - config - INFO - .env file exists: True
+2025-07-08 15:26:24,790 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-08 15:26:24,790 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-08 15:26:24,790 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-08 15:26:24,791 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-08 15:26:24,791 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-08 15:26:25,744 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-08 15:26:25,745 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-08 15:26:26,661 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-08 15:26:27,354 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-08 15:29:19,720 - middleware - INFO - [INCOMING] GET request to /google-trends
+2025-07-08 15:29:19,722 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 15:29:19,722 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-08 15:29:19,726 - routes - INFO - [GOOGLE TRENDS] Fetching enhanced trends for query: salla.com
+2025-07-08 15:29:19,727 - routes - INFO - [GOOGLE TRENDS] Processing keywords: ['salla.com'], timeframe: today 12-m, geo: 
+2025-07-08 15:29:19,728 - clients.google_trends_client - INFO - 🚀 Fetching all Google Trends data for: ['salla.com']
+2025-07-08 15:29:21,593 - clients.google_trends_client - INFO - ✅ Interest over time data fetched successfully
+2025-07-08 15:29:22,795 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Interest by Region': HTTPSConnectionPool(host='trends.google.com', port=443): Max retries exceeded with url: /trends/api/widgetdata/comparedgeo?req=%7B%22geo%22%3A+%7B%7D%2C+%22comparisonItem%22%3A+%5B%7B%22time%22%3A+%222024-07-08+2025-07-08%22%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22salla.com%22%7D%5D%7D%7D%5D%2C+%22resolution%22%3A+%22REGION%22%2C+%22locale%22%3A+%22en-US%22%2C+%22requestOptions%22%3A+%7B%22property%22%3A+%22%22%2C+%22backend%22%3A+%22IZG%22%2C+%22category%22%3A+0%7D%2C+%22userConfig%22%3A+%7B%22userType%22%3A+%22USER_TYPE_SCRAPER%22%7D%2C+%22includeLowSearchVolumeGeos%22%3A+false%7D&token=APP6_UEAAAAAaG58wug9sE1bcKeAjCQ9XtcJZER2X_c_&tz=360 (Caused by ResponseError('too many 500 error responses'))
+2025-07-08 15:29:23,536 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Queries': list index out of range
+2025-07-08 15:29:24,244 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Topics': list index out of range
+2025-07-08 15:29:24,252 - clients.google_trends_client - ERROR - ❌ A critical error occurred during data fetching: 'GoogleTrendsClient' object has no attribute '_generate_comparison_insights'
+2025-07-08 15:29:24,252 - routes - ERROR - [ERROR] Google Trends client returned error: 'GoogleTrendsClient' object has no attribute '_generate_comparison_insights'
+2025-07-08 15:29:24,254 - middleware - INFO - [RESPONSE] GET /google-trends
+2025-07-08 15:29:24,254 - middleware - INFO -    Status: 500
+2025-07-08 15:29:24,255 - middleware - INFO -    Processing time: 4.535s
+2025-07-08 15:29:59,106 - __main__ - INFO - Backend starting up...
+2025-07-08 15:29:59,107 - __main__ - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-08 15:29:59,107 - __main__ - INFO - .env file exists: True
+2025-07-08 15:29:59,108 - __main__ - INFO - SUPABASE_URL configured: Yes
+2025-07-08 15:29:59,108 - __main__ - INFO - SUPABASE_KEY configured: Yes
+2025-07-08 15:34:40,154 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-08 15:34:40,161 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-08 15:34:40,162 - config - INFO - Backend starting up...
+2025-07-08 15:34:40,162 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-08 15:34:40,163 - config - INFO - .env file exists: True
+2025-07-08 15:34:40,163 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-08 15:34:40,163 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-08 15:34:40,163 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-08 15:34:40,165 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-08 15:34:40,165 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-08 15:34:40,796 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-08 15:34:40,797 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-08 15:34:41,890 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-08 15:34:42,712 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-08 15:34:58,624 - middleware - INFO - [INCOMING] GET request to /google-trends
+2025-07-08 15:34:58,625 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 15:34:58,625 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-08 15:34:58,627 - routes - INFO - [GOOGLE TRENDS] Fetching enhanced trends for query: tunisia
+2025-07-08 15:34:58,627 - routes - INFO - [GOOGLE TRENDS] Processing keywords: ['tunisia'], timeframe: today 12-m, geo: 
+2025-07-08 15:34:58,627 - clients.google_trends_client - INFO - 🚀 Fetching all Google Trends data for: ['tunisia']
+2025-07-08 15:35:00,597 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Interest Over Time': HTTPSConnectionPool(host='trends.google.com', port=443): Max retries exceeded with url: /trends/api/widgetdata/multiline?req=%7B%22time%22%3A+%222024-07-08+2025-07-08%22%2C+%22resolution%22%3A+%22WEEK%22%2C+%22locale%22%3A+%22en-US%22%2C+%22comparisonItem%22%3A+%5B%7B%22geo%22%3A+%7B%7D%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22tunisia%22%7D%5D%7D%7D%5D%2C+%22requestOptions%22%3A+%7B%22property%22%3A+%22%22%2C+%22backend%22%3A+%22IZG%22%2C+%22category%22%3A+0%7D%2C+%22userConfig%22%3A+%7B%22userType%22%3A+%22USER_TYPE_SCRAPER%22%7D%7D&token=APP6_UEAAAAAaG5-FeY9561tjTnkxsPu9eVeW-Aejp34&tz=360 (Caused by ResponseError('too many 429 error responses'))
+2025-07-08 15:35:01,771 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Interest by Region': HTTPSConnectionPool(host='trends.google.com', port=443): Max retries exceeded with url: /trends/api/widgetdata/comparedgeo?req=%7B%22geo%22%3A+%7B%7D%2C+%22comparisonItem%22%3A+%5B%7B%22time%22%3A+%222024-07-08+2025-07-08%22%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22tunisia%22%7D%5D%7D%7D%5D%2C+%22resolution%22%3A+%22REGION%22%2C+%22locale%22%3A+%22en-US%22%2C+%22requestOptions%22%3A+%7B%22property%22%3A+%22%22%2C+%22backend%22%3A+%22IZG%22%2C+%22category%22%3A+0%7D%2C+%22userConfig%22%3A+%7B%22userType%22%3A+%22USER_TYPE_SCRAPER%22%7D%2C+%22includeLowSearchVolumeGeos%22%3A+false%7D&token=APP6_UEAAAAAaG5-FZCfM11oa-Fy2qE06SzAMb2TqTp0&tz=360 (Caused by ResponseError('too many 500 error responses'))
+2025-07-08 15:35:02,505 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Queries': list index out of range
+2025-07-08 15:35:03,442 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Topics': list index out of range
+2025-07-08 15:35:03,442 - clients.google_trends_client - ERROR - ❌ A critical error occurred during data fetching: cannot access local variable 'interest_over_time' where it is not associated with a value
+2025-07-08 15:35:03,442 - routes - ERROR - [ERROR] Google Trends client returned error: cannot access local variable 'interest_over_time' where it is not associated with a value
+2025-07-08 15:35:03,445 - middleware - INFO - [RESPONSE] GET /google-trends
+2025-07-08 15:35:03,445 - middleware - INFO -    Status: 500
+2025-07-08 15:35:03,445 - middleware - INFO -    Processing time: 4.821s
+2025-07-08 15:38:38,121 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-08 15:38:38,129 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-08 15:38:38,131 - config - INFO - Backend starting up...
+2025-07-08 15:38:38,131 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-08 15:38:38,132 - config - INFO - .env file exists: True
+2025-07-08 15:38:38,132 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-08 15:38:38,133 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-08 15:38:38,133 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-08 15:38:38,133 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-08 15:38:38,134 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-08 15:38:38,640 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-08 15:38:38,642 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-08 15:38:39,332 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-08 15:38:40,026 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-08 15:40:02,679 - middleware - INFO - [INCOMING] GET request to /google-trends
+2025-07-08 15:40:02,680 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 15:40:02,680 - middleware - INFO -    Headers: {'user-agent': 'Mozilla/5.0 (Windows NT; Windows NT 10.0; fr-CA) WindowsPowerShell/5.1.26100.4484', 'host': 'localhost:8000', 'connection': 'Keep-Alive'}
+2025-07-08 15:40:02,681 - routes - INFO - [GOOGLE TRENDS] Fetching enhanced trends for query: python
+2025-07-08 15:40:02,681 - routes - INFO - [GOOGLE TRENDS] Processing keywords: ['python'], timeframe: today 12-m, geo: 
+2025-07-08 15:40:02,681 - clients.google_trends_client - INFO - 🚀 Fetching all Google Trends data for: ['python']
+2025-07-08 15:40:04,336 - clients.google_trends_client - INFO - ✅ Interest over time data fetched successfully
+2025-07-08 15:40:07,208 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Interest by Region': HTTPSConnectionPool(host='trends.google.com', port=443): Max retries exceeded with url: /trends/api/widgetdata/comparedgeo?req=%7B%22geo%22%3A+%7B%7D%2C+%22comparisonItem%22%3A+%5B%7B%22time%22%3A+%222024-07-08+2025-07-08%22%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22python%22%7D%5D%7D%7D%5D%2C+%22resolution%22%3A+%22REGION%22%2C+%22locale%22%3A+%22en-US%22%2C+%22requestOptions%22%3A+%7B%22property%22%3A+%22%22%2C+%22backend%22%3A+%22IZG%22%2C+%22category%22%3A+0%7D%2C+%22userConfig%22%3A+%7B%22userType%22%3A+%22USER_TYPE_SCRAPER%22%7D%2C+%22includeLowSearchVolumeGeos%22%3A+false%7D&token=APP6_UEAAAAAaG5_RS1O6PJpvs7OlpPg08FmDNLbyi2g&tz=360 (Caused by ResponseError('too many 500 error responses'))
+2025-07-08 15:40:10,110 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Queries': list index out of range
+2025-07-08 15:40:12,845 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Topics': list index out of range
+2025-07-08 15:40:15,467 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Trending Searches': The request failed: Google returned a response with code 404
+2025-07-08 15:40:15,469 - clients.google_trends_client - INFO - ✅ All Google Trends data fetching complete
+2025-07-08 15:40:15,469 - routes - INFO - [SUCCESS] Enhanced Google Trends data fetched successfully for 1 keywords
+2025-07-08 15:40:15,470 - middleware - ERROR - [ERROR] Error in middleware: [TypeError("'numpy.int32' object is not iterable"), TypeError('vars() argument must have __dict__ attribute')]
+2025-07-08 15:40:15,471 - middleware - ERROR -    Processing time: 12.791s
+2025-07-08 15:44:39,594 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-08 15:44:39,601 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-08 15:44:39,603 - config - INFO - Backend starting up...
+2025-07-08 15:44:39,603 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-08 15:44:39,603 - config - INFO - .env file exists: True
+2025-07-08 15:44:39,603 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-08 15:44:39,604 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-08 15:44:39,605 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-08 15:44:39,606 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-08 15:44:39,606 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-08 15:44:40,161 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-08 15:44:40,161 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-08 15:44:41,076 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-08 15:44:41,932 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-08 15:45:07,928 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-08 15:45:07,932 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-08 15:45:07,933 - config - INFO - Backend starting up...
+2025-07-08 15:45:07,933 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-08 15:45:07,934 - config - INFO - .env file exists: True
+2025-07-08 15:45:07,934 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-08 15:45:07,934 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-08 15:45:07,934 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-08 15:45:07,934 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-08 15:45:07,935 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-08 15:45:08,281 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-08 15:45:08,281 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-08 15:45:08,710 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-08 15:45:09,498 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-08 15:45:35,815 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-08 15:45:35,825 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-08 15:45:35,826 - config - INFO - Backend starting up...
+2025-07-08 15:45:35,826 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-08 15:45:35,826 - config - INFO - .env file exists: True
+2025-07-08 15:45:35,827 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-08 15:45:35,827 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-08 15:45:35,828 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-08 15:45:35,828 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-08 15:45:35,828 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-08 15:45:36,189 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-08 15:45:36,190 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-08 15:45:36,635 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-08 15:45:37,288 - clients.google_trends_client - INFO - Google Trends client initialized successfully
