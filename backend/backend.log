@@ -4955,3 +4955,90 @@
 2025-07-08 16:07:07,213 - middleware - INFO - [RESPONSE] GET /google-trends
 2025-07-08 16:07:07,213 - middleware - INFO -    Status: 200
 2025-07-08 16:07:07,213 - middleware - INFO -    Processing time: 13.237s
+2025-07-08 16:45:00,484 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-08 16:45:00,495 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-08 16:45:00,497 - config - INFO - Backend starting up...
+2025-07-08 16:45:00,497 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-08 16:45:00,497 - config - INFO - .env file exists: True
+2025-07-08 16:45:00,499 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-08 16:45:00,499 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-08 16:45:00,500 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-08 16:45:00,500 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-08 16:45:00,501 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-08 16:45:00,930 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-08 16:45:00,930 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-08 16:45:01,584 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-08 16:45:02,444 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-08 16:46:14,539 - middleware - INFO - [INCOMING] GET request to /google-trends
+2025-07-08 16:46:14,544 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 16:46:14,544 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-08 16:46:14,547 - routes - INFO - [GOOGLE TRENDS] Fetching enhanced trends for query: messi
+2025-07-08 16:46:14,549 - routes - INFO - [GOOGLE TRENDS] Processing keywords: ['messi'], timeframe: today 12-m, geo: 
+2025-07-08 16:46:14,555 - clients.google_trends_client - INFO - 🚀 Fetching all Google Trends data for: ['messi']
+2025-07-08 16:46:18,621 - clients.google_trends_client - ERROR - Error converting DataFrame to dict: module 'numpy' has no attribute 'boolean'
+2025-07-08 16:46:18,628 - clients.google_trends_client - INFO - ✅ Interest over time data fetched successfully
+2025-07-08 16:46:21,939 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Interest by Region': HTTPSConnectionPool(host='trends.google.com', port=443): Max retries exceeded with url: /trends/api/widgetdata/comparedgeo?req=%7B%22geo%22%3A+%7B%7D%2C+%22comparisonItem%22%3A+%5B%7B%22time%22%3A+%222024-07-08+2025-07-08%22%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22messi%22%7D%5D%7D%7D%5D%2C+%22resolution%22%3A+%22REGION%22%2C+%22locale%22%3A+%22en-US%22%2C+%22requestOptions%22%3A+%7B%22property%22%3A+%22%22%2C+%22backend%22%3A+%22IZG%22%2C+%22category%22%3A+0%7D%2C+%22userConfig%22%3A+%7B%22userType%22%3A+%22USER_TYPE_SCRAPER%22%7D%2C+%22includeLowSearchVolumeGeos%22%3A+false%7D&token=APP6_UEAAAAAaG6Oyt7LnH2bqIjKHz7aqZ6lpRX9X-or&tz=360 (Caused by ResponseError('too many 500 error responses'))
+2025-07-08 16:46:25,118 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Queries': list index out of range
+2025-07-08 16:46:28,193 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Topics': list index out of range
+2025-07-08 16:46:28,208 - clients.google_trends_client - ERROR - Error generating enhanced summary: module 'numpy' has no attribute 'boolean'
+2025-07-08 16:46:28,233 - clients.google_trends_client - ERROR - Error analyzing seasonal patterns: module 'numpy' has no attribute 'boolean'
+2025-07-08 16:46:31,344 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Trending Searches': The request failed: Google returned a response with code 404
+2025-07-08 16:46:31,347 - clients.google_trends_client - INFO - ✅ All Google Trends data fetching complete
+2025-07-08 16:46:31,350 - routes - INFO - [SUCCESS] Enhanced Google Trends data fetched successfully for 1 keywords
+2025-07-08 16:46:31,357 - middleware - INFO - [RESPONSE] GET /google-trends
+2025-07-08 16:46:31,357 - middleware - INFO -    Status: 200
+2025-07-08 16:46:31,358 - middleware - INFO -    Processing time: 16.817s
+2025-07-08 16:50:04,220 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-08 16:50:04,229 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-08 16:50:04,230 - config - INFO - Backend starting up...
+2025-07-08 16:50:04,230 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-08 16:50:04,231 - config - INFO - .env file exists: True
+2025-07-08 16:50:04,232 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-08 16:50:04,232 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-08 16:50:04,233 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-08 16:50:04,233 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-08 16:50:04,233 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-08 16:50:04,767 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-08 16:50:04,767 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-08 16:50:05,335 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-08 16:50:06,662 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-08 16:50:13,846 - middleware - INFO - [INCOMING] GET request to /google-trends
+2025-07-08 16:50:13,848 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 16:50:13,849 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-08 16:50:13,850 - routes - INFO - [GOOGLE TRENDS] Fetching enhanced trends for query: earpods
+2025-07-08 16:50:13,851 - routes - INFO - [GOOGLE TRENDS] Processing keywords: ['earpods'], timeframe: today 12-m, geo: 
+2025-07-08 16:50:13,852 - clients.google_trends_client - INFO - 🚀 Fetching all Google Trends data for: ['earpods']
+2025-07-08 16:50:18,356 - clients.google_trends_client - ERROR - Error converting DataFrame to dict: module 'numpy' has no attribute 'boolean'
+2025-07-08 16:50:18,362 - clients.google_trends_client - INFO - ✅ Interest over time data fetched successfully
+2025-07-08 16:50:25,043 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Interest by Region': HTTPSConnectionPool(host='trends.google.com', port=443): Max retries exceeded with url: /trends/api/widgetdata/comparedgeo?req=%7B%22geo%22%3A+%7B%7D%2C+%22comparisonItem%22%3A+%5B%7B%22time%22%3A+%222024-07-08+2025-07-08%22%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22earpods%22%7D%5D%7D%7D%5D%2C+%22resolution%22%3A+%22REGION%22%2C+%22locale%22%3A+%22en-US%22%2C+%22requestOptions%22%3A+%7B%22property%22%3A+%22%22%2C+%22backend%22%3A+%22IZG%22%2C+%22category%22%3A+0%7D%2C+%22userConfig%22%3A+%7B%22userType%22%3A+%22USER_TYPE_SCRAPER%22%7D%2C+%22includeLowSearchVolumeGeos%22%3A+false%7D&token=APP6_UEAAAAAaG6PuoVzsiYOei0gCeSR3PLrbfbcFTrU&tz=360 (Caused by ResponseError('too many 500 error responses'))
+2025-07-08 16:50:28,271 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Queries': list index out of range
+2025-07-08 16:50:31,532 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Topics': list index out of range
+2025-07-08 16:50:31,533 - clients.google_trends_client - ERROR - Error generating enhanced summary: module 'numpy' has no attribute 'boolean'
+2025-07-08 16:50:31,535 - clients.google_trends_client - ERROR - Error analyzing seasonal patterns: module 'numpy' has no attribute 'boolean'
+2025-07-08 16:50:34,432 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Trending Searches': The request failed: Google returned a response with code 404
+2025-07-08 16:50:34,434 - clients.google_trends_client - INFO - ✅ All Google Trends data fetching complete
+2025-07-08 16:50:34,434 - routes - INFO - [SUCCESS] Enhanced Google Trends data fetched successfully for 1 keywords
+2025-07-08 16:50:34,437 - middleware - INFO - [RESPONSE] GET /google-trends
+2025-07-08 16:50:34,437 - middleware - INFO -    Status: 200
+2025-07-08 16:50:34,438 - middleware - INFO -    Processing time: 20.591s
+2025-07-08 16:50:55,009 - middleware - INFO - [INCOMING] GET request to /google-trends
+2025-07-08 16:50:55,012 - middleware - INFO -    Client: 127.0.0.1
+2025-07-08 16:50:55,012 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-08 16:50:55,014 - routes - INFO - [GOOGLE TRENDS] Fetching enhanced trends for query: earpods
+2025-07-08 16:50:55,014 - routes - INFO - [GOOGLE TRENDS] Processing keywords: ['earpods'], timeframe: today 12-m, geo: FR
+2025-07-08 16:50:55,014 - clients.google_trends_client - INFO - 🚀 Fetching all Google Trends data for: ['earpods']
+2025-07-08 16:50:57,776 - clients.google_trends_client - ERROR - Error converting DataFrame to dict: module 'numpy' has no attribute 'boolean'
+2025-07-08 16:50:57,779 - clients.google_trends_client - INFO - ✅ Interest over time data fetched successfully
+2025-07-08 16:51:01,237 - clients.google_trends_client - ERROR - Error converting DataFrame to dict: module 'numpy' has no attribute 'boolean'
+2025-07-08 16:51:01,245 - clients.google_trends_client - ERROR - Error processing regional data: module 'numpy' has no attribute 'boolean'
+2025-07-08 16:51:01,248 - clients.google_trends_client - INFO - ✅ Interest by region data fetched successfully
+2025-07-08 16:51:08,484 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Queries': list index out of range
+2025-07-08 16:51:11,471 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Topics': list index out of range
+2025-07-08 16:51:11,472 - clients.google_trends_client - ERROR - Error generating enhanced summary: module 'numpy' has no attribute 'boolean'
+2025-07-08 16:51:11,475 - clients.google_trends_client - ERROR - Error analyzing seasonal patterns: module 'numpy' has no attribute 'boolean'
+2025-07-08 16:51:14,387 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Trending Searches': The request failed: Google returned a response with code 404
+2025-07-08 16:51:14,389 - clients.google_trends_client - INFO - ✅ All Google Trends data fetching complete
+2025-07-08 16:51:14,391 - routes - INFO - [SUCCESS] Enhanced Google Trends data fetched successfully for 1 keywords
+2025-07-08 16:51:14,393 - middleware - INFO - [RESPONSE] GET /google-trends
+2025-07-08 16:51:14,394 - middleware - INFO -    Status: 200
+2025-07-08 16:51:14,394 - middleware - INFO -    Processing time: 19.384s
