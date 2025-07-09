@@ -8,7 +8,7 @@ from typing import List
 from datetime import datetime
 from fastapi import APIRouter, HTTPException
 from config import config
-from models import WebsiteAnalysisRequest, AnalysisResponse, ChatMessage, ChatResponse, ApifyResult, GoogleTrendsRequest, GoogleTrendsResponse
+from models import WebsiteAnalysisRequest, AnalysisResponse, ChatMessage, ChatResponse, ApifyResult, GoogleTrendsRequest, GoogleTrendsResponse, BuiltWithAnalysisResponse, BuiltWithOnlyResult
 from mock_data import get_mock_data
 from clients import ApifyClient, OpenRouterClient
 from clients.builtwith_client_fixed import BuiltWithClientFixed
@@ -59,94 +59,42 @@ async def analyze_websites(request: WebsiteAnalysisRequest):
     logger.info(f"API Token Status - APIFY: {'YES' if config.apify_token else 'NO'}")
     print(f"APIFY_API_TOKEN: {'YES' if config.apify_token else 'NO'}")
     
-    if not config.apify_token:
-        logger.warning("[MOCK] No Apify API token found, using mock data")
-        print("[MOCK] No Apify API token found, using mock data")
-        
-        # Return mock data WITHOUT BuiltWith analysis initially
-        mock_data = get_mock_data()
-        
-        # Remove BuiltWith data for step-by-step process
-        for item in mock_data:
-            item.builtwith_result = None
-        
-        # Save to Supabase with session tracking
-        session_id = await db_service.save_analysis_session(
-            user_id=request.userId,
-            domains=request.websites,
-            similarweb_data=mock_data
-        )
-
-        logger.info("[SUCCESS] Step 1 (SimilarWeb) completed with mock data")
-        print("[SUCCESS] Step 1 (SimilarWeb) completed with mock data")
-        return AnalysisResponse(
-            success=True,
-            data=mock_data,
-            count=len(mock_data),
-            note=f"Step 1 complete: SimilarWeb analysis ready. Click 'Analyze Tech Stack' to continue.",
-            session_id=session_id
-        )
-
+    # TEMPORARY: Force mock data usage for debugging
+    logger.warning("[DEBUG] Forcing mock data usage for debugging")
+    print("[DEBUG] Forcing mock data usage for debugging")
+    
+    # Return mock data WITHOUT BuiltWith analysis initially
+    mock_data = get_mock_data()
+    print(f"[DEBUG] Generated {len(mock_data)} mock results")
+    
+    # Remove BuiltWith data for step-by-step process
+    for item in mock_data:
+        item.builtwith_result = None
+    
+    # Save to Supabase with session tracking
     try:
-        logger.info("[API] Fetching data from Apify API...")
-        print("[API] Fetching data from Apify API...")
-        
-        # Get SimilarWeb data only
-        results = await apify_client.analyze_domains(request.websites)
-        
-        # Ensure no BuiltWith data is included yet
-        for result in results:
-            result.builtwith_result = None
-        
-        # Save to Supabase with session tracking
-        session_id = await db_service.save_analysis_session(
-            user_id=request.userId,
-            domains=request.websites,
-            similarweb_data=results
-        )
-
-        logger.info("[SUCCESS] Step 1 (SimilarWeb) completed successfully")
-        print("[SUCCESS] Step 1 (SimilarWeb) completed successfully")
-        return AnalysisResponse(
-            success=True,
-            data=results,
-            count=len(results),
-            note=f"Step 1 complete: SimilarWeb analysis ready. Click 'Analyze Tech Stack' to continue.",
-            session_id=session_id
-        )
-
-    except Exception as e:
-        logger.error(f"[ERROR] Error with Apify API: {str(e)}")
-        print(f"[ERROR] Error with Apify API: {str(e)}")
-        logger.warning("[FALLBACK] Falling back to mock data")
-        print("[FALLBACK] Falling back to mock data")
-        
-        # Fall back to mock data if API fails
-        mock_data = get_mock_data()
-        
-        # Remove BuiltWith data for step-by-step process
-        for item in mock_data:
-            item.builtwith_result = None
-        
-        # Save to Supabase with session tracking
         session_id = await db_service.save_analysis_session(
             user_id=request.userId,
             domains=request.websites,
             similarweb_data=mock_data
         )
-            
-        logger.info("[SUCCESS] Step 1 (SimilarWeb) completed with fallback data")
-        print("[SUCCESS] Step 1 (SimilarWeb) completed with fallback data")
-        return AnalysisResponse(
-            success=True,
-            data=mock_data,
-            count=len(mock_data),
-            note=f"Step 1 complete (with fallback): SimilarWeb analysis ready. API Error: {str(e)}",
-            session_id=session_id
-        )
+        print(f"[DEBUG] Saved to database with session_id: {session_id}")
+    except Exception as e:
+        print(f"[DEBUG] Warning: Could not save to database: {e}")
+        session_id = None
+
+    logger.info("[SUCCESS] Step 1 (SimilarWeb) completed with debug mock data")
+    print("[SUCCESS] Step 1 (SimilarWeb) completed with debug mock data")
+    return AnalysisResponse(
+        success=True,
+        data=mock_data,
+        count=len(mock_data),
+        note=f"Step 1 complete: SimilarWeb analysis ready. Click 'Analyze Tech Stack' to continue. (Debug: Using mock data)",
+        session_id=session_id
+    )
 
 
-@router.post("/api/analyze-tech-stack", response_model=AnalysisResponse)
+@router.post("/api/analyze-tech-stack", response_model=BuiltWithAnalysisResponse)
 async def analyze_tech_stack(request: WebsiteAnalysisRequest):
     """Step 2: Add BuiltWith technology analysis to existing SimilarWeb data"""
     logger.info(f"[TECH] Starting tech stack analysis for {len(request.websites)} websites")
@@ -227,20 +175,47 @@ async def analyze_tech_stack(request: WebsiteAnalysisRequest):
         print("\n" + "=" * 60)
         print("[SAVE] Saving enhanced data (SimilarWeb + BuiltWith) to Supabase...")
         
+        # Create a clean copy for BuiltWith data (only tech stack, no duplicate traffic data)
+        builtwith_only_results = []
+        for i, result in enumerate(results):
+            if i < len(request.websites):
+                domain = request.websites[i]
+            else:
+                domain = result.name.lower().replace(" ", "") + ".com"
+                
+            builtwith_only_results.append(BuiltWithOnlyResult(
+                domain=domain,
+                name=result.name,
+                builtwith_result=result.builtwith_result
+            ))
+        
         # Save enhanced data to Supabase - update existing session or create new one
+        # Convert BuiltWithOnlyResult objects to dictionaries for database storage
+        builtwith_data_for_db = [
+            {
+                "domain": item.domain,
+                "name": item.name,
+                "builtwith_result": item.builtwith_result.dict() if item.builtwith_result else None
+            }
+            for item in builtwith_only_results
+        ]
+        
+        # Convert ApifyResult objects to dictionaries for database storage
+        results_for_db = [result.dict() for result in results]
+        
         if user_history and user_history[0].get('id'):
-            # Update existing session with BuiltWith data
+            # Update existing session with BuiltWith data only
             await db_service.update_analysis_session(
                 session_id=user_history[0]['id'],
-                builtwith_data=results
+                builtwith_data=builtwith_data_for_db
             )
         else:
             # Create new session with both SimilarWeb and BuiltWith data
             await db_service.save_analysis_session(
                 user_id=request.userId,
                 domains=request.websites,
-                similarweb_data=results,
-                builtwith_data=results
+                similarweb_data=results_for_db,
+                builtwith_data=builtwith_data_for_db
             )
 
         # Calculate summary statistics
@@ -254,33 +229,20 @@ async def analyze_tech_stack(request: WebsiteAnalysisRequest):
         print(f"   Total technologies found: {total_technologies}")
         print("=" * 60)
 
-        return AnalysisResponse(
+        return BuiltWithAnalysisResponse(
             success=True,
-            data=results,
-            count=len(results),
+            data=builtwith_only_results,
+            count=len(builtwith_only_results),
             note=f"Step 2 complete: BuiltWith analysis added. Found {total_technologies} technologies across {len(results)} websites."
         )
 
     except Exception as e:
         print(f"\n[ERROR] Error in BuiltWith analysis: {str(e)}")
-        print("[FALLBACK] Falling back to mock BuiltWith data...")
-        
-        # Fallback: use mock data with BuiltWith analysis
-        mock_data = get_mock_data()
-        
-        # Save fallback data to Supabase
-        await db_service.save_analysis_session(
-            user_id=request.userId,
-            domains=request.websites,
-            similarweb_data=mock_data,
-            builtwith_data=mock_data
-        )
-            
-        return AnalysisResponse(
-            success=True,
-            data=mock_data,
-            count=len(mock_data),
-            note=f"Step 2 complete (with fallback): BuiltWith analysis added. Error: {str(e)}"
+        # DO NOT FALL BACK TO MOCK DATA HERE
+        # Instead, raise an HTTPException that the frontend can handle.
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to analyze technology stack. An internal error occurred: {str(e)}"
         )
 
 
@@ -298,12 +260,12 @@ async def chat_with_analysis(request: ChatMessage):
         response = await openrouter_client.chat_completion(request.message, request.analysis_data)
         
         # Save chat message to database if session_id is provided
-        if hasattr(request, 'session_id') and request.session_id:
-            await db_service.save_chat_message(
-                session_id=request.session_id,
-                message=request.message,
-                response=response.response
-            )
+        # if hasattr(request, 'session_id') and request.session_id:
+        #     await db_service.save_chat_message(
+        #         session_id=request.session_id,
+        #         message=request.message,
+        #         response=response.response
+        #     )
         
         logger.info(f"[SUCCESS] Chat response generated successfully")
         print(f"[SUCCESS] Chat response generated successfully")

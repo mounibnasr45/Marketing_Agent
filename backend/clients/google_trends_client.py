@@ -99,7 +99,7 @@ class GoogleTrendsClient:
                 
             try:
                 interest_by_region = self.pytrends.interest_by_region(resolution='REGION')
-                all_data['interest_by_region'] = self._df_to_dict(interest_by_region)
+                all_data['interest_by_region'] = self._process_regional_interest(interest_by_region)
                 all_data['regional_breakdown'] = self._process_regional_data(interest_by_region, processed_keywords)
                 all_data['chart_data']['bar_chart'] = self._prepare_bar_chart_data(interest_by_region, processed_keywords)
                 logger.info("✅ Interest by region data fetched successfully")
@@ -244,7 +244,7 @@ class GoogleTrendsClient:
                 'interest_over_time': self._df_to_dict(interest_over_time),
                 'related_queries': self._process_related_queries(related_queries),
                 'related_topics': self._process_related_topics(related_topics),
-                'regional_interest': self._df_to_dict(regional_interest),
+                'regional_interest': self._process_regional_interest(regional_interest),
                 'summary': self._generate_summary(interest_over_time, cleaned_keywords)
             }
             
@@ -748,4 +748,32 @@ class GoogleTrendsClient:
             
         except Exception as e:
             logger.error(f"Error generating comparison insights: {str(e)}")
+            return {}
+    
+    def _process_regional_interest(self, df: pd.DataFrame) -> Dict:
+        """
+        Process regional interest data and filter out countries with all zero values
+        to reduce token usage in chat context
+        """
+        if df is None or df.empty:
+            return {}
+            
+        try:
+            # Convert DataFrame to dictionary first
+            result_dict = self._df_to_dict(df)
+            
+            # Filter out countries where all keyword values are 0
+            filtered_dict = {}
+            for country, keyword_values in result_dict.items():
+                # Check if any keyword has a value > 0 for this country
+                has_non_zero = any(value > 0 for value in keyword_values.values() if isinstance(value, (int, float)))
+                
+                if has_non_zero:
+                    filtered_dict[country] = keyword_values
+            
+            logger.info(f"Regional interest: Filtered from {len(result_dict)} to {len(filtered_dict)} countries with non-zero values")
+            return filtered_dict
+            
+        except Exception as e:
+            logger.error(f"Error processing regional interest: {str(e)}")
             return {}

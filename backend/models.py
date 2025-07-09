@@ -110,3 +110,17 @@ class GoogleTrendsResponse(BaseModel):
     success: bool
     data: Optional[dict] = None
     error: Optional[str] = None
+
+
+class BuiltWithOnlyResult(BaseModel):
+    domain: str
+    name: str
+    builtwith_result: Optional[BuiltWithResult] = None
+
+
+class BuiltWithAnalysisResponse(BaseModel):
+    success: bool
+    data: List[BuiltWithOnlyResult]
+    count: int
+    note: Optional[str] = None
+    session_id: Optional[str] = None
