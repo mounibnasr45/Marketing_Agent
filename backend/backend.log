@@ -7229,3 +7229,142 @@ Traceback (most recent call last):
   File "C:\Users\mouni\anaconda3\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
     self._sock.shutdown(socket.SHUT_RDWR)
 ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2025-07-09 12:39:59,880 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-09 12:39:59,888 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-09 12:39:59,889 - config - INFO - Backend starting up...
+2025-07-09 12:39:59,890 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-09 12:39:59,890 - config - INFO - .env file exists: True
+2025-07-09 12:39:59,891 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-09 12:39:59,891 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-09 12:39:59,892 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-09 12:39:59,893 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-09 12:39:59,894 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-09 12:40:00,431 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-09 12:40:00,431 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-09 12:40:01,156 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-09 12:40:02,015 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-09 12:40:18,465 - middleware - INFO - [INCOMING] OPTIONS request to /api/analyze
+2025-07-09 12:40:18,465 - middleware - INFO -    Client: 127.0.0.1
+2025-07-09 12:40:18,465 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'accept': '*/*', 'access-control-request-method': 'POST', 'access-control-request-headers': 'content-type', 'origin': 'http://25.49.42.97:3000', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'cross-site', 'sec-fetch-dest': 'empty', 'referer': 'http://25.49.42.97:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-09 12:40:18,466 - middleware - INFO - [RESPONSE] OPTIONS /api/analyze
+2025-07-09 12:40:18,467 - middleware - INFO -    Status: 200
+2025-07-09 12:40:18,467 - middleware - INFO -    Processing time: 0.002s
+2025-07-09 12:40:18,472 - middleware - INFO - [INCOMING] POST request to /api/analyze
+2025-07-09 12:40:18,473 - middleware - INFO -    Client: 127.0.0.1
+2025-07-09 12:40:18,473 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '66', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://25.49.42.97:3000', 'sec-fetch-site': 'cross-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://25.49.42.97:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-09 12:40:18,474 - routes - INFO - [ANALYZE] Starting website analysis for 1 websites
+2025-07-09 12:40:18,475 - routes - INFO -    Websites: ['https://www.zennioptical.com/']
+2025-07-09 12:40:18,475 - routes - INFO -    User ID: user-123
+2025-07-09 12:40:18,477 - routes - INFO - [START] Starting SimilarWeb Analysis (Step 1)
+2025-07-09 12:40:18,479 - routes - INFO - API Token Status - APIFY: YES
+2025-07-09 12:40:18,479 - routes - INFO - [API] Fetching data from Apify API...
+2025-07-09 12:40:19,882 - httpx - INFO - HTTP Request: POST https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs "HTTP/1.1 201 Created"
+2025-07-09 12:40:25,062 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:40:30,829 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:40:36,546 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:40:41,800 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:40:46,975 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:40:52,599 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:40:58,268 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:41:04,194 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:41:09,857 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:41:15,489 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:41:20,750 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:41:26,317 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:41:31,990 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:41:37,713 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:41:43,522 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:41:48,816 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:41:54,010 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:42:00,007 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:42:05,824 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:42:11,518 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:42:17,294 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:42:22,944 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/1AVFGmLoncbFZ2pbl "HTTP/1.1 200 OK"
+2025-07-09 12:42:23,124 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/datasets/tTVWMcjuOkS6I3ncF/items "HTTP/1.1 200 OK"
+2025-07-09 12:42:23,132 - database_service - INFO - Generated UUID 3a1b8473-3492-5076-98f9-b2dfa6d37933 for user_id: user-123
+2025-07-09 12:42:23,622 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=id&id=eq.3a1b8473-3492-5076-98f9-b2dfa6d37933 "HTTP/1.1 200 OK"
+2025-07-09 12:42:23,631 - database_service - INFO - User record already exists: 3a1b8473-3492-5076-98f9-b2dfa6d37933
+2025-07-09 12:42:23,632 - database_service - INFO - Generated UUID 3a1b8473-3492-5076-98f9-b2dfa6d37933 for user_id: user-123
+2025-07-09 12:42:23,905 - httpx - INFO - HTTP Request: POST https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions "HTTP/1.1 201 Created"
+2025-07-09 12:42:23,908 - database_service - INFO - Analysis session saved successfully: 53d3a5dc-4d51-44b6-8797-cbbd5a489539
+2025-07-09 12:42:23,908 - routes - INFO - [SUCCESS] Step 1 (SimilarWeb) completed successfully
+2025-07-09 12:42:23,911 - middleware - INFO - [RESPONSE] POST /api/analyze
+2025-07-09 12:42:23,911 - middleware - INFO -    Status: 200
+2025-07-09 12:42:23,912 - middleware - INFO -    Processing time: 125.438s
+2025-07-09 12:43:59,533 - middleware - INFO - [INCOMING] OPTIONS request to /api/analyze-tech-stack
+2025-07-09 12:43:59,534 - middleware - INFO -    Client: 127.0.0.1
+2025-07-09 12:43:59,535 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'accept': '*/*', 'access-control-request-method': 'POST', 'access-control-request-headers': 'content-type', 'origin': 'http://25.49.42.97:3000', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'cross-site', 'sec-fetch-dest': 'empty', 'referer': 'http://25.49.42.97:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-09 12:43:59,536 - middleware - INFO - [RESPONSE] OPTIONS /api/analyze-tech-stack
+2025-07-09 12:43:59,537 - middleware - INFO -    Status: 200
+2025-07-09 12:43:59,537 - middleware - INFO -    Processing time: 0.003s
+2025-07-09 12:43:59,542 - middleware - INFO - [INCOMING] POST request to /api/analyze-tech-stack
+2025-07-09 12:43:59,543 - middleware - INFO -    Client: 127.0.0.1
+2025-07-09 12:43:59,543 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '66', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://25.49.42.97:3000', 'sec-fetch-site': 'cross-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://25.49.42.97:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-09 12:43:59,549 - routes - INFO - [TECH] Starting tech stack analysis for 1 websites
+2025-07-09 12:43:59,550 - routes - INFO -    Websites: ['https://www.zennioptical.com/']
+2025-07-09 12:43:59,550 - routes - INFO -    User ID: user-123
+2025-07-09 12:43:59,550 - routes - INFO - [TECH] Starting BuiltWith Tech Stack Analysis (Step 2)
+2025-07-09 12:43:59,553 - database_service - INFO - Generated UUID 3a1b8473-3492-5076-98f9-b2dfa6d37933 for user_id: user-123
+2025-07-09 12:44:00,179 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions?select=%2A&user_id=eq.3a1b8473-3492-5076-98f9-b2dfa6d37933&order=created_at.desc&limit=1 "HTTP/1.1 200 OK"
+2025-07-09 12:44:00,181 - database_service - INFO - Retrieved 1 analysis sessions for user 3a1b8473-3492-5076-98f9-b2dfa6d37933
+2025-07-09 12:44:01,655 - httpx - INFO - HTTP Request: GET https://api.builtwith.com/v20/api.json?KEY=fd8b0b65-fb2d-46ef-b666-4d69096c9bf8&LOOKUP=https://www.zennioptical.com/ "HTTP/1.1 200 OK"
+2025-07-09 12:44:01,662 - database_service - ERROR - Error updating analysis session: 'dict' object has no attribute 'model_dump'
+2025-07-09 12:44:01,666 - middleware - INFO - [RESPONSE] POST /api/analyze-tech-stack
+2025-07-09 12:44:01,667 - middleware - INFO -    Status: 200
+2025-07-09 12:44:01,669 - middleware - INFO -    Processing time: 2.124s
+2025-07-09 12:44:14,782 - middleware - INFO - [INCOMING] OPTIONS request to /api/google-trends
+2025-07-09 12:44:14,794 - middleware - INFO -    Client: 127.0.0.1
+2025-07-09 12:44:14,794 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'accept': '*/*', 'access-control-request-method': 'POST', 'access-control-request-headers': 'content-type', 'origin': 'http://25.49.42.97:3000', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'cross-site', 'sec-fetch-dest': 'empty', 'referer': 'http://25.49.42.97:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-09 12:44:14,796 - middleware - INFO - [RESPONSE] OPTIONS /api/google-trends
+2025-07-09 12:44:14,797 - middleware - INFO -    Status: 200
+2025-07-09 12:44:14,797 - middleware - INFO -    Processing time: 0.013s
+2025-07-09 12:44:14,802 - middleware - INFO - [INCOMING] POST request to /api/google-trends
+2025-07-09 12:44:14,808 - middleware - INFO -    Client: 127.0.0.1
+2025-07-09 12:44:14,809 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '87', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://25.49.42.97:3000', 'sec-fetch-site': 'cross-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://25.49.42.97:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-09 12:44:14,811 - routes - INFO - [GOOGLE TRENDS] Starting Google Trends analysis for 2 keywords
+2025-07-09 12:44:14,812 - routes - INFO -    Keywords: ['https://www.zennioptical.com/', 'eye glass']
+2025-07-09 12:44:14,812 - routes - INFO -    Timeframe: 12m
+2025-07-09 12:44:14,813 - routes - INFO -    Geography: worldwide
+2025-07-09 12:44:14,814 - routes - INFO - [GOOGLE TRENDS] Converted timeframe: today 12-m, geo: 
+2025-07-09 12:44:14,815 - clients.google_trends_client - INFO - Fetching Google Trends data for keywords: ['https://www.zennioptical.com/', 'eye glass']
+2025-07-09 12:44:14,815 - clients.google_trends_client - INFO - Cleaned keywords: ['https://zennioptical/', 'eye glass']
+2025-07-09 12:44:18,556 - clients.google_trends_client - WARNING - Failed to get related queries: list index out of range
+2025-07-09 12:44:20,155 - clients.google_trends_client - INFO - Regional interest: Filtered from 250 to 0 countries with non-zero values
+2025-07-09 12:44:20,157 - clients.google_trends_client - INFO - Successfully fetched Google Trends data for 2 keywords
+2025-07-09 12:44:20,158 - routes - INFO - [SUCCESS] Google Trends analysis completed successfully
+2025-07-09 12:44:20,161 - middleware - INFO - [RESPONSE] POST /api/google-trends
+2025-07-09 12:44:20,162 - middleware - INFO -    Status: 200
+2025-07-09 12:44:20,163 - middleware - INFO -    Processing time: 5.360s
+2025-07-09 12:48:08,305 - middleware - INFO - [INCOMING] GET request to /google-trends
+2025-07-09 12:48:08,305 - middleware - INFO -    Client: 127.0.0.1
+2025-07-09 12:48:08,306 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://25.49.42.97:3000', 'sec-fetch-site': 'cross-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://25.49.42.97:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-09 12:48:08,308 - routes - INFO - [GOOGLE TRENDS] Fetching enhanced trends for query: eye glass 
+2025-07-09 12:48:08,308 - routes - INFO - [GOOGLE TRENDS] Processing keywords: ['eye glass'], timeframe: today 12-m, geo: 
+2025-07-09 12:48:08,308 - clients.google_trends_client - INFO - 🚀 Fetching all Google Trends data for: ['eye glass']
+2025-07-09 12:48:10,830 - clients.google_trends_client - INFO - ✅ Interest over time data fetched successfully
+2025-07-09 12:48:13,882 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Interest by Region': HTTPSConnectionPool(host='trends.google.com', port=443): Max retries exceeded with url: /trends/api/widgetdata/comparedgeo?req=%7B%22geo%22%3A+%7B%7D%2C+%22comparisonItem%22%3A+%5B%7B%22time%22%3A+%222024-07-09+2025-07-09%22%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22eye+glass%22%7D%5D%7D%7D%5D%2C+%22resolution%22%3A+%22REGION%22%2C+%22locale%22%3A+%22en-US%22%2C+%22requestOptions%22%3A+%7B%22property%22%3A+%22%22%2C+%22backend%22%3A+%22IZG%22%2C+%22category%22%3A+0%7D%2C+%22userConfig%22%3A+%7B%22userType%22%3A+%22USER_TYPE_SCRAPER%22%7D%2C+%22includeLowSearchVolumeGeos%22%3A+false%7D&token=APP6_UEAAAAAaG-ofIHlYF2uQ5wTa7QZjelj5tvM0YWZ&tz=360 (Caused by ResponseError('too many 500 error responses'))
+2025-07-09 12:48:16,804 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Queries': list index out of range
+2025-07-09 12:48:19,564 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Topics': list index out of range
+2025-07-09 12:48:22,440 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Trending Searches': The request failed: Google returned a response with code 404
+2025-07-09 12:48:22,443 - clients.google_trends_client - INFO - ✅ All Google Trends data fetching complete
+2025-07-09 12:48:22,444 - routes - INFO - [SUCCESS] Enhanced Google Trends data fetched successfully for 1 keywords
+2025-07-09 12:48:22,447 - middleware - INFO - [RESPONSE] GET /google-trends
+2025-07-09 12:48:22,448 - middleware - INFO -    Status: 200
+2025-07-09 12:48:22,448 - middleware - INFO -    Processing time: 14.143s
+2025-07-09 12:48:41,503 - middleware - INFO - [INCOMING] GET request to /google-trends/visual-report
+2025-07-09 12:48:41,506 - middleware - INFO -    Client: 127.0.0.1
+2025-07-09 12:48:41,507 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://25.49.42.97:3000', 'sec-fetch-site': 'cross-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://25.49.42.97:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'}
+2025-07-09 12:48:41,511 - routes - INFO - [VISUAL TRENDS REPORT] Generating report for: eye glass 
+2025-07-09 12:48:41,528 - clients.google_trends_client - INFO - 🚀 Fetching all Google Trends data for: ['eye glass']
+2025-07-09 12:48:44,191 - clients.google_trends_client - INFO - ✅ Interest over time data fetched successfully
+2025-07-09 12:48:47,611 - clients.google_trends_client - INFO - Regional interest: Filtered from 51 to 51 countries with non-zero values
+2025-07-09 12:48:47,647 - clients.google_trends_client - INFO - ✅ Interest by region data fetched successfully
+2025-07-09 12:48:51,340 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Queries': list index out of range
+2025-07-09 12:48:54,395 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Topics': list index out of range
+2025-07-09 12:48:57,323 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Trending Searches': The request failed: Google returned a response with code 404
+2025-07-09 12:48:57,340 - clients.google_trends_client - INFO - ✅ All Google Trends data fetching complete
+2025-07-09 12:48:57,350 - routes - INFO - [SUCCESS] Visual trends report generated successfully
+2025-07-09 12:48:57,397 - middleware - INFO - [RESPONSE] GET /google-trends/visual-report
+2025-07-09 12:48:57,411 - middleware - INFO -    Status: 200
+2025-07-09 12:48:57,422 - middleware - INFO -    Processing time: 15.894s

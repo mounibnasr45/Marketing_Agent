@@ -9,7 +9,6 @@ from datetime import datetime
 from fastapi import APIRouter, HTTPException
 from config import config
 from models import WebsiteAnalysisRequest, AnalysisResponse, ChatMessage, ChatResponse, ApifyResult, GoogleTrendsRequest, GoogleTrendsResponse, BuiltWithAnalysisResponse, BuiltWithOnlyResult
-from mock_data import get_mock_data
 from clients import ApifyClient, OpenRouterClient
 from clients.builtwith_client_fixed import BuiltWithClientFixed
 from clients.google_trends_client import GoogleTrendsClient
@@ -59,39 +58,65 @@ async def analyze_websites(request: WebsiteAnalysisRequest):
     logger.info(f"API Token Status - APIFY: {'YES' if config.apify_token else 'NO'}")
     print(f"APIFY_API_TOKEN: {'YES' if config.apify_token else 'NO'}")
     
-    # TEMPORARY: Force mock data usage for debugging
-    logger.warning("[DEBUG] Forcing mock data usage for debugging")
-    print("[DEBUG] Forcing mock data usage for debugging")
-    
-    # Return mock data WITHOUT BuiltWith analysis initially
-    mock_data = get_mock_data()
-    print(f"[DEBUG] Generated {len(mock_data)} mock results")
-    
-    # Remove BuiltWith data for step-by-step process
-    for item in mock_data:
-        item.builtwith_result = None
-    
-    # Save to Supabase with session tracking
-    try:
-        session_id = await db_service.save_analysis_session(
-            user_id=request.userId,
-            domains=request.websites,
-            similarweb_data=mock_data
+    if not config.apify_token:
+        logger.error("[ERROR] No Apify API token found")
+        print("[ERROR] No Apify API token found")
+        raise HTTPException(
+            status_code=503,
+            detail="SimilarWeb analysis service is not available. Please configure the APIFY_API_TOKEN to enable website traffic analysis."
         )
-        print(f"[DEBUG] Saved to database with session_id: {session_id}")
-    except Exception as e:
-        print(f"[DEBUG] Warning: Could not save to database: {e}")
-        session_id = None
 
-    logger.info("[SUCCESS] Step 1 (SimilarWeb) completed with debug mock data")
-    print("[SUCCESS] Step 1 (SimilarWeb) completed with debug mock data")
-    return AnalysisResponse(
-        success=True,
-        data=mock_data,
-        count=len(mock_data),
-        note=f"Step 1 complete: SimilarWeb analysis ready. Click 'Analyze Tech Stack' to continue. (Debug: Using mock data)",
-        session_id=session_id
-    )
+    try:
+        logger.info("[API] Fetching data from Apify API...")
+        print("[API] Fetching data from Apify API...")
+        
+        # Get SimilarWeb data only
+        results = await apify_client.analyze_domains(request.websites)
+        print(f"[API] Received {len(results)} results from Apify API")
+        
+        if not results or len(results) == 0:
+            logger.error("[ERROR] No results returned from Apify API")
+            print("[ERROR] No results returned from Apify API")
+            raise HTTPException(
+                status_code=500,
+                detail="Failed to analyze websites. The SimilarWeb service returned no data for the requested domains."
+            )
+        
+        # Ensure no BuiltWith data is included yet
+        for result in results:
+            result.builtwith_result = None
+        
+        # Save to Supabase with session tracking
+        try:
+            session_id = await db_service.save_analysis_session(
+                user_id=request.userId,
+                domains=request.websites,
+                similarweb_data=results
+            )
+            print(f"[API] Saved to database with session_id: {session_id}")
+        except Exception as e:
+            print(f"[API] Warning: Could not save to database: {e}")
+            session_id = None
+
+        logger.info("[SUCCESS] Step 1 (SimilarWeb) completed successfully")
+        print("[SUCCESS] Step 1 (SimilarWeb) completed successfully")
+        return AnalysisResponse(
+            success=True,
+            data=results,
+            count=len(results),
+            note=f"Step 1 complete: SimilarWeb analysis ready. Click 'Analyze Tech Stack' to continue.",
+            session_id=session_id
+        )
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"[ERROR] Error with Apify API: {str(e)}")
+        print(f"[ERROR] Error with Apify API: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to analyze websites. SimilarWeb API error: {str(e)}"
+        )
 
 
 @router.post("/api/analyze-tech-stack", response_model=BuiltWithAnalysisResponse)
@@ -115,27 +140,35 @@ async def analyze_tech_stack(request: WebsiteAnalysisRequest):
         # Try to get existing data from user's latest session
         user_history = await db_service.get_user_history(request.userId, limit=1)
         
-        # If no existing data, use mock data or get fresh data
+        # If no existing data, return error instead of using mock data
         if not user_history or not user_history[0].get('similarweb_data'):
-            print("[MOCK] Using mock data as base for BuiltWith analysis...")
-            mock_data = get_mock_data()
-            # Remove existing BuiltWith data
-            for item in mock_data:
-                item.builtwith_result = None
-            results = mock_data
-        else:
-            # Convert existing data back to ApifyResult objects
-            print("[CONVERT] Converting existing SimilarWeb data to objects...")
-            results = []
-            for item_data in user_history[0]['similarweb_data']:
-                try:
-                    # Remove existing BuiltWith data if any
-                    item_data.pop('builtwith_result', None)
-                    result = ApifyResult(**item_data)
-                    results.append(result)
-                except Exception as e:
-                    print(f"[ERROR] Error converting data item: {e}")
-                    continue
+            logger.error("[ERROR] No existing SimilarWeb data found for BuiltWith analysis")
+            print("[ERROR] No existing SimilarWeb data found for BuiltWith analysis")
+            raise HTTPException(
+                status_code=400,
+                detail="No SimilarWeb data found. Please run the SimilarWeb analysis first before analyzing technology stack."
+            )
+        
+        # Convert existing data back to ApifyResult objects
+        print("[CONVERT] Converting existing SimilarWeb data to objects...")
+        results = []
+        for item_data in user_history[0]['similarweb_data']:
+            try:
+                # Remove existing BuiltWith data if any
+                item_data.pop('builtwith_result', None)
+                result = ApifyResult(**item_data)
+                results.append(result)
+            except Exception as e:
+                print(f"[ERROR] Error converting data item: {e}")
+                continue
+        
+        if not results:
+            logger.error("[ERROR] Failed to convert any SimilarWeb data for BuiltWith analysis")
+            print("[ERROR] Failed to convert any SimilarWeb data for BuiltWith analysis")
+            raise HTTPException(
+                status_code=500,
+                detail="Failed to process existing SimilarWeb data for technology analysis."
+            )
         
         print(f"[PROCESS] Starting BuiltWith analysis for {len(results)} websites...")
         print("-" * 60)
