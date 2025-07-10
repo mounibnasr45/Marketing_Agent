@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Home, Globe, BarChart3, MessageCircle, Code, History, TrendingUp } from "lucide-react"
+import { Home, Globe, BarChart3, MessageCircle, Code, History, TrendingUp, Search } from "lucide-react"
 
 const NavigationHeader = () => {
   const pathname = usePathname()
@@ -13,6 +13,7 @@ const NavigationHeader = () => {
     { href: "/similarweb", label: "SimilarWeb", icon: BarChart3 },
     { href: "/builtwith", label: "BuiltWith", icon: Code },
     { href: "/google-trends", label: "Trends", icon: TrendingUp },
+    { href: "/keywords", label: "Keywords", icon: Search },
     { href: "/chat", label: "Chat", icon: MessageCircle },
     { href: "/history", label: "History", icon: History },
   ]
