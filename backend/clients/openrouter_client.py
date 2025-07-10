@@ -84,61 +84,66 @@ Always support your insights with specific data points from the analysis."""
                 print(f"Error calling OpenRouter API: {e}")
                 return self._get_mock_chat_response(message)
 
+    # In your openrouter_client.py file
+
     def _prepare_analysis_context(self, analysis_data: dict) -> str:
         """Convert analysis data into a readable context for the LLM"""
         context_parts = []
+    
+        domain = analysis_data.get('domain', 'N/A')
+        context_parts.append(f"Primary Domain Under Analysis: {domain}\n")
+    
+        # The analysis data is inside the 'data' key of each analysis type
+        # and it's a list. We need to find the data for the main domain.
+        similar_web_list = analysis_data.get('similarWebData', {}).get('data', [])
+        built_with_list = analysis_data.get('builtWithData', {}).get('data', [])
+        trends_data = analysis_data.get('trendsData', {}).get('data', {})
+    
+        # Combine data from all sources for each website found.
+        # The 'builtWithData' seems to be the most complete in your example.
+        all_websites_data = built_with_list or similar_web_list
         
-        if "data" in analysis_data:
-            # Filter out LinkedIn and generic domains from context
-            filtered_data = []
-            for website in analysis_data["data"]:
-                website_name = website.get('name', '').lower()
-                if website_name not in ['linkedin', 'linkedin.com', 'github', 'github.com']:
-                    filtered_data.append(website)
+        if not all_websites_data:
+            return "No specific website data is available for analysis in the provided context."
+    
+        for website_data in all_websites_data:
+            # Create a comprehensive summary for each website
+            summary = f"""
+    📊 **Website Analysis Summary for: {website_data.get('name', 'Unknown')}**
+    
+    **Traffic Overview:**
+    - Global Rank: #{website_data.get('globalRank', 'N/A')}
+    - Monthly Visits: {self._format_large_number(website_data.get('totalVisits', 0))}
+    - Bounce Rate: {self._format_percentage(website_data.get('bounceRate', 0))}
+    - Average Visit Duration: {website_data.get('avgVisitDuration', 'N/A')}
+    
+    **Company Information:**
+    - Company: {website_data.get('companyName', 'N/A')}
+    - Founded: {website_data.get('companyYearFounded', 'N/A')}
+    - Employees: {self._format_employee_range(website_data.get('companyEmployeesMin'), website_data.get('companyEmployeesMax'))}
+    
+    **Traffic Sources Analysis:**
+    {self._format_traffic_sources(website_data.get('trafficSources', {}))}
+    
+    **Technology Stack:**
+    {self._format_technologies(website_data.get('builtwith_result', {}))}
+    
+    **Competitive Landscape:**
+    {self._format_competitors(website_data.get('topSimilarityCompetitors', []))}
+    
+    **Geographic Performance:**
+    {self._format_top_countries(website_data.get('topCountries', []))}
+    
+    **SEO Keywords:**
+    {self._format_top_keywords(website_data.get('topKeywords', []))}
+    """
+            context_parts.append(summary)
+    
+        if trends_data:
+            context_parts.append("\n📈 **Google Trends Analysis:**")
+            context_parts.append(f"- Keywords Analyzed: {', '.join(trends_data.get('keywords', []))}")
+            # Add more trends data if needed
             
-            if not filtered_data:
-                return "No specific website data available for analysis."
-            
-            # Create summarized context for each website
-            for website in filtered_data:
-                domain = website.get('name', 'Unknown')
-                
-                # Format visits nicely
-                visits = website.get('totalVisits', 0)
-                visits_formatted = self._format_large_number(visits)
-                
-                # Create comprehensive summary
-                summary = f"""
-📊 **{domain} Analysis Summary:**
-
-**Traffic Overview:**
-- Global Rank: #{website.get('globalRank', 'N/A')}
-- Monthly Visits: {visits_formatted}
-- Bounce Rate: {self._format_percentage(website.get('bounceRate', 0))}
-- Average Visit Duration: {website.get('avgVisitDuration', 'N/A')}
-
-**Company Information:**
-- Company: {website.get('companyName', 'N/A')}
-- Founded: {website.get('companyYearFounded', 'N/A')}
-- Employees: {self._format_employee_range(website.get('companyEmployeesMin'), website.get('companyEmployeesMax'))}
-
-**Traffic Sources Analysis:**
-{self._format_traffic_sources(website.get('trafficSources', {}))}
-
-**Technology Stack:**
-{self._format_technologies(website.get('builtwith_result', {}))}
-
-**Competitive Landscape:**
-{self._format_competitors(website.get('topSimilarityCompetitors', []))}
-
-**Geographic Performance:**
-{self._format_top_countries(website.get('topCountries', []))}
-
-**SEO Keywords:**
-{self._format_top_keywords(website.get('topKeywords', []))}
-"""
-                context_parts.append(summary)
-        
         return "\n".join(context_parts)
 
     def _format_traffic_sources(self, traffic_sources: dict) -> str:

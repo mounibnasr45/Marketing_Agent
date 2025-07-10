@@ -15,15 +15,28 @@ from models import (
 )
 
 
-def get_mock_data() -> List[ApifyResult]:
+def get_mock_data(domain: str = None) -> List[ApifyResult]:
     """Return mock data for testing when no API token is available"""
+    
+    # Extract domain name from URL if provided
+    if domain:
+        # Remove protocol and www
+        clean_domain = domain.replace("https://", "").replace("http://", "").replace("www.", "")
+        # Remove trailing slash
+        clean_domain = clean_domain.rstrip("/")
+        # Extract main domain name (before first dot)
+        domain_name = clean_domain.split(".")[0]
+    else:
+        clean_domain = "example.com"
+        domain_name = "example"
+    
     return [
         ApifyResult(
-            name="ooredoo.tn",
+            name=clean_domain,
             globalRank=43976,
             countryRank=18,
             categoryRank=3,
-            companyName="Ooredoo Tunisia",
+            companyName=f"{domain_name.title()} Company",
             companyYearFounded=2001,
             companyEmployeesMin=1000,
             companyEmployeesMax=5000,
@@ -46,8 +59,9 @@ def get_mock_data() -> List[ApifyResult]:
                 TopCountry(countryAlpha2Code="DZ", visitsShare=0.02, visitsShareChange=0.00),
             ],
             topKeywords=[
-                TopKeyword(name="ooredoo", volume=450000, estimatedValue=350000, cpc=0.45),
-                TopKeyword(name="internet ooredoo", volume=180000, estimatedValue=140000, cpc=0.38),
+                TopKeyword(name=domain_name, volume=450000, estimatedValue=350000, cpc=0.45),
+                TopKeyword(name=f"{domain_name} services", volume=180000, estimatedValue=140000, cpc=0.38),
+                TopKeyword(name=f"{domain_name} website", volume=120000, estimatedValue=95000, cpc=0.42),
                 TopKeyword(name="ooredoo tunisie", volume=120000, estimatedValue=95000, cpc=0.42),
             ],
             socialNetworkDistribution=[
