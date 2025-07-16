@@ -8330,3 +8330,118 @@ ConnectionResetError: [WinError 10054] An existing connection was forcibly close
 2025-07-16 18:04:28,467 - middleware - INFO - [RESPONSE] POST /api/keywords/ad_traffic
 2025-07-16 18:04:28,468 - middleware - INFO -    Status: 200
 2025-07-16 18:04:28,469 - middleware - INFO -    Processing time: 4.320s
+2025-07-16 21:29:26,669 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-16 21:29:26,681 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-16 21:29:26,683 - config - INFO - Backend starting up...
+2025-07-16 21:29:26,683 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-16 21:29:26,683 - config - INFO - .env file exists: True
+2025-07-16 21:29:26,684 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-16 21:29:26,684 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-16 21:29:26,684 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-16 21:29:26,684 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-16 21:29:26,684 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-16 21:29:27,532 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-16 21:29:27,532 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-16 21:29:28,235 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-16 21:29:28,957 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-16 21:31:20,505 - middleware - INFO - [INCOMING] OPTIONS request to /api/keywords/search_volume
+2025-07-16 21:31:20,507 - middleware - INFO -    Client: 127.0.0.1
+2025-07-16 21:31:20,509 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'accept': '*/*', 'access-control-request-method': 'POST', 'access-control-request-headers': 'content-type', 'origin': 'http://localhost:3000', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-site', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-16 21:31:20,513 - middleware - INFO - [RESPONSE] OPTIONS /api/keywords/search_volume
+2025-07-16 21:31:20,513 - middleware - INFO -    Status: 200
+2025-07-16 21:31:20,514 - middleware - INFO -    Processing time: 0.008s
+2025-07-16 21:31:20,519 - middleware - INFO - [INCOMING] POST request to /api/keywords/search_volume
+2025-07-16 21:31:20,520 - middleware - INFO -    Client: 127.0.0.1
+2025-07-16 21:31:20,521 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '190', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-16 21:31:20,525 - middleware - INFO - [RESPONSE] POST /api/keywords/search_volume
+2025-07-16 21:31:20,526 - middleware - INFO -    Status: 422
+2025-07-16 21:31:20,527 - middleware - INFO -    Processing time: 0.006s
+2025-07-16 21:31:31,472 - middleware - INFO - [INCOMING] POST request to /api/keywords/search_volume
+2025-07-16 21:31:31,474 - middleware - INFO -    Client: 127.0.0.1
+2025-07-16 21:31:31,474 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '190', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-16 21:31:31,477 - routes - INFO - Calling DataForSEO URL: https://api.dataforseo.com/v3/keywords_data/google_ads/search_volume/live with data: [{"keywords": ["buy laptop", "cheap laptops for sale", "purchase laptop"], "location_code": 2840, "language_code": "en", "search_partners": true, "tag": "frontend-ui-task-1752697891467"}]
+2025-07-16 21:31:38,107 - middleware - INFO - [RESPONSE] POST /api/keywords/search_volume
+2025-07-16 21:31:38,109 - middleware - INFO -    Status: 200
+2025-07-16 21:31:38,109 - middleware - INFO -    Processing time: 6.635s
+2025-07-16 21:33:56,545 - middleware - INFO - [INCOMING] POST request to /api/keywords/search_volume
+2025-07-16 21:33:56,545 - middleware - INFO -    Client: 127.0.0.1
+2025-07-16 21:33:56,546 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '190', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-16 21:33:56,547 - routes - INFO - Calling DataForSEO URL: https://api.dataforseo.com/v3/keywords_data/google_ads/search_volume/live with data: [{"keywords": ["buy laptop", "cheap laptops for sale", "purchase laptop"], "location_code": 2788, "language_code": "en", "search_partners": true, "tag": "frontend-ui-task-1752698036223"}]
+2025-07-16 21:34:06,046 - middleware - INFO - [RESPONSE] POST /api/keywords/search_volume
+2025-07-16 21:34:06,047 - middleware - INFO -    Status: 200
+2025-07-16 21:34:06,047 - middleware - INFO -    Processing time: 9.502s
+2025-07-16 21:35:53,183 - middleware - INFO - [INCOMING] POST request to /api/keywords/search_volume
+2025-07-16 21:35:53,184 - middleware - INFO -    Client: 127.0.0.1
+2025-07-16 21:35:53,186 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '160', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-16 21:35:53,195 - routes - INFO - Calling DataForSEO URL: https://api.dataforseo.com/v3/keywords_data/google_ads/search_volume/task_post with data: [{"keywords": ["\u062f\u0642\u0644\u0629 \u0627\u0644\u0646\u0648\u0631"], "location_code": 2788, "language_code": "ar", "search_partners": true, "tag": "frontend-ui-task-1752698152867"}]
+2025-07-16 21:35:54,101 - middleware - INFO - [RESPONSE] POST /api/keywords/search_volume
+2025-07-16 21:35:54,102 - middleware - INFO -    Status: 200
+2025-07-16 21:35:54,103 - middleware - INFO -    Processing time: 0.918s
+2025-07-16 21:36:14,737 - middleware - INFO - [INCOMING] POST request to /api/keywords/search_volume
+2025-07-16 21:36:14,738 - middleware - INFO -    Client: 127.0.0.1
+2025-07-16 21:36:14,740 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '156', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-16 21:36:14,742 - routes - INFO - Calling DataForSEO URL: https://api.dataforseo.com/v3/keywords_data/google_ads/search_volume/live with data: [{"keywords": ["\u062f\u0642\u0644\u0629 \u0627\u0644\u0646\u0648\u0631"], "location_code": 2788, "language_code": "ar", "search_partners": true, "tag": "frontend-ui-task-1752698174414"}]
+2025-07-16 21:36:18,143 - middleware - INFO - [RESPONSE] POST /api/keywords/search_volume
+2025-07-16 21:36:18,144 - middleware - INFO -    Status: 200
+2025-07-16 21:36:18,145 - middleware - INFO -    Processing time: 3.407s
+2025-07-16 21:37:22,227 - middleware - INFO - [INCOMING] POST request to /api/keywords/search_volume
+2025-07-16 21:37:22,228 - middleware - INFO -    Client: 127.0.0.1
+2025-07-16 21:37:22,229 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '156', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-16 21:37:22,231 - routes - INFO - Calling DataForSEO URL: https://api.dataforseo.com/v3/keywords_data/google_ads/search_volume/live with data: [{"keywords": ["\u062f\u0642\u0644\u0629 \u0627\u0644\u0646\u0648\u0631"], "location_code": 2012, "language_code": "ar", "search_partners": true, "tag": "frontend-ui-task-1752698241917"}]
+2025-07-16 21:37:24,601 - middleware - INFO - [RESPONSE] POST /api/keywords/search_volume
+2025-07-16 21:37:24,602 - middleware - INFO -    Status: 200
+2025-07-16 21:37:24,603 - middleware - INFO -    Processing time: 2.374s
+2025-07-16 21:38:13,802 - middleware - INFO - [INCOMING] OPTIONS request to /api/keywords/ad_traffic
+2025-07-16 21:38:13,803 - middleware - INFO -    Client: 127.0.0.1
+2025-07-16 21:38:13,804 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'accept': '*/*', 'access-control-request-method': 'POST', 'access-control-request-headers': 'content-type', 'origin': 'http://localhost:3000', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-site', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-16 21:38:13,806 - middleware - INFO - [RESPONSE] OPTIONS /api/keywords/ad_traffic
+2025-07-16 21:38:13,807 - middleware - INFO -    Status: 200
+2025-07-16 21:38:13,809 - middleware - INFO -    Processing time: 0.004s
+2025-07-16 21:38:13,816 - middleware - INFO - [INCOMING] POST request to /api/keywords/ad_traffic
+2025-07-16 21:38:13,817 - middleware - INFO -    Client: 127.0.0.1
+2025-07-16 21:38:13,818 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '188', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-16 21:38:13,823 - routes - INFO - Calling DataForSEO URL: https://api.dataforseo.com/v3/keywords_data/google_ads/ad_traffic_by_keywords/live with data: [{"keywords": ["\u062f\u0642\u0644\u0629 \u0627\u0644\u0646\u0648\u0631"], "bid": 999, "match": "exact", "location_code": 2012, "language_code": "ar", "date_interval": "next_month", "tag": "frontend-ui-task-1752698293484"}]
+2025-07-16 21:38:17,689 - middleware - INFO - [RESPONSE] POST /api/keywords/ad_traffic
+2025-07-16 21:38:17,689 - middleware - INFO -    Status: 200
+2025-07-16 21:38:17,690 - middleware - INFO -    Processing time: 3.873s
+2025-07-16 21:39:14,566 - middleware - INFO - [INCOMING] POST request to /api/keywords/search_volume
+2025-07-16 21:39:14,567 - middleware - INFO -    Client: 127.0.0.1
+2025-07-16 21:39:14,568 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '148', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-16 21:39:14,569 - routes - INFO - Calling DataForSEO URL: https://api.dataforseo.com/v3/keywords_data/google_ads/search_volume/live with data: [{"keywords": ["Hyundai i10"], "location_code": 2840, "language_code": "en", "search_partners": true, "tag": "frontend-ui-task-1752698354243"}]
+2025-07-16 21:39:21,105 - middleware - INFO - [RESPONSE] POST /api/keywords/search_volume
+2025-07-16 21:39:21,106 - middleware - INFO -    Status: 200
+2025-07-16 21:39:21,106 - middleware - INFO -    Processing time: 6.539s
+2025-07-16 22:08:20,471 - middleware - INFO - [INCOMING] OPTIONS request to /api/keywords/search_volume
+2025-07-16 22:08:20,478 - middleware - INFO -    Client: 127.0.0.1
+2025-07-16 22:08:20,479 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'accept': '*/*', 'access-control-request-method': 'POST', 'access-control-request-headers': 'content-type', 'origin': 'http://localhost:3000', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-site', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-16 22:08:20,483 - middleware - INFO - [RESPONSE] OPTIONS /api/keywords/search_volume
+2025-07-16 22:08:20,484 - middleware - INFO -    Status: 200
+2025-07-16 22:08:20,485 - middleware - INFO -    Processing time: 0.015s
+2025-07-16 22:08:20,495 - middleware - INFO - [INCOMING] POST request to /api/keywords/search_volume
+2025-07-16 22:08:20,496 - middleware - INFO -    Client: 127.0.0.1
+2025-07-16 22:08:20,497 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '148', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-16 22:08:20,512 - routes - INFO - Calling DataForSEO URL: https://api.dataforseo.com/v3/keywords_data/google_ads/search_volume/live with data: [{"keywords": ["Hyundai i10"], "location_code": 2012, "language_code": "en", "search_partners": true, "tag": "frontend-ui-task-1752700100113"}]
+2025-07-16 22:08:23,262 - middleware - INFO - [RESPONSE] POST /api/keywords/search_volume
+2025-07-16 22:08:23,263 - middleware - INFO -    Status: 200
+2025-07-16 22:08:23,264 - middleware - INFO -    Processing time: 2.768s
+2025-07-16 22:38:33,509 - middleware - INFO - [INCOMING] OPTIONS request to /api/analyze-tech-stack
+2025-07-16 22:38:33,513 - middleware - INFO -    Client: 127.0.0.1
+2025-07-16 22:38:33,517 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'accept': '*/*', 'access-control-request-method': 'POST', 'access-control-request-headers': 'content-type', 'origin': 'http://localhost:3000', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-site', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-16 22:38:33,524 - middleware - INFO - [RESPONSE] OPTIONS /api/analyze-tech-stack
+2025-07-16 22:38:33,524 - middleware - INFO -    Status: 200
+2025-07-16 22:38:33,524 - middleware - INFO -    Processing time: 0.017s
+2025-07-16 22:38:33,721 - middleware - INFO - [INCOMING] POST request to /api/analyze-tech-stack
+2025-07-16 22:38:33,731 - middleware - INFO -    Client: 127.0.0.1
+2025-07-16 22:38:33,733 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '47', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-16 22:38:34,072 - routes - INFO - [TECH] Starting tech stack analysis for 1 websites
+2025-07-16 22:38:34,073 - routes - INFO -    Websites: ['github.com']
+2025-07-16 22:38:34,073 - routes - INFO -    User ID: user-123
+2025-07-16 22:38:34,074 - routes - INFO - [TECH] Starting BuiltWith Tech Stack Analysis (Step 2)
+2025-07-16 22:38:34,099 - database_service - INFO - Generated UUID 3a1b8473-3492-5076-98f9-b2dfa6d37933 for user_id: user-123
+2025-07-16 22:38:35,212 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions?select=%2A&user_id=eq.3a1b8473-3492-5076-98f9-b2dfa6d37933&order=created_at.desc&limit=1 "HTTP/1.1 200 OK"
+2025-07-16 22:38:35,284 - database_service - INFO - Retrieved 1 analysis sessions for user 3a1b8473-3492-5076-98f9-b2dfa6d37933
+2025-07-16 22:38:36,864 - httpx - INFO - HTTP Request: GET https://api.builtwith.com/v20/api.json?KEY=fd8b0b65-fb2d-46ef-b666-4d69096c9bf8&LOOKUP=github.com "HTTP/1.1 200 OK"
+2025-07-16 22:38:36,905 - database_service - ERROR - Error updating analysis session: 'dict' object has no attribute 'model_dump'
+2025-07-16 22:38:36,911 - middleware - INFO - [RESPONSE] POST /api/analyze-tech-stack
+2025-07-16 22:38:36,915 - middleware - INFO -    Status: 200
+2025-07-16 22:38:36,915 - middleware - INFO -    Processing time: 3.191s
