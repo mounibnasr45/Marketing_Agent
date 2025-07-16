@@ -20,6 +20,9 @@ import base64
 import os
 from dotenv import load_dotenv
 import traceback
+
+# Custom models and clients
+from models import SearchVolumeRequest, KeywordsForSiteRequest, KeywordsForKeywordsRequest, AdTrafficRequest
 # Setup router
 router = APIRouter()
 logger = logging.getLogger(__name__)
@@ -46,41 +49,123 @@ async def root():
 
 # --- New Keyword Search Volume Feature ---
 
-# Get DataForSEO credentials from environment variables
+# --- DataForSEO Configuration ---
 DATAFORSEO_LOGIN = os.getenv("DATAFORSEO_LOGIN", "mohammed@skylightad.com")
 DATAFORSEO_PASSWORD = os.getenv("DATAFORSEO_PASSWORD", "4b463a5249535fb1")
+auth_token = base64.b64encode(f"{DATAFORSEO_LOGIN}:{DATAFORSEO_PASSWORD}".encode()).decode()
+DATAFORSEO_API_BASE_URL = "https://api.dataforseo.com/v3/keywords_data/google_ads"
 
-# Create basic authentication header
-auth = base64.b64encode(f"{DATAFORSEO_LOGIN}:{DATAFORSEO_PASSWORD}".encode()).decode()
-
+def call_dataforseo_api(endpoint_path: str, data: list):
+    """Helper function to make requests to the DataForSEO API."""
+    url = f"{DATAFORSEO_API_BASE_URL}/{endpoint_path}"
+    headers = {
+        "Authorization": f"Basic {auth_token}",
+        "Content-Type": "application/json"
+    }
+    
+    try:
+        logger.info(f"Calling DataForSEO URL: {url} with data: {json.dumps(data)}")
+        response = requests.post(url, headers=headers, json=data)
+        response.raise_for_status()  # Raise an exception for bad status codes (4xx or 5xx)
+        return response.json()
+    except requests.exceptions.HTTPError as http_err:
+        logger.error(f"HTTP error occurred: {http_err} - {response.text}")
+        raise HTTPException(
+            status_code=response.status_code,
+            detail=f"DataForSEO API error: {response.text}"
+        )
+    except requests.exceptions.RequestException as req_err:
+        logger.error(f"Request error occurred: {req_err}")
+        raise HTTPException(
+            status_code=503,
+            detail=f"Failed to connect to DataForSEO API: {req_err}"
+        )
+    except Exception as e:
+        logger.error(f"An unexpected error occurred: {e}\n{traceback.format_exc()}")
+        raise HTTPException(
+            status_code=500,
+            detail="An internal server error occurred."
+        )
 class KeywordRequest(BaseModel):
     keywords: list[str]
     language_code: str = "en"
     location: str = "US"
-@router.post("/api/keyword_search_volume")
-async def get_keyword_search_volume(request: KeywordRequest):
+@router.post("/api/keywords/search_volume", tags=["Keywords Data"])
+async def get_search_volume(request: SearchVolumeRequest):
     """
-    Retrieves search volume data for the specified keywords using DataForSEO Keywords Data API.
+    Provides search volume, trends, and competition data for keywords.
+    Supports both 'live' and 'standard' (task_post) methods based on the 'method' field.
     """
-    logger.info(f"[DEBUG] Received request: {request}")
-    url = "https://api.dataforseo.com/v3/keywords_data/google_ads/search_volume/live"
-    headers = {
-        "Authorization": f"Basic {auth}",
-        "Content-Type": "application/json"
-    }
-    data = [
-        {
-            "keywords": request.keywords,
-            "language_code": request.language_code,
-            "location": request.location
-        }
-    ]
-    response = requests.post(url, headers=headers, json=data)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        return {"error": "Failed to retrieve data", "status_code": response.status_code}
+    endpoint_suffix = "live" if request.method == "live" else "task_post"
+    endpoint_path = f"search_volume/{endpoint_suffix}"
 
+    post_data = [{
+        "keywords": request.keywords,
+        "location_code": request.location_code,
+        "language_code": request.language_code,
+        "search_partners": request.search_partners,
+        "tag": request.tag
+    }]
+    
+    return call_dataforseo_api(endpoint_path, post_data)
+
+@router.post("/api/keywords/keywords_for_site", tags=["Keywords Data"])
+async def get_keywords_for_site(request: KeywordsForSiteRequest):
+    """
+    Generates keyword ideas for a domain or URL.
+    Supports both 'live' and 'standard' (task_post) methods.
+    """
+    endpoint_suffix = "live" if request.method == "live" else "task_post"
+    endpoint_path = f"keywords_for_site/{endpoint_suffix}"
+
+    post_data = [{
+        "target": request.target,
+        "target_type": request.target_type,
+        "location_code": request.location_code,
+        "language_code": request.language_code,
+        "tag": request.tag
+    }]
+
+    return call_dataforseo_api(endpoint_path, post_data)
+
+@router.post("/api/keywords/keywords_for_keywords", tags=["Keywords Data"])
+async def get_keywords_for_keywords(request: KeywordsForKeywordsRequest):
+    """
+    Generates keyword ideas based on seed keywords.
+    Supports both 'live' and 'standard' (task_post) methods.
+    """
+    endpoint_suffix = "live" if request.method == "live" else "task_post"
+    endpoint_path = f"keywords_for_keywords/{endpoint_suffix}"
+
+    post_data = [{
+        "keywords": request.keywords,
+        "location_code": request.location_code,
+        "language_code": request.language_code,
+        "tag": request.tag
+    }]
+
+    return call_dataforseo_api(endpoint_path, post_data)
+
+@router.post("/api/keywords/ad_traffic", tags=["Keywords Data"])
+async def get_ad_traffic(request: AdTrafficRequest):
+    """
+    Estimates ad performance metrics for keywords.
+    Supports both 'live' and 'standard' (task_post) methods.
+    """
+    endpoint_suffix = "live" if request.method == "live" else "task_post"
+    endpoint_path = f"ad_traffic_by_keywords/{endpoint_suffix}"
+
+    post_data = [{
+        "keywords": request.keywords,
+        "bid": request.bid,
+        "match": request.match,
+        "location_code": request.location_code,
+        "language_code": request.language_code,
+        "date_interval": request.date_interval,
+        "tag": request.tag
+    }]
+
+    return call_dataforseo_api(endpoint_path, post_data)
 async def analyze_websites(request: WebsiteAnalysisRequest):
     """Step 1: Analyze websites with SimilarWeb only"""
     logger.info(f"[ANALYZE] Starting website analysis for {len(request.websites)} websites")

@@ -1,214 +1,501 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Legend,
-  CartesianGrid,
-  ResponsiveContainer,
-} from "recharts";
+import { useState } from "react"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Badge } from "@/components/ui/badge"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Search, Globe, Key, TrendingUp, Play, Clock, CheckCircle, Copy, AlertTriangle, Info } from "lucide-react"
 
-interface MonthlySearch {
-  year: number;
-  month: number;
-  search_volume: number;
-}
+// Define the base URL for your backend API
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"
 
-interface KeywordResult {
-  keyword: string;
-  competition: string;
-  search_volume: number;
-  cpc: number | null;
-  low_top_of_page_bid: number | null;
-  high_top_of_page_bid: number | null;
-  monthly_searches: MonthlySearch[];
-}
+export default function KeywordsDataAPIPage() {
+  const [activeEndpoint, setActiveEndpoint] = useState("search-volume")
+  const [method, setMethod] = useState<"live" | "standard">("live")
+  const [loading, setLoading] = useState(false)
+  const [results, setResults] = useState<any>(null)
+  const [error, setError] = useState<string | null>(null)
+  const [taskId, setTaskId] = useState("")
 
-interface ApiResponse {
-  tasks: {
-    result: KeywordResult[];
-  }[];
-}
+  // Form states
+  const [keywords, setKeywords] = useState("buy laptop\ncheap laptops for sale\npurchase laptop")
+  const [locationCode, setLocationCode] = useState("2840")
+  const [languageCode, setLanguageCode] = useState("en")
+  const [target, setTarget] = useState("dataforseo.com")
+  const [bid, setBid] = useState("999")
+  const [match, setMatch] = useState("exact")
 
-export default function KeywordsPage() {
-  const [keywords, setKeywords] = useState("");
-  const [location, setLocation] = useState("US");
-  const [language, setLanguage] = useState("en");
-  const [results, setResults] = useState<KeywordResult[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const endpoints = [
+    {
+      id: "search-volume",
+      name: "Search Volume",
+      icon: Search,
+      description: "Get search volume, trends, and competition data for keywords",
+      path: "/api/keywords/search_volume",
+    },
+    {
+      id: "keywords-for-site",
+      name: "Keywords For Site",
+      icon: Globe,
+      description: "Generate keyword ideas for a domain or URL",
+      path: "/api/keywords/keywords_for_site",
+    },
+    {
+      id: "keywords-for-keywords",
+      name: "Keywords For Keywords",
+      icon: Key,
+      description: "Generate keyword ideas based on seed keywords",
+      path: "/api/keywords/keywords_for_keywords",
+    },
+    {
+      id: "ad-traffic",
+      name: "Ad Traffic By Keywords",
+      icon: TrendingUp,
+      description: "Estimate ad performance metrics for keywords",
+      path: "/api/keywords/ad_traffic",
+    },
+  ]
+  
+  const handleSubmit = async () => {
+    const currentEndpoint = endpoints.find((e) => e.id === activeEndpoint)
+    if (!currentEndpoint) return
 
-  const handleSearch = async () => {
-  if (!keywords.trim()) {
-    setError("Please enter at least one keyword.");
-    return;
-  }
+    setLoading(true)
+    setResults(null)
+    setError(null)
+    setTaskId("")
 
-  setIsLoading(true);
-  setError(null);
-  setResults([]);
+    // 1. Construct the request body based on the active endpoint
+    // This now directly matches the Pydantic models in your FastAPI backend
+    const requestData: any = {
+      method: method,
+      location_code: Number.parseInt(locationCode),
+      language_code: languageCode,
+      tag: `frontend-ui-task-${Date.now()}`
+    }
 
-  try {
-    const response = await fetch("/api/keyword_search_volume", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        keywords: keywords.split(",").map((k) => k.trim()),
-        location: location,
-        language_code: language,
-      }),
-    });
+    const keywordsList = keywords.split("\n").map((k) => k.trim()).filter((k) => k);
 
-    if (!response.ok) {
-      const contentType = response.headers.get("content-type");
-      if (contentType && contentType.includes("application/json")) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || "Failed to fetch keyword data.");
-      } else {
-        const text = await response.text();
-        console.error("Received HTML instead of JSON:", text.substring(0, 100));
-        throw new Error(`Server returned status ${response.status}: Not a valid JSON response`);
+    switch (activeEndpoint) {
+      case "search-volume":
+        requestData.keywords = keywordsList
+        requestData.search_partners = true
+        break
+      case "keywords-for-site":
+        requestData.target = target
+        requestData.target_type = "site"
+        break
+      case "keywords-for-keywords":
+        requestData.keywords = keywordsList.slice(0, 20)
+        break
+      case "ad-traffic":
+        requestData.keywords = keywordsList
+        requestData.bid = Number.parseInt(bid)
+        requestData.match = match
+        requestData.date_interval = "next_month"
+        break
+    }
+
+    try {
+      // 2. Make the API call to your backend
+      const response = await fetch(`${API_BASE_URL}${currentEndpoint.path}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
+      })
+
+      const responseData = await response.json()
+
+      if (!response.ok) {
+        // Handle API errors returned from FastAPI/DataForSEO
+        throw new Error(responseData.detail || "An unknown error occurred.")
       }
-    }
+      
+      setResults(responseData)
+      
+      // If the method was 'standard', extract and set the task ID for user feedback
+      if (method === "standard" && responseData.tasks?.[0]?.id) {
+        setTaskId(responseData.tasks[0].id)
+      }
 
-    const data: ApiResponse = await response.json();
-    console.log("API Response:", data); // Log the full response for debugging
-
-    if (data.tasks?.[0]?.result) {
-      setResults(data.tasks[0].result);
-    } else {
-      setError("No results found for the given keywords.");
+    } catch (err: any) {
+      setError(err.message)
+    } finally {
+      setLoading(false)
     }
-  } catch (err: any) {
-    console.error("Error fetching keyword data:", err);
-    setError(err.message || "Failed to process request");
-  } finally {
-    setIsLoading(false);
   }
-};
 
-  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text)
+  }
 
-  return (
-    <div className="space-y-8 p-4 md:p-8">
+  const renderForm = () => {
+    const currentEndpoint = endpoints.find((e) => e.id === activeEndpoint)
+
+    return (
       <Card>
         <CardHeader>
-          <CardTitle>Keyword Research Tool</CardTitle>
+          <CardTitle className="flex items-center gap-2">
+            {currentEndpoint?.icon && <currentEndpoint.icon className="h-5 w-5" />}
+            {currentEndpoint?.name}
+          </CardTitle>
+          <CardDescription>{currentEndpoint?.description}</CardDescription>
         </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <Input
-              placeholder="Enter keywords (comma-separated)"
-              value={keywords}
-              onChange={(e) => setKeywords(e.target.value)}
-              className="md:col-span-2"
-            />
-            <Input
-              placeholder="Location (e.g., US)"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-            />
-            <Input
-              placeholder="Language (e.g., en)"
-              value={language}
-              onChange={(e) => setLanguage(e.target.value)}
-            />
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <Label htmlFor="location">Location Code</Label>
+              <Input
+                id="location"
+                value={locationCode}
+                onChange={(e) => setLocationCode(e.target.value)}
+                placeholder="2840 (US)"
+              />
+            </div>
+            <div>
+              <Label htmlFor="language">Language Code</Label>
+              <Input
+                id="language"
+                value={languageCode}
+                onChange={(e) => setLanguageCode(e.target.value)}
+                placeholder="en"
+              />
+            </div>
           </div>
-          <Button onClick={handleSearch} disabled={isLoading} className="mt-4">
-            {isLoading ? "Searching..." : "Search"}
+
+          {activeEndpoint === "keywords-for-site" && (
+            <div>
+              <Label htmlFor="target">Target Domain/URL</Label>
+              <Input
+                id="target"
+                value={target}
+                onChange={(e) => setTarget(e.target.value)}
+                placeholder="dataforseo.com"
+              />
+            </div>
+          )}
+
+          {(activeEndpoint === "search-volume" ||
+            activeEndpoint === "keywords-for-keywords" ||
+            activeEndpoint === "ad-traffic") && (
+            <div>
+              <Label htmlFor="keywords">Keywords (one per line)</Label>
+              <Textarea
+                id="keywords"
+                value={keywords}
+                onChange={(e) => setKeywords(e.target.value)}
+                placeholder="Enter keywords, one per line"
+                rows={4}
+              />
+            </div>
+          )}
+
+          {activeEndpoint === "ad-traffic" && (
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <Label htmlFor="bid">Bid Amount</Label>
+                <Input id="bid" value={bid} onChange={(e) => setBid(e.target.value)} placeholder="999" />
+              </div>
+              <div>
+                <Label htmlFor="match">Match Type</Label>
+                <Select value={match} onValueChange={setMatch}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="exact">Exact</SelectItem>
+                    <SelectItem value="phrase">Phrase</SelectItem>
+                    <SelectItem value="broad">Broad</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+          )}
+
+          <div className="flex items-center gap-2">
+            <Label>Method:</Label>
+            <div className="flex gap-2">
+              <Button variant={method === "live" ? "default" : "outline"} size="sm" onClick={() => setMethod("live")}>
+                <Play className="h-4 w-4 mr-1" />
+                Live
+              </Button>
+              <Button
+                variant={method === "standard" ? "default" : "outline"}
+                size="sm"
+                onClick={() => setMethod("standard")}
+              >
+                <Clock className="h-4 w-4 mr-1" />
+                Standard
+              </Button>
+            </div>
+          </div>
+          
+          {error && (
+              <Alert variant="destructive">
+                  <AlertTriangle className="h-4 w-4" />
+                  <AlertTitle>Error</AlertTitle>
+                  <AlertDescription>{error}</AlertDescription>
+              </Alert>
+          )}
+
+          <Button onClick={handleSubmit} disabled={loading} className="w-full">
+            {loading ? "Processing..." : "Execute API Call"}
           </Button>
         </CardContent>
       </Card>
+    )
+  }
 
-      {error && (
-        <Card className="border-red-300 bg-red-50">
-          <CardHeader>
-            <CardTitle className="text-red-600">Error</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-red-500">{error}</p>
-            <p className="mt-2 text-sm text-gray-500">
-              Please check your keywords and try again. Make sure you're entering valid search terms.
-            </p>
-          </CardContent>
-        </Card>
-      )}
+  const renderResults = () => {
+    if (!results) return null
 
-      {results.length > 0 && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Keyword Results</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Keyword</TableHead>
-                  <TableHead>Search Volume</TableHead>
-                  <TableHead>Competition</TableHead>
-                  <TableHead>CPC</TableHead>
-                  <TableHead>Low Bid</TableHead>
-                  <TableHead>High Bid</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {results.map((result) => (
-                  <TableRow key={result.keyword}>
-                    <TableCell>{result.keyword}</TableCell>
-                    <TableCell>{result.search_volume?.toLocaleString()}</TableCell>
-                    <TableCell>{result.competition}</TableCell>
-                    <TableCell>${result.cpc?.toFixed(2) || "0.00"}</TableCell>
-                    <TableCell>${result.low_top_of_page_bid?.toFixed(2) || "0.00"}</TableCell>
-                    <TableCell>${result.high_top_of_page_bid?.toFixed(2) || "0.00"}</TableCell>
-                  </TableRow>
+    const taskResults = results.tasks?.[0]?.result || []
+
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <CheckCircle className="h-5 w-5 text-green-500" />
+            API Response
+          </CardTitle>
+          <div className="flex items-center gap-4 text-sm text-muted-foreground">
+            <span>Status: {results.status_code} ({results.status_message})</span>
+            <span>Cost: ${results.cost?.toFixed(4) || '0.0000'}</span>
+            <span>Results: {taskResults.length}</span>
+          </div>
+        </CardHeader>
+        <CardContent>
+          {taskId && (
+            <Alert className="mb-4">
+              <Info className="h-4 w-4" />
+              <AlertTitle>Standard Task Submitted</AlertTitle>
+              <AlertDescription>
+                Your task has been created with ID: <code className="font-mono bg-muted p-1 rounded">{taskId}</code>. 
+                Use the Standard Method Workflow steps to retrieve your results.
+              </AlertDescription>
+            </Alert>
+          )}
+        
+          <Tabs defaultValue="formatted">
+            <TabsList>
+              <TabsTrigger value="formatted">Formatted Results</TabsTrigger>
+              <TabsTrigger value="raw">Raw JSON</TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="formatted" className="space-y-4">
+              {activeEndpoint === "search-volume" && (
+                <div className="space-y-4">
+                  {taskResults.map((item: any, index: number) => (
+                    <Card key={index}>
+                      <CardContent className="pt-4">
+                        <div className="flex items-center justify-between mb-2">
+                          <h4 className="font-semibold">{item.keyword}</h4>
+                          <Badge
+                            variant={
+                              item.competition === "HIGH"
+                                ? "destructive"
+                                : item.competition === "MEDIUM"
+                                  ? "default"
+                                  : "secondary"
+                            }
+                          >
+                            {item.competition}
+                          </Badge>
+                        </div>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                          <div>
+                            <span className="text-muted-foreground">Search Volume:</span>
+                            <p className="font-medium">{item.search_volume?.toLocaleString()}</p>
+                          </div>
+                          <div>
+                            <span className="text-muted-foreground">CPC:</span>
+                            <p className="font-medium">${item.cpc}</p>
+                          </div>
+                          <div>
+                            <span className="text-muted-foreground">Competition Index:</span>
+                            <p className="font-medium">{item.competition_index}/100</p>
+                          </div>
+                          <div>
+                            <span className="text-muted-foreground">Location:</span>
+                            <p className="font-medium">{item.location_code}</p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              )}
+
+              {activeEndpoint === "ad-traffic" && (
+                <Card>
+                  <CardContent className="pt-4">
+                    <h4 className="font-semibold mb-4">Ad Traffic Forecast</h4>
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                      <div>
+                        <span className="text-muted-foreground">Impressions:</span>
+                        <p className="font-medium text-lg">{taskResults[0]?.impressions?.toLocaleString(undefined, {maximumFractionDigits: 0})}</p>
+                      </div>
+                      <div>
+                        <span className="text-muted-foreground">Clicks:</span>
+                        <p className="font-medium text-lg">{taskResults[0]?.clicks?.toLocaleString(undefined, {maximumFractionDigits: 0})}</p>
+                      </div>
+                      <div>
+                        <span className="text-muted-foreground">CTR:</span>
+                        <p className="font-medium text-lg">{(taskResults[0]?.ctr * 100)?.toFixed(2)}%</p>
+                      </div>
+                      <div>
+                        <span className="text-muted-foreground">Avg CPC:</span>
+                        <p className="font-medium text-lg">${taskResults[0]?.average_cpc?.toFixed(2)}</p>
+                      </div>
+                      <div>
+                        <span className="text-muted-foreground">Total Cost:</span>
+                        <p className="font-medium text-lg">${taskResults[0]?.cost?.toLocaleString(undefined, {maximumFractionDigits: 2})}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
+
+              {(activeEndpoint === "keywords-for-site" || activeEndpoint === "keywords-for-keywords") && (
+                <div className="space-y-2">
+                  {taskResults.map((item: any, index: number) => (
+                    <div key={index} className="flex items-center justify-between p-3 border rounded">
+                      <div>
+                        <span className="font-medium">{item.keyword}</span>
+                        <div className="text-sm text-muted-foreground">
+                          Volume: {item.search_volume?.toLocaleString()} | CPC: ${item.cpc?.toFixed(2)}
+                        </div>
+                      </div>
+                      <Badge
+                        variant={
+                          item.competition === "HIGH"
+                            ? "destructive"
+                            : item.competition === "MEDIUM"
+                              ? "default"
+                              : "secondary"
+                        }
+                      >
+                        {item.competition}
+                      </Badge>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </TabsContent>
+
+            <TabsContent value="raw">
+              <div className="relative">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="absolute top-2 right-2 z-10 bg-transparent"
+                  onClick={() => copyToClipboard(JSON.stringify(results, null, 2))}
+                >
+                  <Copy className="h-4 w-4" />
+                </Button>
+                <ScrollArea className="h-96">
+                  <pre className="text-xs bg-muted p-4 rounded overflow-x-auto">{JSON.stringify(results, null, 2)}</pre>
+                </ScrollArea>
+              </div>
+            </TabsContent>
+          </Tabs>
+        </CardContent>
+      </Card>
+    )
+  }
+
+  return (
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto p-6">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold mb-2">Keywords Data API Dashboard</h1>
+          <p className="text-muted-foreground">Technical interface for consuming Google Keywords Data API endpoints</p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          {/* Sidebar Navigation */}
+          <div className="lg:col-span-1">
+            <Card>
+              <CardHeader>
+                <CardTitle>API Endpoints</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                {endpoints.map((endpoint) => (
+                  <Button
+                    key={endpoint.id}
+                    variant={activeEndpoint === endpoint.id ? "default" : "ghost"}
+                    className="w-full justify-start"
+                    onClick={() => {
+                      setActiveEndpoint(endpoint.id);
+                      setResults(null);
+                      setError(null);
+                    }}
+                  >
+                    <endpoint.icon className="h-4 w-4 mr-2" />
+                    {endpoint.name}
+                  </Button>
                 ))}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
-      )}
+              </CardContent>
+            </Card>
+          </div>
 
-      {results.map((result) => (
-        <Card key={result.keyword + "-chart"}>
-          <CardHeader>
-            <CardTitle>Monthly Search Trend: "{result.keyword}"</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart
-                data={result.monthly_searches.map((ms) => ({
-                  name: `${monthNames[ms.month - 1]} ${ms.year}`,
-                  volume: ms.search_volume,
-                })).reverse()}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="volume" fill="#8884d8" name="Search Volume" />
-              </BarChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
-      ))}
+          {/* Main Content */}
+          <div className="lg:col-span-3 space-y-6">
+            {renderForm()}
+            {loading && <p>Loading...</p>}
+            {results && renderResults()}
+
+            {method === "standard" && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Standard Method Workflow</CardTitle>
+                  <CardDescription>For asynchronous processing, follow these steps:</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-medium">
+                      1
+                    </div>
+                    <div>
+                      <p className="font-medium">POST Task</p>
+                      <p className="text-sm text-muted-foreground">Submit your request using the 'Standard' method button above.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-muted text-muted-foreground flex items-center justify-center text-sm font-medium">
+                      2
+                    </div>
+                    <div>
+                      <p className="font-medium">Check Tasks Ready</p>
+                      <p className="text-sm text-muted-foreground">
+                        Poll the `/tasks_ready` endpoint for your API to see if processing is complete.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-muted text-muted-foreground flex items-center justify-center text-sm font-medium">
+                      3
+                    </div>
+                    <div>
+                      <p className="font-medium">Get Results</p>
+                      <p className="text-sm text-muted-foreground">Retrieve final data using the `/task_get/{"{task_id}"}` endpoint.</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
-  );
+  )
 }
