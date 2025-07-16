@@ -7755,3 +7755,500 @@ ConnectionResetError: [WinError 10054] An existing connection was forcibly close
 2025-07-14 00:03:34,553 - middleware - INFO - [RESPONSE] POST /api/chat
 2025-07-14 00:03:34,554 - middleware - INFO -    Status: 200
 2025-07-14 00:03:34,554 - middleware - INFO -    Processing time: 10.242s
+2025-07-14 18:28:22,974 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-14 18:28:22,983 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-14 18:28:22,984 - config - INFO - Backend starting up...
+2025-07-14 18:28:22,984 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-14 18:28:22,985 - config - INFO - .env file exists: True
+2025-07-14 18:28:22,985 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-14 18:28:22,985 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-14 18:28:22,985 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-14 18:28:22,986 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-14 18:28:22,986 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-14 18:28:23,897 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-14 18:28:23,899 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-14 18:28:24,758 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-14 18:28:25,723 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-14 18:29:31,517 - middleware - INFO - [INCOMING] OPTIONS request to /api/analyze
+2025-07-14 18:29:31,518 - middleware - INFO -    Client: 127.0.0.1
+2025-07-14 18:29:31,518 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'accept': '*/*', 'access-control-request-method': 'POST', 'access-control-request-headers': 'content-type', 'origin': 'http://localhost:3000', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-site', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-14 18:29:31,519 - middleware - INFO - [RESPONSE] OPTIONS /api/analyze
+2025-07-14 18:29:31,520 - middleware - INFO -    Status: 200
+2025-07-14 18:29:31,520 - middleware - INFO -    Processing time: 0.002s
+2025-07-14 18:29:31,523 - middleware - INFO - [INCOMING] POST request to /api/analyze
+2025-07-14 18:29:31,524 - middleware - INFO -    Client: 127.0.0.1
+2025-07-14 18:29:31,524 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '49', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-14 18:29:31,526 - routes - INFO - [ANALYZE] Starting website analysis for 1 websites
+2025-07-14 18:29:31,526 - routes - INFO -    Websites: ['rapidapi.com']
+2025-07-14 18:29:31,527 - routes - INFO -    User ID: user-123
+2025-07-14 18:29:31,527 - routes - INFO - [START] Starting SimilarWeb Analysis (Step 1)
+2025-07-14 18:29:31,528 - routes - INFO - API Token Status - APIFY: YES
+2025-07-14 18:29:31,529 - routes - INFO - [API] Fetching data from Apify API...
+2025-07-14 18:29:32,658 - httpx - INFO - HTTP Request: POST https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs "HTTP/1.1 201 Created"
+2025-07-14 18:29:38,317 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/cVtht8MoOF6ml3Nqr "HTTP/1.1 200 OK"
+2025-07-14 18:29:43,963 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/cVtht8MoOF6ml3Nqr "HTTP/1.1 200 OK"
+2025-07-14 18:29:50,473 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/cVtht8MoOF6ml3Nqr "HTTP/1.1 200 OK"
+2025-07-14 18:29:56,123 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/cVtht8MoOF6ml3Nqr "HTTP/1.1 200 OK"
+2025-07-14 18:30:01,305 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/cVtht8MoOF6ml3Nqr "HTTP/1.1 200 OK"
+2025-07-14 18:30:07,034 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/cVtht8MoOF6ml3Nqr "HTTP/1.1 200 OK"
+2025-07-14 18:30:13,021 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/cVtht8MoOF6ml3Nqr "HTTP/1.1 200 OK"
+2025-07-14 18:30:13,223 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/datasets/2vrUlCVZWcx2YEtd2/items "HTTP/1.1 200 OK"
+2025-07-14 18:30:13,236 - database_service - INFO - Generated UUID 3a1b8473-3492-5076-98f9-b2dfa6d37933 for user_id: user-123
+2025-07-14 18:30:13,758 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=id&id=eq.3a1b8473-3492-5076-98f9-b2dfa6d37933 "HTTP/1.1 200 OK"
+2025-07-14 18:30:13,771 - database_service - INFO - User record already exists: 3a1b8473-3492-5076-98f9-b2dfa6d37933
+2025-07-14 18:30:13,774 - database_service - INFO - Generated UUID 3a1b8473-3492-5076-98f9-b2dfa6d37933 for user_id: user-123
+2025-07-14 18:30:14,043 - httpx - INFO - HTTP Request: POST https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/analysis_sessions "HTTP/1.1 201 Created"
+2025-07-14 18:30:14,044 - database_service - INFO - Analysis session saved successfully: dd44bab0-4467-4b31-b4ab-08834a5de995
+2025-07-14 18:30:14,046 - routes - INFO - [SUCCESS] Step 1 (SimilarWeb) completed successfully
+2025-07-14 18:30:14,048 - middleware - INFO - [RESPONSE] POST /api/analyze
+2025-07-14 18:30:14,048 - middleware - INFO -    Status: 200
+2025-07-14 18:30:14,049 - middleware - INFO -    Processing time: 42.524s
+2025-07-14 18:31:07,454 - middleware - INFO - [INCOMING] POST request to /api/analyze
+2025-07-14 18:31:07,455 - middleware - INFO -    Client: 127.0.0.1
+2025-07-14 18:31:07,456 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '59', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-14 18:31:07,458 - routes - INFO - [ANALYZE] Starting website analysis for 1 websites
+2025-07-14 18:31:07,459 - routes - INFO -    Websites: ['https://lamishop3.com/']
+2025-07-14 18:31:07,459 - routes - INFO -    User ID: user-123
+2025-07-14 18:31:07,460 - routes - INFO - [START] Starting SimilarWeb Analysis (Step 1)
+2025-07-14 18:31:07,460 - routes - INFO - API Token Status - APIFY: YES
+2025-07-14 18:31:07,462 - routes - INFO - [API] Fetching data from Apify API...
+2025-07-14 18:31:08,722 - httpx - INFO - HTTP Request: POST https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs "HTTP/1.1 201 Created"
+2025-07-14 18:31:14,707 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:31:20,550 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:31:26,247 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:31:31,476 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:31:36,695 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:31:42,434 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:31:48,227 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:31:53,906 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:31:59,600 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:32:04,810 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:32:10,498 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:32:16,180 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:32:21,376 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:32:27,020 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:32:32,701 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:32:38,355 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:32:43,559 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:32:49,280 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:32:55,066 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:33:00,772 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:33:06,484 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:33:11,688 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:33:17,369 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:33:22,552 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:33:27,737 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:33:32,922 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:33:38,603 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:33:44,285 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:33:50,005 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:33:55,627 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:34:01,250 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:34:06,423 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:34:11,590 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:34:17,285 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:34:23,013 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:34:28,640 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:34:34,250 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:34:39,414 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:34:45,054 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:34:50,221 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:34:55,962 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:35:01,621 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 18:35:06,832 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/WRgPY43Vv2cAbDPmE "HTTP/1.1 200 OK"
+2025-07-14 20:43:00,507 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-14 20:43:00,525 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-14 20:43:00,527 - config - INFO - Backend starting up...
+2025-07-14 20:43:00,527 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-14 20:43:00,527 - config - INFO - .env file exists: True
+2025-07-14 20:43:00,527 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-14 20:43:00,528 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-14 20:43:00,528 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-14 20:43:00,528 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-14 20:43:00,529 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-14 20:43:01,643 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-14 20:43:01,645 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-14 20:43:02,574 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-14 20:43:03,535 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-14 20:46:50,393 - middleware - INFO - [INCOMING] GET request to /google-trends
+2025-07-14 20:46:50,395 - middleware - INFO -    Client: 127.0.0.1
+2025-07-14 20:46:50,396 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-14 20:46:50,397 - routes - INFO - [GOOGLE TRENDS] Fetching enhanced trends for query: iphone
+2025-07-14 20:46:50,397 - routes - INFO - [GOOGLE TRENDS] Processing keywords: ['iphone'], timeframe: today 12-m, geo: 
+2025-07-14 20:46:50,398 - clients.google_trends_client - INFO - 🚀 Fetching all Google Trends data for: ['iphone']
+2025-07-14 20:46:52,415 - clients.google_trends_client - INFO - ✅ Interest over time data fetched successfully
+2025-07-14 20:46:55,342 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Interest by Region': HTTPSConnectionPool(host='trends.google.com', port=443): Max retries exceeded with url: /trends/api/widgetdata/comparedgeo?req=%7B%22geo%22%3A+%7B%7D%2C+%22comparisonItem%22%3A+%5B%7B%22time%22%3A+%222024-07-14+2025-07-14%22%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22iphone%22%7D%5D%7D%7D%5D%2C+%22resolution%22%3A+%22REGION%22%2C+%22locale%22%3A+%22en-US%22%2C+%22requestOptions%22%3A+%7B%22property%22%3A+%22%22%2C+%22backend%22%3A+%22IZG%22%2C+%22category%22%3A+0%7D%2C+%22userConfig%22%3A+%7B%22userType%22%3A+%22USER_TYPE_SCRAPER%22%7D%2C+%22includeLowSearchVolumeGeos%22%3A+false%7D&token=APP6_UEAAAAAaHawLgnvDsVe3JnLq8uz1CyZhfoYO5tq&tz=360 (Caused by ResponseError('too many 500 error responses'))
+2025-07-14 20:46:58,602 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Queries': list index out of range
+2025-07-14 20:47:01,791 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Topics': list index out of range
+2025-07-14 20:47:04,683 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Trending Searches': The request failed: Google returned a response with code 404
+2025-07-14 20:47:04,685 - clients.google_trends_client - INFO - ✅ All Google Trends data fetching complete
+2025-07-14 20:47:04,687 - routes - INFO - [SUCCESS] Enhanced Google Trends data fetched successfully for 1 keywords
+2025-07-14 20:47:04,696 - middleware - INFO - [RESPONSE] GET /google-trends
+2025-07-14 20:47:04,696 - middleware - INFO -    Status: 200
+2025-07-14 20:47:04,698 - middleware - INFO -    Processing time: 14.302s
+2025-07-14 20:47:37,475 - middleware - INFO - [INCOMING] GET request to /google-trends/visual-report
+2025-07-14 20:47:37,475 - middleware - INFO -    Client: 127.0.0.1
+2025-07-14 20:47:37,476 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-14 20:47:37,478 - routes - INFO - [VISUAL TRENDS REPORT] Generating report for: iphone
+2025-07-14 20:47:37,478 - clients.google_trends_client - INFO - 🚀 Fetching all Google Trends data for: ['iphone']
+2025-07-14 20:47:39,307 - clients.google_trends_client - INFO - ✅ Interest over time data fetched successfully
+2025-07-14 20:47:42,267 - clients.google_trends_client - INFO - Regional interest: Filtered from 51 to 51 countries with non-zero values
+2025-07-14 20:47:42,280 - clients.google_trends_client - INFO - ✅ Interest by region data fetched successfully
+2025-07-14 20:47:45,185 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Queries': list index out of range
+2025-07-14 20:47:48,345 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Related Topics': list index out of range
+2025-07-14 20:47:51,207 - clients.google_trends_client - WARNING - ⚠️ Could not fetch 'Trending Searches': The request failed: Google returned a response with code 404
+2025-07-14 20:47:51,211 - clients.google_trends_client - INFO - ✅ All Google Trends data fetching complete
+2025-07-14 20:47:51,212 - routes - INFO - [SUCCESS] Visual trends report generated successfully
+2025-07-14 20:47:51,218 - middleware - INFO - [RESPONSE] GET /google-trends/visual-report
+2025-07-14 20:47:51,218 - middleware - INFO -    Status: 200
+2025-07-14 20:47:51,219 - middleware - INFO -    Processing time: 13.744s
+2025-07-14 20:48:34,345 - middleware - INFO - [INCOMING] OPTIONS request to /api/analyze
+2025-07-14 20:48:34,346 - middleware - INFO -    Client: 127.0.0.1
+2025-07-14 20:48:34,346 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'accept': '*/*', 'access-control-request-method': 'POST', 'access-control-request-headers': 'content-type', 'origin': 'http://localhost:3000', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-site', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-14 20:48:34,347 - middleware - INFO - [RESPONSE] OPTIONS /api/analyze
+2025-07-14 20:48:34,347 - middleware - INFO -    Status: 200
+2025-07-14 20:48:34,347 - middleware - INFO -    Processing time: 0.002s
+2025-07-14 20:48:34,351 - middleware - INFO - [INCOMING] POST request to /api/analyze
+2025-07-14 20:48:34,351 - middleware - INFO -    Client: 127.0.0.1
+2025-07-14 20:48:34,352 - middleware - INFO -    Headers: {'host': 'localhost:8000', 'connection': 'keep-alive', 'content-length': '47', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'origin': 'http://localhost:3000', 'sec-fetch-site': 'same-site', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://localhost:3000/', 'accept-encoding': 'gzip, deflate, br, zstd', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5'}
+2025-07-14 20:48:34,355 - routes - INFO - [ANALYZE] Starting website analysis for 1 websites
+2025-07-14 20:48:34,356 - routes - INFO -    Websites: ['google.com']
+2025-07-14 20:48:34,356 - routes - INFO -    User ID: user-123
+2025-07-14 20:48:34,356 - routes - INFO - [START] Starting SimilarWeb Analysis (Step 1)
+2025-07-14 20:48:34,357 - routes - INFO - API Token Status - APIFY: YES
+2025-07-14 20:48:34,358 - routes - INFO - [API] Fetching data from Apify API...
+2025-07-14 20:48:35,761 - httpx - INFO - HTTP Request: POST https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs "HTTP/1.1 201 Created"
+2025-07-14 20:48:40,947 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:48:46,671 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:48:52,552 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:48:57,796 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:49:03,423 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:49:08,589 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:49:13,760 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:49:19,592 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:49:25,242 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:49:30,438 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:49:36,232 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:49:41,395 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:49:46,583 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:49:51,871 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:49:57,036 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:50:02,792 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:50:07,992 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:50:13,707 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:50:19,395 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:50:25,064 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:50:30,257 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:50:35,983 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:50:41,156 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:50:46,854 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:50:52,645 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:50:58,309 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:51:03,487 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:51:08,651 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:51:14,328 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:51:19,963 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:51:25,145 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:51:30,803 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:51:36,527 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:51:42,179 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:51:47,380 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:51:53,209 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:51:58,378 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:52:03,562 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:52:09,237 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:52:14,991 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:52:20,715 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:52:26,401 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:52:31,573 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:52:37,563 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:52:42,789 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:52:47,990 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:52:53,184 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:52:58,803 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:53:03,991 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:53:09,811 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:53:15,477 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:53:21,261 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:53:26,981 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:53:32,166 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:53:37,345 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:53:42,535 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:53:47,729 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:53:53,021 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:53:58,762 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:54:04,434 - httpx - INFO - HTTP Request: GET https://api.apify.com/v2/acts/heLi1j7hzjC2gFlIx/runs/9TPaoua3WmNnGde9c "HTTP/1.1 200 OK"
+2025-07-14 20:54:04,438 - middleware - INFO - [RESPONSE] POST /api/analyze
+2025-07-14 20:54:04,439 - middleware - INFO -    Status: 500
+2025-07-14 20:54:04,439 - middleware - INFO -    Processing time: 330.087s
+2025-07-15 19:09:00,923 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-15 19:09:00,989 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-15 19:09:00,994 - config - INFO - Backend starting up...
+2025-07-15 19:09:00,995 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-15 19:09:00,995 - config - INFO - .env file exists: True
+2025-07-15 19:09:00,995 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-15 19:09:00,996 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-15 19:09:00,996 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-15 19:09:00,998 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-15 19:09:00,998 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-15 19:09:02,005 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-15 19:09:02,005 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-15 19:09:02,893 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-15 19:09:03,890 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-15 19:37:01,654 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-15 19:37:01,664 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-15 19:37:01,666 - config - INFO - Backend starting up...
+2025-07-15 19:37:01,667 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-15 19:37:01,667 - config - INFO - .env file exists: True
+2025-07-15 19:37:01,667 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-15 19:37:01,667 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-15 19:37:01,668 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-15 19:37:01,668 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-15 19:37:01,668 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-15 19:37:02,326 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-15 19:37:02,326 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-15 19:37:03,186 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-15 19:37:04,119 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-15 19:51:32,896 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-15 19:51:32,904 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-15 19:51:32,907 - config - INFO - Backend starting up...
+2025-07-15 19:51:32,908 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-15 19:51:32,908 - config - INFO - .env file exists: True
+2025-07-15 19:51:32,908 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-15 19:51:32,910 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-15 19:51:32,910 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-15 19:51:32,910 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-15 19:51:32,911 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-15 19:51:33,302 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-15 19:51:33,303 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-15 19:51:33,882 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-15 19:51:35,044 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-15 20:06:46,708 - config - WARNING - ⚠️ Supabase client created but connection test failed: [Errno 11001] getaddrinfo failed
+2025-07-15 20:06:46,710 - config - INFO - Backend starting up...
+2025-07-15 20:06:46,710 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-15 20:06:46,710 - config - INFO - .env file exists: True
+2025-07-15 20:06:46,711 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-15 20:06:46,711 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-15 20:06:46,711 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-15 20:06:46,711 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-15 20:06:46,712 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-15 20:06:47,118 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-15 20:06:47,118 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-15 20:06:47,685 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-15 20:06:47,689 - clients.google_trends_client - ERROR - Failed to initialize Google Trends client: HTTPSConnectionPool(host='trends.google.com', port=443): Max retries exceeded with url: /trends/explore/?geo=US (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000002BEB3B28A90>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+2025-07-15 20:07:03,498 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-15 20:07:03,507 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-15 20:07:03,508 - config - INFO - Backend starting up...
+2025-07-15 20:07:03,508 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-15 20:07:03,508 - config - INFO - .env file exists: True
+2025-07-15 20:07:03,509 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-15 20:07:03,509 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-15 20:07:03,510 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-15 20:07:03,510 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-15 20:07:03,510 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-15 20:07:04,005 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-15 20:07:04,005 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-15 20:07:04,670 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-15 20:07:06,358 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-15 20:12:43,642 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-15 20:12:43,651 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-15 20:12:43,652 - config - INFO - Backend starting up...
+2025-07-15 20:12:43,652 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-15 20:12:43,652 - config - INFO - .env file exists: True
+2025-07-15 20:12:43,653 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-15 20:12:43,653 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-15 20:12:43,653 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-15 20:12:43,654 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-15 20:12:43,654 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-15 20:12:43,962 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-15 20:12:43,962 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-15 20:12:44,489 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-15 20:12:45,219 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-15 20:14:21,931 - middleware - INFO - [INCOMING] POST request to /api/keyword_search_volume
+2025-07-15 20:14:21,933 - middleware - INFO -    Client: 127.0.0.1
+2025-07-15 20:14:21,933 - middleware - INFO -    Headers: {'cookie': 'ajs_anonymous_id=18579a7c-f4ce-4647-8aa9-b429ad6b9845; jenkins-timestamper-offset=-3600000; grafana_session=339ed3acdf3a1ebc6b588c97708c09fe; grafana_session_expiry=1752597116; __next_hmr_refresh_hash__=9de5e043e0f0cd48426303fec3dc697e633457081244afec', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5', 'accept-encoding': 'gzip, deflate, br, zstd', 'referer': 'http://localhost:3000/keywords', 'sec-fetch-dest': 'empty', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-origin', 'origin': 'http://localhost:3000', 'accept': '*/*', 'sec-ch-ua-mobile': '?0', 'content-type': 'application/json', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua-platform': '"Windows"', 'content-length': '65', 'connection': 'close', 'host': 'localhost:8000', 'x-forwarded-host': 'localhost:3000'}
+2025-07-15 20:14:22,760 - middleware - INFO - [RESPONSE] POST /api/keyword_search_volume
+2025-07-15 20:14:22,760 - middleware - INFO -    Status: 200
+2025-07-15 20:14:22,760 - middleware - INFO -    Processing time: 0.829s
+2025-07-15 20:14:29,361 - middleware - INFO - [INCOMING] POST request to /api/keyword_search_volume
+2025-07-15 20:14:29,362 - middleware - INFO -    Client: 127.0.0.1
+2025-07-15 20:14:29,363 - middleware - INFO -    Headers: {'cookie': 'ajs_anonymous_id=18579a7c-f4ce-4647-8aa9-b429ad6b9845; jenkins-timestamper-offset=-3600000; grafana_session=339ed3acdf3a1ebc6b588c97708c09fe; grafana_session_expiry=1752597116; __next_hmr_refresh_hash__=9de5e043e0f0cd48426303fec3dc697e633457081244afec', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5', 'accept-encoding': 'gzip, deflate, br, zstd', 'referer': 'http://localhost:3000/keywords', 'sec-fetch-dest': 'empty', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-origin', 'origin': 'http://localhost:3000', 'accept': '*/*', 'sec-ch-ua-mobile': '?0', 'content-type': 'application/json', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua-platform': '"Windows"', 'content-length': '65', 'connection': 'close', 'host': 'localhost:8000', 'x-forwarded-host': 'localhost:3000'}
+2025-07-15 20:14:30,102 - middleware - INFO - [RESPONSE] POST /api/keyword_search_volume
+2025-07-15 20:14:30,103 - middleware - INFO -    Status: 200
+2025-07-15 20:14:30,103 - middleware - INFO -    Processing time: 0.741s
+2025-07-15 22:39:27,964 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-15 22:39:27,973 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-15 22:39:27,974 - config - INFO - Backend starting up...
+2025-07-15 22:39:27,976 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-15 22:39:27,977 - config - INFO - .env file exists: True
+2025-07-15 22:39:27,977 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-15 22:39:27,978 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-15 22:39:27,978 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-15 22:39:27,978 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-15 22:39:27,978 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-15 22:39:28,469 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-15 22:39:28,470 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-15 22:39:29,057 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-15 22:39:29,900 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-15 22:39:36,701 - middleware - INFO - [INCOMING] POST request to /api/keyword_search_volume
+2025-07-15 22:39:36,702 - middleware - INFO -    Client: 127.0.0.1
+2025-07-15 22:39:36,703 - middleware - INFO -    Headers: {'cookie': 'ajs_anonymous_id=18579a7c-f4ce-4647-8aa9-b429ad6b9845; jenkins-timestamper-offset=-3600000; grafana_session=339ed3acdf3a1ebc6b588c97708c09fe; grafana_session_expiry=1752597116; __next_hmr_refresh_hash__=9de5e043e0f0cd48426303fec3dc697e633457081244afec', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5', 'accept-encoding': 'gzip, deflate, br, zstd', 'referer': 'http://localhost:3000/keywords', 'sec-fetch-dest': 'empty', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-origin', 'origin': 'http://localhost:3000', 'accept': '*/*', 'sec-ch-ua-mobile': '?0', 'content-type': 'application/json', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua-platform': '"Windows"', 'content-length': '65', 'connection': 'close', 'host': 'localhost:8000', 'x-forwarded-host': 'localhost:3000'}
+2025-07-15 22:39:37,569 - middleware - INFO - [RESPONSE] POST /api/keyword_search_volume
+2025-07-15 22:39:37,570 - middleware - INFO -    Status: 200
+2025-07-15 22:39:37,570 - middleware - INFO -    Processing time: 0.868s
+2025-07-15 22:44:13,511 - middleware - INFO - [INCOMING] POST request to /api/keyword_search_volume
+2025-07-15 22:44:13,511 - middleware - INFO -    Client: 127.0.0.1
+2025-07-15 22:44:13,511 - middleware - INFO -    Headers: {'cookie': 'ajs_anonymous_id=18579a7c-f4ce-4647-8aa9-b429ad6b9845; jenkins-timestamper-offset=-3600000; grafana_session=339ed3acdf3a1ebc6b588c97708c09fe; grafana_session_expiry=1752597116; __next_hmr_refresh_hash__=9de5e043e0f0cd48426303fec3dc697e633457081244afec', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5', 'accept-encoding': 'gzip, deflate, br, zstd', 'referer': 'http://localhost:3000/keywords', 'sec-fetch-dest': 'empty', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-origin', 'origin': 'http://localhost:3000', 'accept': '*/*', 'sec-ch-ua-mobile': '?0', 'content-type': 'application/json', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua-platform': '"Windows"', 'content-length': '65', 'connection': 'close', 'host': 'localhost:8000', 'x-forwarded-host': 'localhost:3000'}
+2025-07-15 22:44:14,336 - middleware - INFO - [RESPONSE] POST /api/keyword_search_volume
+2025-07-15 22:44:14,337 - middleware - INFO -    Status: 200
+2025-07-15 22:44:14,337 - middleware - INFO -    Processing time: 0.825s
+2025-07-15 22:48:29,942 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-15 22:48:29,952 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-15 22:48:29,952 - config - INFO - Backend starting up...
+2025-07-15 22:48:29,952 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-15 22:48:29,953 - config - INFO - .env file exists: True
+2025-07-15 22:48:29,954 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-15 22:48:29,955 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-15 22:48:29,955 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-15 22:48:29,955 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-15 22:48:29,955 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-15 22:48:30,312 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-15 22:48:30,312 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-15 22:48:30,973 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-15 22:48:31,866 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-15 22:49:52,847 - middleware - INFO - [INCOMING] POST request to /keyword_search_volume
+2025-07-15 22:49:52,847 - middleware - INFO -    Client: 127.0.0.1
+2025-07-15 22:49:52,848 - middleware - INFO -    Headers: {'authorization': 'Bearer XTQqtEJeihTnnyFTy8A7Vhav7HjTTQob', 'content-type': 'application/json', 'user-agent': 'PostmanRuntime/7.44.1', 'accept': '*/*', 'postman-token': '5a4883e3-5b3b-42d1-b5aa-0922113f7fce', 'host': '0.0.0.0:8000', 'accept-encoding': 'gzip, deflate, br', 'connection': 'keep-alive', 'content-length': '93'}
+2025-07-15 22:49:52,850 - middleware - INFO - [RESPONSE] POST /keyword_search_volume
+2025-07-15 22:49:52,851 - middleware - INFO -    Status: 404
+2025-07-15 22:49:52,852 - middleware - INFO -    Processing time: 0.004s
+2025-07-15 22:50:04,432 - middleware - INFO - [INCOMING] POST request to /keyword_search_volume
+2025-07-15 22:50:04,433 - middleware - INFO -    Client: 127.0.0.1
+2025-07-15 22:50:04,435 - middleware - INFO -    Headers: {'authorization': 'Bearer XTQqtEJeihTnnyFTy8A7Vhav7HjTTQob', 'content-type': 'application/json', 'user-agent': 'PostmanRuntime/7.44.1', 'accept': '*/*', 'postman-token': '88e2ea41-cc2e-4720-8755-b20f80fd41e6', 'host': '0.0.0.0:8000', 'accept-encoding': 'gzip, deflate, br', 'connection': 'keep-alive', 'content-length': '94'}
+2025-07-15 22:50:04,436 - middleware - INFO - [RESPONSE] POST /keyword_search_volume
+2025-07-15 22:50:04,437 - middleware - INFO -    Status: 404
+2025-07-15 22:50:04,438 - middleware - INFO -    Processing time: 0.004s
+2025-07-15 22:50:26,899 - middleware - INFO - [INCOMING] POST request to /api/keyword_search_volume
+2025-07-15 22:50:26,903 - middleware - INFO -    Client: 127.0.0.1
+2025-07-15 22:50:26,903 - middleware - INFO -    Headers: {'postman-token': 'c99c8bb3-ef8b-4ceb-b906-dc05352fec7a'}
+2025-07-15 22:50:26,915 - middleware - INFO - [RESPONSE] POST /api/keyword_search_volume
+2025-07-15 22:50:26,915 - middleware - INFO -    Status: 422
+2025-07-15 22:50:26,917 - middleware - INFO -    Processing time: 0.016s
+2025-07-15 22:52:12,032 - middleware - INFO - [INCOMING] POST request to /api/keyword_search_volume
+2025-07-15 22:52:12,035 - middleware - INFO -    Client: 127.0.0.1
+2025-07-15 22:52:12,036 - middleware - INFO -    Headers: {'postman-token': '8607e1c2-ca8d-46f1-9d87-92502200e111'}
+2025-07-15 22:52:12,039 - middleware - INFO - [RESPONSE] POST /api/keyword_search_volume
+2025-07-15 22:52:12,039 - middleware - INFO -    Status: 422
+2025-07-15 22:52:12,040 - middleware - INFO -    Processing time: 0.006s
+2025-07-15 22:53:00,631 - middleware - INFO - [INCOMING] POST request to /api/keyword_search_volume
+2025-07-15 22:53:00,632 - middleware - INFO -    Client: 127.0.0.1
+2025-07-15 22:53:00,632 - middleware - INFO -    Headers: {'postman-token': '40fd0ee5-bab0-4359-a9e1-4a563225120d'}
+2025-07-15 22:53:00,639 - middleware - INFO - [RESPONSE] POST /api/keyword_search_volume
+2025-07-15 22:53:00,639 - middleware - INFO -    Status: 422
+2025-07-15 22:53:00,640 - middleware - INFO -    Processing time: 0.008s
+2025-07-15 22:57:43,001 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-15 22:57:43,013 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-15 22:57:43,014 - config - INFO - Backend starting up...
+2025-07-15 22:57:43,015 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-15 22:57:43,015 - config - INFO - .env file exists: True
+2025-07-15 22:57:43,016 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-15 22:57:43,018 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-15 22:57:43,018 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-15 22:57:43,019 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-15 22:57:43,020 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-15 22:57:43,865 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-15 22:57:43,868 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-15 22:57:44,945 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-15 22:57:46,001 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-15 22:58:03,330 - middleware - INFO - [INCOMING] POST request to /api/keyword_search_volume
+2025-07-15 22:58:03,331 - middleware - INFO -    Client: 127.0.0.1
+2025-07-15 22:58:03,331 - middleware - INFO -    Headers: {'postman-token': '480f3acb-5afc-4898-ad0c-287d8c5e65aa'}
+2025-07-15 22:58:03,333 - middleware - INFO - [RESPONSE] POST /api/keyword_search_volume
+2025-07-15 22:58:03,336 - middleware - INFO -    Status: 422
+2025-07-15 22:58:03,338 - middleware - INFO -    Processing time: 0.004s
+2025-07-15 22:58:08,431 - middleware - INFO - [INCOMING] POST request to /api/keyword_search_volume
+2025-07-15 22:58:08,431 - middleware - INFO -    Client: 127.0.0.1
+2025-07-15 22:58:08,432 - middleware - INFO -    Headers: {'postman-token': '6fb93113-7739-4075-9c3a-a1c8d1e5ba66'}
+2025-07-15 22:58:08,438 - middleware - INFO - [RESPONSE] POST /api/keyword_search_volume
+2025-07-15 22:58:08,438 - middleware - INFO -    Status: 422
+2025-07-15 22:58:08,439 - middleware - INFO -    Processing time: 0.007s
+2025-07-15 22:59:22,213 - middleware - INFO - [INCOMING] POST request to /api/keyword_search_volume
+2025-07-15 22:59:22,213 - middleware - INFO -    Client: 127.0.0.1
+2025-07-15 22:59:22,214 - middleware - INFO -    Headers: {'postman-token': 'ee64802a-cdc8-4aa3-8668-424855b5ecf8'}
+2025-07-15 22:59:22,214 - middleware - INFO - [RESPONSE] POST /api/keyword_search_volume
+2025-07-15 22:59:22,219 - middleware - INFO -    Status: 422
+2025-07-15 22:59:22,219 - middleware - INFO -    Processing time: 0.002s
+2025-07-15 23:00:50,454 - middleware - INFO - [INCOMING] POST request to /api/keyword_search_volume
+2025-07-15 23:00:50,454 - middleware - INFO -    Client: 127.0.0.1
+2025-07-15 23:00:50,455 - middleware - INFO -    Headers: {'postman-token': '3fa862d0-a381-4e24-9bb9-cc1ec3745a93'}
+2025-07-15 23:00:50,456 - middleware - INFO - [RESPONSE] POST /api/keyword_search_volume
+2025-07-15 23:00:50,457 - middleware - INFO -    Status: 422
+2025-07-15 23:00:50,458 - middleware - INFO -    Processing time: 0.002s
+2025-07-15 23:00:59,548 - middleware - INFO - [INCOMING] POST request to /api/keyword_search_volume
+2025-07-15 23:00:59,550 - middleware - INFO -    Client: 127.0.0.1
+2025-07-15 23:00:59,551 - middleware - INFO -    Headers: {'postman-token': '74224134-a83e-4842-a739-1e7f35c4c794'}
+2025-07-15 23:00:59,554 - middleware - INFO - [RESPONSE] POST /api/keyword_search_volume
+2025-07-15 23:00:59,555 - middleware - INFO -    Status: 422
+2025-07-15 23:00:59,556 - middleware - INFO -    Processing time: 0.006s
+2025-07-15 23:01:25,804 - middleware - INFO - [INCOMING] POST request to /api/keyword_search_volume
+2025-07-15 23:01:25,804 - middleware - INFO -    Client: 127.0.0.1
+2025-07-15 23:01:25,805 - middleware - INFO -    Headers: {'postman-token': '3e0603f7-8a71-4f90-a66f-229a1dc9e2c5'}
+2025-07-15 23:01:25,806 - middleware - INFO - [RESPONSE] POST /api/keyword_search_volume
+2025-07-15 23:01:25,806 - middleware - INFO -    Status: 422
+2025-07-15 23:01:25,807 - middleware - INFO -    Processing time: 0.002s
+2025-07-15 23:01:46,089 - httpx - INFO - HTTP Request: GET https://pvqmxyqsubxtmgsdifym.supabase.co/rest/v1/users?select=count "HTTP/1.1 206 Partial Content"
+2025-07-15 23:01:46,098 - config - INFO - ✅ Supabase client initialized and tested successfully
+2025-07-15 23:01:46,099 - config - INFO - Backend starting up...
+2025-07-15 23:01:46,100 - config - INFO - Current working directory: C:\Users\mouni\Downloads\builtwith-analyzer (1)\backend
+2025-07-15 23:01:46,101 - config - INFO - .env file exists: True
+2025-07-15 23:01:46,101 - config - INFO - SUPABASE_URL configured: Yes
+2025-07-15 23:01:46,102 - config - INFO - SUPABASE_KEY configured: Yes
+2025-07-15 23:01:46,102 - config - INFO - APIFY_TOKEN configured: Yes
+2025-07-15 23:01:46,102 - config - INFO - BUILTWITH_KEY configured: Yes
+2025-07-15 23:01:46,102 - config - INFO - OPENROUTER_KEY configured: Yes
+2025-07-15 23:01:46,623 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2025-07-15 23:01:46,625 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2025-07-15 23:01:47,310 - database_service - INFO - ✅ DatabaseService initialized with Supabase client
+2025-07-15 23:01:48,099 - clients.google_trends_client - INFO - Google Trends client initialized successfully
+2025-07-15 23:02:47,203 - middleware - INFO - [INCOMING] POST request to /api/keyword_search_volume
+2025-07-15 23:02:47,203 - middleware - INFO -    Client: 127.0.0.1
+2025-07-15 23:02:47,204 - middleware - INFO -    Headers: {'content-type': 'application/json', 'user-agent': 'Mozilla/5.0 (Windows NT; Windows NT 10.0; fr-CA) WindowsPowerShell/5.1.26100.4652', 'host': 'localhost:8000', 'content-length': '81', 'expect': '100-continue', 'connection': 'Keep-Alive'}
+2025-07-15 23:02:47,209 - routes - INFO - [DEBUG] Received request: keywords=['best laptops', 'iphone'] language_code='en' location='US'
+2025-07-15 23:02:54,008 - middleware - INFO - [RESPONSE] POST /api/keyword_search_volume
+2025-07-15 23:02:54,008 - middleware - INFO -    Status: 200
+2025-07-15 23:02:54,009 - middleware - INFO -    Processing time: 6.806s
+2025-07-15 23:04:00,444 - middleware - INFO - [INCOMING] POST request to /api/keyword_search_volume
+2025-07-15 23:04:00,444 - middleware - INFO -    Client: 127.0.0.1
+2025-07-15 23:04:00,445 - middleware - INFO -    Headers: {'cookie': 'ajs_anonymous_id=18579a7c-f4ce-4647-8aa9-b429ad6b9845; jenkins-timestamper-offset=-3600000; grafana_session=339ed3acdf3a1ebc6b588c97708c09fe; grafana_session_expiry=1752597116; __next_hmr_refresh_hash__=9de5e043e0f0cd48426303fec3dc697e633457081244afec', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5', 'accept-encoding': 'gzip, deflate, br, zstd', 'referer': 'http://localhost:3000/keywords', 'sec-fetch-dest': 'empty', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-origin', 'origin': 'http://localhost:3000', 'accept': '*/*', 'sec-ch-ua-mobile': '?0', 'content-type': 'application/json', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua-platform': '"Windows"', 'content-length': '65', 'connection': 'close', 'host': 'localhost:8000', 'x-forwarded-host': 'localhost:3000'}
+2025-07-15 23:04:00,446 - routes - INFO - [DEBUG] Received request: keywords=['hyundai i20'] language_code='en' location='US'
+2025-07-15 23:04:03,879 - middleware - INFO - [RESPONSE] POST /api/keyword_search_volume
+2025-07-15 23:04:03,880 - middleware - INFO -    Status: 200
+2025-07-15 23:04:03,880 - middleware - INFO -    Processing time: 3.435s
+2025-07-15 23:04:51,613 - middleware - INFO - [INCOMING] POST request to /api/keyword_search_volume
+2025-07-15 23:04:51,613 - middleware - INFO -    Client: 127.0.0.1
+2025-07-15 23:04:51,615 - middleware - INFO -    Headers: {'cookie': 'ajs_anonymous_id=18579a7c-f4ce-4647-8aa9-b429ad6b9845; jenkins-timestamper-offset=-3600000; grafana_session=339ed3acdf3a1ebc6b588c97708c09fe; grafana_session_expiry=1752597116; __next_hmr_refresh_hash__=9de5e043e0f0cd48426303fec3dc697e633457081244afec', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5', 'accept-encoding': 'gzip, deflate, br, zstd', 'referer': 'http://localhost:3000/keywords', 'sec-fetch-dest': 'empty', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-origin', 'origin': 'http://localhost:3000', 'accept': '*/*', 'sec-ch-ua-mobile': '?0', 'content-type': 'application/json', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua-platform': '"Windows"', 'content-length': '66', 'connection': 'close', 'host': 'localhost:8000', 'x-forwarded-host': 'localhost:3000'}
+2025-07-15 23:04:51,622 - routes - INFO - [DEBUG] Received request: keywords=['hyundai i20'] language_code='en' location='TUN'
+2025-07-15 23:04:55,682 - middleware - INFO - [RESPONSE] POST /api/keyword_search_volume
+2025-07-15 23:04:55,684 - middleware - INFO -    Status: 200
+2025-07-15 23:04:55,685 - middleware - INFO -    Processing time: 4.069s
+2025-07-15 23:05:22,847 - middleware - INFO - [INCOMING] POST request to /api/keyword_search_volume
+2025-07-15 23:05:22,848 - middleware - INFO -    Client: 127.0.0.1
+2025-07-15 23:05:22,848 - middleware - INFO -    Headers: {'cookie': 'ajs_anonymous_id=18579a7c-f4ce-4647-8aa9-b429ad6b9845; jenkins-timestamper-offset=-3600000; grafana_session=339ed3acdf3a1ebc6b588c97708c09fe; grafana_session_expiry=1752597116; __next_hmr_refresh_hash__=9de5e043e0f0cd48426303fec3dc697e633457081244afec', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5', 'accept-encoding': 'gzip, deflate, br, zstd', 'referer': 'http://localhost:3000/keywords', 'sec-fetch-dest': 'empty', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-origin', 'origin': 'http://localhost:3000', 'accept': '*/*', 'sec-ch-ua-mobile': '?0', 'content-type': 'application/json', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua-platform': '"Windows"', 'content-length': '66', 'connection': 'close', 'host': 'localhost:8000', 'x-forwarded-host': 'localhost:3000'}
+2025-07-15 23:05:22,853 - routes - INFO - [DEBUG] Received request: keywords=['hyundai i10'] language_code='en' location='TUN'
+2025-07-15 23:05:27,558 - middleware - INFO - [RESPONSE] POST /api/keyword_search_volume
+2025-07-15 23:05:27,558 - middleware - INFO -    Status: 200
+2025-07-15 23:05:27,558 - middleware - INFO -    Processing time: 4.711s
+2025-07-15 23:08:15,732 - middleware - INFO - [INCOMING] POST request to /api/keyword_search_volume
+2025-07-15 23:08:15,736 - middleware - INFO -    Client: 127.0.0.1
+2025-07-15 23:08:15,737 - middleware - INFO -    Headers: {'cookie': 'ajs_anonymous_id=18579a7c-f4ce-4647-8aa9-b429ad6b9845; jenkins-timestamper-offset=-3600000; grafana_session=339ed3acdf3a1ebc6b588c97708c09fe; grafana_session_expiry=1752597116; __next_hmr_refresh_hash__=9de5e043e0f0cd48426303fec3dc697e633457081244afec', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5', 'accept-encoding': 'gzip, deflate, br, zstd', 'referer': 'http://localhost:3000/keywords', 'sec-fetch-dest': 'empty', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-origin', 'origin': 'http://localhost:3000', 'accept': '*/*', 'sec-ch-ua-mobile': '?0', 'content-type': 'application/json', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua-platform': '"Windows"', 'content-length': '61', 'connection': 'close', 'host': 'localhost:8000', 'x-forwarded-host': 'localhost:3000'}
+2025-07-15 23:08:15,767 - routes - INFO - [DEBUG] Received request: keywords=['سلة'] language_code='ar' location='KSA'
+2025-07-15 23:08:20,511 - middleware - INFO - [RESPONSE] POST /api/keyword_search_volume
+2025-07-15 23:08:20,512 - middleware - INFO -    Status: 200
+2025-07-15 23:08:20,513 - middleware - INFO -    Processing time: 4.780s
+2025-07-15 23:19:21,398 - middleware - INFO - [INCOMING] POST request to /api/keyword_search_volume
+2025-07-15 23:19:21,410 - middleware - INFO -    Client: 127.0.0.1
+2025-07-15 23:19:21,411 - middleware - INFO -    Headers: {'cookie': 'ajs_anonymous_id=18579a7c-f4ce-4647-8aa9-b429ad6b9845; jenkins-timestamper-offset=-3600000; grafana_session=339ed3acdf3a1ebc6b588c97708c09fe; grafana_session_expiry=1752597116; __next_hmr_refresh_hash__=9de5e043e0f0cd48426303fec3dc697e633457081244afec', 'accept-language': 'fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,fr-CA;q=0.5', 'accept-encoding': 'gzip, deflate, br, zstd', 'referer': 'http://localhost:3000/keywords', 'sec-fetch-dest': 'empty', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-origin', 'origin': 'http://localhost:3000', 'accept': '*/*', 'sec-ch-ua-mobile': '?0', 'content-type': 'application/json', 'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'sec-ch-ua-platform': '"Windows"', 'content-length': '62', 'connection': 'close', 'host': 'localhost:8000', 'x-forwarded-host': 'localhost:3000'}
+2025-07-15 23:19:21,424 - routes - INFO - [DEBUG] Received request: keywords=['سلة'] language_code='ar' location='Kmll'
+2025-07-15 23:19:27,368 - middleware - INFO - [RESPONSE] POST /api/keyword_search_volume
+2025-07-15 23:19:27,368 - middleware - INFO -    Status: 200
+2025-07-15 23:19:27,368 - middleware - INFO -    Processing time: 5.970s

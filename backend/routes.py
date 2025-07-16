@@ -6,7 +6,6 @@ import json
 import logging
 from typing import List
 from datetime import datetime
-from fastapi import APIRouter, HTTPException
 from config import config
 from models import WebsiteAnalysisRequest, AnalysisResponse, ChatMessage, ChatResponse, ApifyResult, GoogleTrendsRequest, GoogleTrendsResponse, BuiltWithAnalysisResponse, BuiltWithOnlyResult
 from clients import ApifyClient, OpenRouterClient
@@ -14,7 +13,13 @@ from clients.builtwith_client_fixed import BuiltWithClientFixed
 from clients.google_trends_client import GoogleTrendsClient
 from database_service import db_service
 import uuid
-
+from fastapi import APIRouter, HTTPException, Query
+from pydantic import BaseModel
+import requests
+import base64
+import os
+from dotenv import load_dotenv
+import traceback
 # Setup router
 router = APIRouter()
 logger = logging.getLogger(__name__)
@@ -39,8 +44,43 @@ async def root():
         }
     }
 
+# --- New Keyword Search Volume Feature ---
 
-@router.post("/api/analyze", response_model=AnalysisResponse)
+# Get DataForSEO credentials from environment variables
+DATAFORSEO_LOGIN = os.getenv("DATAFORSEO_LOGIN", "mohammed@skylightad.com")
+DATAFORSEO_PASSWORD = os.getenv("DATAFORSEO_PASSWORD", "4b463a5249535fb1")
+
+# Create basic authentication header
+auth = base64.b64encode(f"{DATAFORSEO_LOGIN}:{DATAFORSEO_PASSWORD}".encode()).decode()
+
+class KeywordRequest(BaseModel):
+    keywords: list[str]
+    language_code: str = "en"
+    location: str = "US"
+@router.post("/api/keyword_search_volume")
+async def get_keyword_search_volume(request: KeywordRequest):
+    """
+    Retrieves search volume data for the specified keywords using DataForSEO Keywords Data API.
+    """
+    logger.info(f"[DEBUG] Received request: {request}")
+    url = "https://api.dataforseo.com/v3/keywords_data/google_ads/search_volume/live"
+    headers = {
+        "Authorization": f"Basic {auth}",
+        "Content-Type": "application/json"
+    }
+    data = [
+        {
+            "keywords": request.keywords,
+            "language_code": request.language_code,
+            "location": request.location
+        }
+    ]
+    response = requests.post(url, headers=headers, json=data)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        return {"error": "Failed to retrieve data", "status_code": response.status_code}
+
 async def analyze_websites(request: WebsiteAnalysisRequest):
     """Step 1: Analyze websites with SimilarWeb only"""
     logger.info(f"[ANALYZE] Starting website analysis for {len(request.websites)} websites")
