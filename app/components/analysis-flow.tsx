@@ -11,13 +11,14 @@ import { ArrowRight, ArrowLeft, CheckCircle, Circle, BarChart3, Code, TrendingUp
 import SimilarWebResults from "./similarweb-results"
 import BuiltWithResults from "./builtwith-results"
 import ChatSystem from "./chat-system"
+import KeywordTool from "./keyword-tool"
 
 interface AnalysisFlowProps {
   domain: string
   setDomain: (domain: string) => void
 }
 
-type Step = "domain" | "similarweb" | "builtwith" | "trends" | "chat"
+type Step = "domain" | "similarweb" | "builtwith" | "trends" | "keywords" | "chat"
 
 interface StepData {
   id: Step
@@ -35,6 +36,7 @@ interface AnalysisData {
   similarWebData: any
   builtWithData: any
   trendsData: any
+  keywordsData: any
 }
 
 export default function AnalysisFlow({ domain, setDomain }: AnalysisFlowProps) {
@@ -45,7 +47,8 @@ export default function AnalysisFlow({ domain, setDomain }: AnalysisFlowProps) {
     competitors: [],
     similarWebData: null,
     builtWithData: null,
-    trendsData: null
+    trendsData: null,
+    keywordsData: null
   })
 
   const steps: StepData[] = [
@@ -82,6 +85,14 @@ export default function AnalysisFlow({ domain, setDomain }: AnalysisFlowProps) {
       completed: completedSteps.has("trends")
     },
     {
+      id: "keywords",
+      title: "Keyword Research",
+      description: "Find and analyze relevant keywords",
+      icon: BarChart3, // You can change to a more appropriate icon
+      color: "bg-yellow-500",
+      completed: completedSteps.has("keywords")
+    },
+    {
       id: "chat",
       title: "AI Chat Assistant",
       description: "Get insights and recommendations",
@@ -113,7 +124,11 @@ export default function AnalysisFlow({ domain, setDomain }: AnalysisFlowProps) {
     setAnalysisData(prev => ({
       ...prev,
       similarWebData: data,
-      competitors: competitors
+      competitors: competitors,
+      builtWithData: prev.builtWithData,
+      trendsData: prev.trendsData,
+      keywordsData: prev.keywordsData,
+      domain: prev.domain
     }))
     setCompletedSteps(prev => new Set(prev).add("similarweb"))
     setCurrentStep("builtwith")
@@ -123,15 +138,33 @@ export default function AnalysisFlow({ domain, setDomain }: AnalysisFlowProps) {
     console.log("BuiltWith completion data:", data)
     setAnalysisData(prev => ({
       ...prev,
-      builtWithData: data
+      builtWithData: data,
+      similarWebData: prev.similarWebData,
+      trendsData: prev.trendsData,
+      keywordsData: prev.keywordsData,
+      competitors: prev.competitors,
+      domain: prev.domain
     }))
     setCompletedSteps(prev => new Set(prev).add("builtwith"))
     setCurrentStep("trends")
   }
 
   const handleTrendsSubmit = async () => {
-    // This function is no longer used as trends are handled in GoogleTrendsAnalysisStep
     setCompletedSteps(prev => new Set(prev).add("trends"))
+    setCurrentStep("keywords")
+  }
+
+  const handleKeywordsComplete = (data: any) => {
+    setAnalysisData(prev => ({
+      ...prev,
+      keywordsData: data,
+      similarWebData: prev.similarWebData,
+      builtWithData: prev.builtWithData,
+      trendsData: prev.trendsData,
+      competitors: prev.competitors,
+      domain: prev.domain
+    }))
+    setCompletedSteps(prev => new Set(prev).add("keywords"))
     setCurrentStep("chat")
   }
 
@@ -143,7 +176,8 @@ export default function AnalysisFlow({ domain, setDomain }: AnalysisFlowProps) {
       competitors: [],
       similarWebData: null,
       builtWithData: null,
-      trendsData: null
+      trendsData: null,
+      keywordsData: null
     })
     setDomain("")
   }
@@ -197,45 +231,86 @@ export default function AnalysisFlow({ domain, setDomain }: AnalysisFlowProps) {
 
       case "similarweb":
         return (
-          <SimilarWebAnalysisStep
-            domain={domain}
-            onComplete={handleSimilarWebComplete}
-            onBack={handleBackToSearch}
-          />
+          <>
+            <SimilarWebAnalysisStep
+              domain={domain}
+              onComplete={handleSimilarWebComplete}
+              onBack={handleBackToSearch}
+            />
+            <div className="flex justify-end mt-4">
+              <Button variant="outline" onClick={() => setCurrentStep("builtwith")}>Skip</Button>
+            </div>
+          </>
         )
 
       case "builtwith":
         return (
-          <BuiltWithAnalysisStep
-            domain={domain}
-            competitors={analysisData.competitors}
-            onComplete={handleBuiltWithComplete}
-            onBack={() => setCurrentStep("similarweb")}
-          />
+          <>
+            <BuiltWithAnalysisStep
+              domain={domain}
+              competitors={analysisData.competitors}
+              onComplete={handleBuiltWithComplete}
+              onBack={() => setCurrentStep("similarweb")}
+            />
+            <div className="flex justify-end mt-4">
+              <Button variant="outline" onClick={() => setCurrentStep("trends")}>Skip</Button>
+            </div>
+          </>
         )
 
       case "trends":
         return (
-          <GoogleTrendsAnalysisStep
-            domain={domain}
-            onComplete={(data: any) => {
-              setAnalysisData(prev => ({
-                ...prev,
-                trendsData: data
-              }))
-              setCompletedSteps(prev => new Set(prev).add("trends"))
-              setCurrentStep("chat")
-            }}
-            onBack={() => setCurrentStep("builtwith")}
-          />
+          <>
+            <GoogleTrendsAnalysisStep
+              domain={domain}
+              onComplete={(data: any) => {
+                setAnalysisData(prev => ({
+                  ...prev,
+                  trendsData: data,
+                  similarWebData: prev.similarWebData,
+                  builtWithData: prev.builtWithData,
+                  keywordsData: prev.keywordsData,
+                  competitors: prev.competitors,
+                  domain: prev.domain
+                }))
+                setCompletedSteps(prev => new Set(prev).add("trends"))
+                setCurrentStep("keywords")
+              }}
+              onBack={() => setCurrentStep("builtwith")}
+            />
+            <div className="flex justify-end mt-4">
+              <Button variant="outline" onClick={() => setCurrentStep("keywords")}>Skip</Button>
+            </div>
+          </>
         )
 
+      case "keywords":
+        return (
+          <KeywordTool 
+            initialSeed={domain}
+            initialBasket={analysisData.keywordsData || []}
+            onComplete={(basket) => {
+              console.log('KeywordTool onComplete called', basket);
+              setAnalysisData(prev => ({
+                ...prev,
+                keywordsData: basket,
+                similarWebData: prev.similarWebData,
+                builtWithData: prev.builtWithData,
+                trendsData: prev.trendsData,
+                competitors: prev.competitors,
+                domain: prev.domain
+              }))
+              setCompletedSteps(prev => new Set(prev).add("keywords"))
+              setCurrentStep("chat")
+            }}
+          />
+        )
       case "chat":
         return (
           <ChatAnalysisStep
             domain={domain}
             analysisData={analysisData}
-            onBack={() => setCurrentStep("trends")}
+            onBack={() => setCurrentStep("keywords")}
             onBackToDashboard={handleBackToDashboard}
           />
         )
@@ -907,6 +982,7 @@ function ChatAnalysisStep({ domain, analysisData, onBack, onBackToDashboard }: {
     builtWithData: analysisData.builtWithData?.rawData || analysisData.builtWithData || {},
     // Include additional context for AI
     trendsData: analysisData.trendsData || {},
+    keywordsData: analysisData.keywordsData || {}, // Add keywordsData to context
     // Provide a summary context for the AI
     summary: {
       domain: domain,
@@ -956,7 +1032,7 @@ function ChatAnalysisStep({ domain, analysisData, onBack, onBackToDashboard }: {
             <div className="flex justify-between items-center pt-4 border-t">
               <Button variant="outline" onClick={onBack}>
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Trends
+                Back to Keywords
               </Button>
               <div className="flex space-x-2">
                 <Button variant="outline" onClick={onBackToDashboard}>

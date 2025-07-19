@@ -6,6 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from routes import router
+from routes_builtwith import router_builtwith
 from middleware import LoggingMiddleware
 from config import config
 
@@ -28,6 +29,7 @@ app.add_middleware(
 
 # Add logging middleware after CORS
 app.add_middleware(LoggingMiddleware)
+app.include_router(router_builtwith)
 
 # Include routes
 app.include_router(router)

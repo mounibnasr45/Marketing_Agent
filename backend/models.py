@@ -16,7 +16,83 @@ from typing import List, Optional
 # ...
 
 # --- NEW: Models for the Keywords Data API Tool ---
+# models.py
 
+from pydantic import BaseModel, Field
+from typing import List, Optional
+
+"""
+This module defines the Pydantic models for API requests related to the 
+BuiltWith / Domain Analytics tool. Each model corresponds to a specific 
+feature in the frontend application.
+"""
+
+
+class DomainTechnologiesRequest(BaseModel):
+    """Request model for the 'Domain Technologies' endpoint."""
+    target: str = Field(
+        ..., 
+        description="The domain name to analyze.", 
+        example="dataforseo.com"
+    )
+
+
+class DomainsByTechnologyRequest(BaseModel):
+    """Request model for the 'Domains by Technology' endpoint."""
+    technologies: List[str] = Field(
+        ..., 
+        description="List of technologies to search for.", 
+        example=["Nginx"]
+    )
+    country_iso_code: Optional[str] = Field(
+        None, 
+        description="ISO 3166-1 alpha-2 country code. 'ANY' is used for no filter.", 
+        example="US"
+    )
+    domain_rank_min: Optional[int] = Field(
+        None, 
+        description="The minimum domain rank to include in the results.", 
+        example=800
+    )
+    order_by: str = Field(
+        "last_visited,desc", 
+        description="Field to order results by and the sort direction.", 
+        example="domain_rank,asc"
+    )
+    limit: int = Field(
+        10, 
+        description="The maximum number of results to return.", 
+        example=10
+    )
+
+
+class TechnologiesSummaryRequest(BaseModel):
+    """Request model for the 'Technologies Summary' endpoint."""
+    technologies: List[str] = Field(
+        ..., 
+        description="List of technologies to get aggregated statistics for.", 
+        example=["Nginx", "WordPress"]
+    )
+    keywords: List[str] = Field(
+        [], 
+        description="Keywords to find within the content of the analyzed domains.", 
+        example=["e-commerce"]
+    )
+    country_iso_code: Optional[str] = Field(
+        None, 
+        description="ISO 3166-1 alpha-2 country code to filter domains by.", 
+        example="US"
+    )
+    domain_rank_min: Optional[int] = Field(
+        None, 
+        description="The minimum domain rank to include in the summary.", 
+        example=800
+    )
+    mode: str = Field(
+        "entry", 
+        description="The analysis mode ('entry' or 'advanced').", 
+        example="entry"
+    )
 class BaseKeywordRequest(BaseModel):
     """A base model containing common fields for all keyword requests."""
     location_code: int = Field(2840, description="Location code for the search. Default is 2840 for US.")
@@ -64,7 +140,7 @@ class TopKeyword(BaseModel):
     name: str
     volume: int
     estimatedValue: int
-    cpc: float
+    cpc: Optional[float]
 
 
 class SocialNetworkDistribution(BaseModel):

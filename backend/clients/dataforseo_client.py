@@ -76,6 +76,10 @@ class DataForSEOClient:
     def ad_traffic_by_keywords_live(self, payload: List[Dict[str, Any]]) -> Dict[str, Any]:
         return self._post("ad_traffic_by_keywords/live", payload)
 
+    def bing_keyword_suggestions_for_url_live(self, payload: List[Dict[str, Any]]) -> Dict[str, Any]:
+        url = "https://api.dataforseo.com/v3/keywords_data/bing/keyword_suggestions_for_url/live"
+        return self._request('POST', url, payload)
+
     # --- Standard (Asynchronous) Methods ---
 
     def search_volume_post_task(self, payload: List[Dict[str, Any]]) -> Dict[str, Any]:

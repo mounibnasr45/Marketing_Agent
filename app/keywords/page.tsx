@@ -276,6 +276,14 @@ export default function KeywordsDataAPIPage() {
   const [bid, setBid] = useState("999")
   const [match, setMatch] = useState("exact")
 
+  // Bing Keyword Suggestions for URL states
+  const [bingUrl, setBingUrl] = useState("");
+  const [bingLang, setBingLang] = useState("en");
+  const [bingExcludeBrands, setBingExcludeBrands] = useState(false);
+  const [bingLoading, setBingLoading] = useState(false);
+  const [bingResults, setBingResults] = useState<any>(null);
+  const [bingError, setBingError] = useState<string | null>(null);
+
   const endpoints = [
     {
       id: "search-volume",
@@ -302,8 +310,15 @@ export default function KeywordsDataAPIPage() {
       id: "ad-traffic",
       name: "Ad Traffic By Keywords",
       icon: TrendingUp,
-      description: "Estimate ad performance metrics for keywords",
+      description: "Estimate ad performance metrics for keywords in the next month",
       path: "/api/keywords/ad_traffic",
+    },
+    {
+      id: "bing-url-suggestions",
+      name: "Bing Keyword Suggestions for URL",
+      icon: Globe, // You can use a Bing or link icon if available
+      description: "Get Bing Ads keyword suggestions for a webpage URL",
+      path: "/api/keywords/bing/url-suggestions",
     },
   ]
 
@@ -370,9 +385,49 @@ export default function KeywordsDataAPIPage() {
     }
   }
 
+  const handleBingSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setBingLoading(true);
+    setBingResults(null);
+    setBingError(null);
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/keywords/bing/url-suggestions`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          target: bingUrl,
+          language_code: bingLang,
+          exclude_brands: bingExcludeBrands,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.detail || "Unknown error");
+      setBingResults(data.tasks?.[0]?.result || []);
+    } catch (err: any) {
+      setBingError(err.message);
+    } finally {
+      setBingLoading(false);
+    }
+  };
+
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text)
   }
+
+  const adTrafficReference = (
+    <div className="mb-2 text-sm text-muted-foreground flex items-center gap-1">
+      Estimate ad performance metrics for keywords in the next month
+      <a
+        href="https://docs.dataforseo.com/v3/keywords_data/google_ads/ad_traffic_by_keywords/live/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="ml-1 underline text-blue-600 hover:text-blue-800"
+        style={{ fontSize: '0.85em', verticalAlign: 'super' }}
+      >
+        [ref]
+      </a>
+    </div>
+  );
 
   const renderForm = () => {
     const currentEndpoint = endpoints.find((e) => e.id === activeEndpoint)
@@ -383,9 +438,14 @@ export default function KeywordsDataAPIPage() {
             {currentEndpoint?.icon && <currentEndpoint.icon className="h-5 w-5" />}
             {currentEndpoint?.name}
           </CardTitle>
-          <CardDescription>{currentEndpoint?.description}</CardDescription>
+          {/* Only show CardDescription if not ad-traffic, since adTrafficReference is shown separately */}
+          {activeEndpoint !== "ad-traffic" && (
+            <CardDescription>{currentEndpoint?.description}</CardDescription>
+          )}
         </CardHeader>
         <CardContent className="space-y-4">
+          {/* Show ad traffic reference if this is the ad-traffic endpoint */}
+          {activeEndpoint === "ad-traffic" && adTrafficReference}
           <div className="grid grid-cols-2 gap-4">
             <div>
               <Label htmlFor="location">Country</Label>
@@ -643,6 +703,75 @@ export default function KeywordsDataAPIPage() {
     )
   }
 
+  // Add a render function for Bing URL Suggestions
+  const renderBingForm = () => (
+    <Card>
+      <CardHeader>
+        <CardTitle>Bing Ads Keyword Suggestions for URL</CardTitle>
+        <CardDescription>
+          Get keyword suggestions from Bing Ads based on a webpage URL. Enter a URL and language code.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleBingSubmit} className="space-y-4">
+          <div>
+            <Label htmlFor="bing-url">Target URL</Label>
+            <Input
+              id="bing-url"
+              value={bingUrl}
+              onChange={e => setBingUrl(e.target.value)}
+              placeholder="e.g. dataforseo.com"
+              required
+            />
+          </div>
+          <div>
+            <Label htmlFor="bing-lang">Language Code</Label>
+            <Input
+              id="bing-lang"
+              value={bingLang}
+              onChange={e => setBingLang(e.target.value)}
+              placeholder="e.g. en"
+              required
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <input
+              id="bing-exclude-brands"
+              type="checkbox"
+              checked={bingExcludeBrands}
+              onChange={e => setBingExcludeBrands(e.target.checked)}
+            />
+            <Label htmlFor="bing-exclude-brands">Exclude Brand Keywords</Label>
+          </div>
+          {bingError && (
+            <Alert variant="destructive">
+              <AlertTriangle className="h-4 w-4" />
+              <AlertTitle>Error</AlertTitle>
+              <AlertDescription>{bingError}</AlertDescription>
+            </Alert>
+          )}
+          <Button type="submit" disabled={bingLoading} className="w-full">
+            {bingLoading ? "Processing..." : "Get Bing Keyword Suggestions"}
+          </Button>
+        </form>
+        {/* Results */}
+        {bingResults && bingResults.length > 0 && (
+          <div className="mt-6">
+            <h4 className="font-semibold mb-2">Keyword Suggestions</h4>
+            <div className="space-y-2">
+              {bingResults.map((item: any, idx: number) => (
+                <div key={idx} className="flex items-center justify-between p-2 border rounded">
+                  <span>{item.keyword}</span>
+                  <span className="text-sm text-muted-foreground">Confidence: {item.confidence_score}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto p-6">
@@ -678,10 +807,12 @@ export default function KeywordsDataAPIPage() {
           </div>
           {/* Main Content */}
           <div className="lg:col-span-3 space-y-6">
-            {renderForm()}
-            {loading && <p>Loading...</p>}
-            {results && renderResults()}
-            {method === "standard" && (
+            {/* Render the correct form based on the selected endpoint */}
+            {activeEndpoint === "bing-url-suggestions" ? renderBingForm() : renderForm()}
+            {/* Only show results for non-Bing endpoints */}
+            {activeEndpoint !== "bing-url-suggestions" && loading && <p>Loading...</p>}
+            {activeEndpoint !== "bing-url-suggestions" && results && renderResults()}
+            {activeEndpoint !== "bing-url-suggestions" && method === "standard" && (
               <Card>
                 <CardHeader>
                   <CardTitle>Standard Method Workflow</CardTitle>

@@ -55,6 +55,61 @@ DATAFORSEO_PASSWORD = os.getenv("DATAFORSEO_PASSWORD", "4b463a5249535fb1")
 auth_token = base64.b64encode(f"{DATAFORSEO_LOGIN}:{DATAFORSEO_PASSWORD}".encode()).decode()
 DATAFORSEO_API_BASE_URL = "https://api.dataforseo.com/v3/keywords_data/google_ads"
 
+
+
+
+
+
+
+
+
+
+
+
+from fastapi import APIRouter, HTTPException, Request
+from clients.dataforseo_client import DataForSEOClient
+
+router = APIRouter()
+
+@router.post("/api/keywords/bing/url-suggestions")
+async def bing_keyword_suggestions_for_url(request: Request):
+    data = await request.json()
+    target = data.get("target")
+    language_code = data.get("language_code")
+    language_name = data.get("language_name")
+    exclude_brands = data.get("exclude_brands", None)
+
+    if not target or (not language_code and not language_name):
+        raise HTTPException(status_code=400, detail="Missing required fields.")
+
+    payload = [{
+        "target": target,
+        "language_code": language_code,
+        "language_name": language_name,
+        "exclude_brands": exclude_brands
+    }]
+    # Remove None values
+    payload[0] = {k: v for k, v in payload[0].items() if v is not None}
+
+    client = DataForSEOClient()
+    try:
+        result = client.bing_keyword_suggestions_for_url_live(payload)
+        return result
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+
+
+
+
+
+
+
+
+
+
+
 def call_dataforseo_api(endpoint_path: str, data: list):
     """Helper function to make requests to the DataForSEO API."""
     url = f"{DATAFORSEO_API_BASE_URL}/{endpoint_path}"
@@ -166,6 +221,9 @@ async def get_ad_traffic(request: AdTrafficRequest):
     }]
 
     return call_dataforseo_api(endpoint_path, post_data)
+
+
+@router.post("/api/analyze", response_model=AnalysisResponse)
 async def analyze_websites(request: WebsiteAnalysisRequest):
     """Step 1: Analyze websites with SimilarWeb only"""
     logger.info(f"[ANALYZE] Starting website analysis for {len(request.websites)} websites")
